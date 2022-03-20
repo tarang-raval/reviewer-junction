@@ -1374,7 +1374,7 @@ a.yt{background: #ff0000}
 #wd-header .my-account,
 #wd-header-2 .my-account {
   display: inline-block;
-  transform: translateY(15px);
+  /* transform: translateY(15px); */
     float: right;
 }
 .second-home #wd-header .wd-btn-group,
@@ -4409,7 +4409,7 @@ padding-top: 10px;
 }
 
 .review-our-product-area {
-  background: #f9f9f9;
+  background: #FFF;
   border: 1px solid #f0f0f0;
   padding: 30px;
   margin-top: 10px;
