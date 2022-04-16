@@ -73,7 +73,9 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
          });
+         $('[data-toggle="tooltip"]').tooltip()
         });
+
     </script>
     @stack('js')
 </body>

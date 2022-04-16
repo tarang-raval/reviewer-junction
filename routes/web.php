@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,35 +18,13 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/', function () {
-    return redirect()->route('login');
+Route::get('/clear-cache', function () {
+    Artisan::call('optimize:clear');
 });
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::group([
-    'prefix' => 'admin',
-    'as' => 'admin.',
-    'namespace' => '\App\Http\Controllers\Admin',
-    'middleware' => []
-], function () {
-    //Route::get('/', 'HomeController@index')->name('home');
-
-    Route::get('/', [\App\Http\Controllers\Admin\UsersController::class,'login'])->name('adminlogin');
-    Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class,'index'])->name('dashboard');
-
-    // category
-    Route::resource('category', CategoryController::class);
-    Route::post('category/list', [\App\Http\Controllers\Admin\CategoryController::class,'datatable'])->name('category.datatable');
-    Route::post('category/check', [\App\Http\Controllers\Admin\CategoryController::class,'checkunique'])->name('category.unique.check');
-
-
-
-
-
-
-
-});
 
 require __DIR__.'/auth.php';

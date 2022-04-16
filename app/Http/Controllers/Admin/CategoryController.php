@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -49,7 +50,7 @@ class CategoryController extends Controller
          if($s){
             return response()->json(['status'=>true,'message'=>'Category added successfully']);
          }else{
-            return response()->json(['status'=>false,'message'=>'somethinf is wrong, please Try again later']);
+            return response()->json(['status'=>false,'message'=>'something is wrong, please Try again later']);
          }
     }
 
@@ -85,6 +86,19 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'name'=>['required',Rule::unique('categories', 'name')->ignore($id),],
+        ]);
+
+        $category=Category::findOrFail($id);
+        $category->name=$request->name;
+        $category->status=1;
+        $s=$category->save();
+        if($s){
+           return response()->json(['status'=>true,'message'=>'Category updated successfully']);
+        }else{
+           return response()->json(['status'=>false,'message'=>'something is wrong, please Try again later']);
+        }
     }
 
     /**
@@ -96,6 +110,14 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+        $category=Category::findOrFail($id);
+        $s=$category->delete();
+        if($s){
+           return response()->json(['status'=>true,'message'=>'Category deleted successfully']);
+        }else{
+           return response()->json(['status'=>false,'message'=>'something is wrong, please Try again later']);
+        }
+
     }
 
    function datatable(Request $request){
@@ -104,7 +126,7 @@ class CategoryController extends Controller
                 return [
                     'id'=>$row['id'],
                     'name'=>$row['name'],
-                    'action'=>'<a href=""> <i class="las la-edit"></i></a><a href=""> <i class="las la-edit"></i></a>',
+                    'action'=>'<a href="javascript:void(0)" class="edit" data-toggle="tooltip" data-placement="top" title="Edit" > <i class="las la-edit"></i></a><a href="javascript:void(0)" onclick="deleterow('.$row['id'].')" data-toggle="tooltip" data-placement="top" title="Delete"> <i class="las la-trash"></i></a>',
                 ];
         });
         return response()->json(['data'=>$category]);
