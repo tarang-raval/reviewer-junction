@@ -8,8 +8,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="card-title">Category</h3>
 
-                    <button class="btn  btn-outline-primary" data-toggle="modal" data-target="#addCategoryModal"
-                        data-backdrop="static" data-keyboard="false">Add Category</button>
+                    <button class="btn  btn-outline-primary" id="newCategory" >Add Category</button>
 
                 </div>
 
@@ -33,13 +32,13 @@
                 </div>
                 <form id="Addcategory" method="post" >
                     <div class="modal-body">
-
+                        @method('POST')
 
                         <div class="form-group">
                             <label for="name">Category Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter Category Name">
                         </div>
-                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="id" id="id" value="">
                        {{--  <div class="form-group">
                             <label for="exampleInputFile">Icon Image</label>
                             <div class="input-group">
@@ -68,6 +67,36 @@
 
 @push('js')
     <script>
+
+        const categorylist=$('#categorylist').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                order: [0, 'desc'],
+
+                "ajax": {
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    "url": '{{ route('admin.category.datatable') }}',
+                    'method': "POST"
+                },
+                columns: [
+                    { data: "name", title:"Name" },
+                    { data: "action", title:"Action", orderable:false,width:'100px' },
+
+                ],
+                drawCallback: function( settings ) {
+                    $('[data-toggle="tooltip"]').tooltip()
+                }
+
+            });
+
+
         function checkunique(){
             return promise = new Promise(function(resolve, reject){
 
@@ -129,35 +158,21 @@
             });
 
         $(function() {
+            $('#addCategoryModal').modal({
+                keyboard: false,
+                backdrop:'static',
+                show:false
+                })
 
-            $('#categorylist').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-                order: [0, 'desc'],
-
-                "ajax": {
-
-                    "url": '{{ route('admin.category.datatable') }}',
-                    'method': "POST"
-                },
-                columns: [
-                    { data: "name", title:"Name" },
-                    { data: "action", title:"Action" },
-
-                ]
-
-            });
         $('#add_category').on('click',function(e){
             e.preventDefault();
 
             if($('#Addcategory').valid()){
+                let id=$('#addCategoryModal #id').val();
+                let  updateurl="{{ route('admin.category.update',':id') }}";
+                updateurl=updateurl.replace(':id',id);
                 $.ajax({
-                    "url": '{{ route('admin.category.store') }}',
+                    "url": ((id=='' && id!="undefined")?'{{ route('admin.category.store') }}':updateurl),
                     'method': "POST",
                      data: $('#Addcategory').serialize(),
                      success:function(response){
@@ -165,20 +180,81 @@
                                 ToastSuccess(response.message);
                                 $('#addCategoryModal').modal('hide');
                                 $('#Addcategory').get(0).reset();
+                                categorylist.ajax.reload();
                             }else{
                                 ToastError(response.message);
                                 $('#addCategoryModal').modal('hide');
                             }
                      }
-                })
+                });
 
             }
 
 
         });
 
+        $('#categorylist tbody').on( 'click', 'tr>td>.edit', function () {
+
+                   data=categorylist.row( this.closest('tr') ).data();
+                   $('#addCategoryModal .modal-title').html('Edit Category');
+                   $('#addCategoryModal input[name="_method"]').val('PUT');
+                   $('#addCategoryModal #name').val(data.name);
+                   $('#addCategoryModal #id').val(data.id);
+                   $('#addCategoryModal #add_category').html('Update');
+                   $('#addCategoryModal').modal('show');
+
+
+        } );
+        // oprn model
+
+        $('#newCategory').on('click',function(){
+                 $('#addCategoryModal .modal-title').html('Add Category');
+                 $('#addCategoryModal input[name="_method"]').val('POST');
+                   $('#addCategoryModal #name').val('');
+                   $('#addCategoryModal #id').val('');
+                   $('#addCategoryModal #add_category').html('Add');
+                   $('#Addcategory').get(0).reset();
+                   $('#addCategoryModal').modal('show');
+        })
 
 
         });
+        function deleterow(id){
+
+            Swal.fire({
+  title: 'Are you sure want to delete category?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+
+    //
+    let deleteurl= "{{ route('admin.category.destroy',':id') }}";
+        deleteurl=deleteurl.replace(':id',id);
+        $.ajax({
+                    "url":deleteurl,
+                    'method': "POST",
+                     data: {'_method':'DELETE'},
+                     success:function(response){
+                            if(response.status){
+                                ToastSuccess(response.message);
+                                $('#addCategoryModal').modal('hide');
+                                categorylist.ajax.reload();
+
+                            }else{
+                                ToastError(response.message);
+
+                            }
+                     }
+                });
+
+  }
+})
+        }
+
     </script>
 @endpush
