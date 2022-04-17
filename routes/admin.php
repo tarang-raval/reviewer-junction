@@ -13,22 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route::prefix('admin')->group(function () {
 
-
-});
-
-Route::get('/', function () {
-    return redirect()->route('login');
-});
- */
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
     'namespace' => '\App\Http\Controllers\Admin',
     'middleware' => []
 ], function () {
-    //Route::get('/', 'HomeController@index')->name('home');
+
 
     Route::get('/', [\App\Http\Controllers\Admin\UsersController::class,'login'])->name('adminlogin');
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class,'index'])->name('dashboard');
@@ -47,4 +39,4 @@ Route::group([
 });
 
 
-//require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';

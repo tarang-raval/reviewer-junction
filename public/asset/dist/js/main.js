@@ -52,3 +52,43 @@
             title: message
         })
     }
+    $(function() {
+        // register Form
+        $('#registerform').validate({
+            rules: {
+                first_name: {
+                    required: true,
+                    /* remote:{
+                        url: "{{route('admin.category.unique.check')}}",
+                        type: "post",
+                        data: {
+                            category_name: function() {
+                            return $('input[name="name"]').val();
+                            },
+                            id: function() {
+                                return $('input[name="id"]').val();
+                            }
+                        }
+                     }, */
+                },
+                last_name:{require:true},
+                mobile_no:{require:true},
+                email:{require:true},
+                password:{require:true},
+            },
+            messages: {
+
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                 $(element).removeClass('is-invalid');
+            }
+        })
+    });
