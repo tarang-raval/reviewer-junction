@@ -155,7 +155,7 @@
 																		</div>
 																		<div class="form-group">
 																			<label for="exampleInputPasswordlogin">Password</label>
-																			<input type="password" class="form-control" id="exampleInputPasswordlogin" placeholder="*** *** ***">
+																			<input type="password" class="form-control" id="exampleInputPasswordlogin" placeholder="*** *** ***" autocomplete="off">
 																		</div>
 																		<button type="submit" class="btn btn-primary wd-login-btn">LOGIN</button>
 
@@ -199,29 +199,34 @@
 														<div class="col-md-6 p0">
 															<div class="sign-up-section text-center">
 																<div class="login-form text-left">
-																	<form>
+																	<form id="registerform" >
 																		<div class="form-group">
-																			<label for="exampleInputname-sign-up">First name</label>
-																			<input type="text" class="form-control" id="exampleInputname-sign-up" placeholder="First Name">
+																			<label for="first_name">First Name</label>
+																			<input type="text" class="form-control" id="firstName-sign-up" placeholder="First Name" name="first_name" >
 																		</div>
 																		<div class="form-group">
-																			<label for="exampleInputname2-sign-up">Last name</label>
-																			<input type="text" class="form-control" id="exampleInputname2-sign-up" placeholder="Last Name">
+																			<label for="last_name">Last Name</label>
+																			<input type="text" class="form-control" id="lastName-sign-up" placeholder="Last Name" name="last_name">
+																		</div>
+                                                                        <div class="form-group">
+																			<label for="mobile_no">Mobile No</label>
+																			<input type="text" class="form-control" id="mobile-sign-up" placeholder="Enter Mobile No" name="mobile_no">
 																		</div>
 																		<div class="form-group">
-																			<label for="exampleInputEmailsign-up">Email</label>
-																			<input type="text" class="form-control" id="exampleInputEmailsign-up" placeholder="Enter you email ...">
+																			<label for="email">Email</label>
+																			<input type="text" class="form-control" id="email-sign-up" placeholder="Enter Your Email" name="email">
 																		</div>
 																		<div class="form-group">
-																			<label for="exampleInputPasswordsign-up">Password</label>
-																			<input type="password" class="form-control" id="exampleInputPasswordsign-up" placeholder="*** *** ***">
+																			<label for="password">Password</label>
+																			<input type="password" class="form-control" id="password-sign-up" placeholder="*********" name="password" autocomplete="off">
 																		</div>
 																		<button type="submit" class="btn btn-primary wd-login-btn">Sign Up</button>
 
 																		<div class="wd-policy">
 																			<p>
 																				By Continuing. I conferm that i have read and userstand the <a href="#">terms of uses</a> and <a href="#">Privacy Policy</a>.
-																				Don’t have an account? <a href="#" class="black-color"><strong><u>Sign up</u></strong></a>
+																				Don’t have an account?
+                                                                                <button type="button" name="signup" value="signup" class="black-color"><strong><u>Sign up</u></strong></button>
 																			</p>
 																		</div>
 																	</form>
@@ -1684,10 +1689,12 @@ z
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.nav.js')}}"></script>
-    <!-- <script src="{{asset('assets/js/jquery.nicescroll.js')}}"></script> -->
+    {{-- <!-- <script src="{{asset('assets/js/jquery.nicescroll.js')}}"></script> --> --}}
     <script src="{{asset('assets/js/jquery.rateyo.js')}}"></script>
     <script src="{{asset('assets/js/jquery.scrollUp.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.sticky.js')}}"></script>
+    <script src="{{asset('assets/js/jquery-validation/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery-validation/additional-methods.min.js')}}"></script>
     <script src="{{asset('assets/js/mobile.js')}}"></script>
     <script src="{{asset('assets/js/lightslider.min.js')}}"></script>
     <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
@@ -1697,5 +1704,7 @@ z
     <script src="{{asset('assets/js/simplePlayer.js')}}"></script>
 
     <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{asset('assets/js/custom.js')}}"></script>
+
   </body>
 </html>
