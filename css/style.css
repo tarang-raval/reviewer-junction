@@ -11898,5 +11898,52 @@ a.go-back {
 
 
 
+.con img{
 
+  border-radius: 10px;
+}
+.card .card-body {
+  padding: 2rem 2.25rem;
+}
+.con1{
+  padding: 0 20px;
+}
+.con1 .text-gray-900{
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+}
+.con2{
+  padding: 10px;
+}
+.con2 .text-gray-400{
+  padding: 0 10px;
+  color: darkgray;
+}
+.con2 svg-icon{
+  padding: 0 25px;
+}
+.con3{
+  justify-content: end;
+}
+.con3 .indicator-label{
+  background-color: darkgray;
+  padding: 8px;
+  border-radius: 4px;
+}
+.con3 .btn{
+  padding: 5px;
+  border-radius: 4px;
+}
+.con4{
+  border: 4px dotted lightgray;
+  margin: 15px;
+}
+.con4 .fs-2{
+  font-weight: bold;
+  font-size: 30px;
+}
+.con4 .text-gray-400{
+  color: darkgray;
+}
 
