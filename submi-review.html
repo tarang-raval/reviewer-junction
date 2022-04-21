@@ -1,0 +1,1703 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Reviewer Junction</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="img/icon.png">
+
+    <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png">-->
+    <!-- Place favicon.ico in the root directory -->
+
+
+    <!-- =========================
+        Loding All Stylesheet
+    ============================== -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+
+    <link rel="stylesheet" href="css/megamenu.css">
+
+    <!-- =========================
+        Loding Main Theme Style
+
+
+		#3c51a6
+
+#232f3e
+    ============================== -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- =========================
+    	Header Loding JS Script
+    ============================== -->
+    <script src="js/modernizr.js"></script>
+    <style>
+        :root {
+            --primary-color: #fff;
+            --secondery-color: #25CC88;
+            --shadow-color: #000;
+        }
+
+        .form__container {
+            margin-top: 4rem;
+            background-color: var(--primary-color);
+            border-radius: 2rem;
+            padding: 1rem
+        }
+
+        .title__container {
+            width: 100%;
+            height: 4.5rem;
+            padding: 0.6rem 1.5rem;
+            padding-bottom: 2rem;
+        }
+
+        .title__container h1 {
+            letter-spacing: 2px;
+            font-size: 1.25rem;
+            margin-bottom: 0.4rem
+        }
+
+        .title__container p {
+            color: var(--shadow-color);
+            font-size: 0.75rem
+        }
+
+        .body__container {
+            display: flex
+        }
+
+        .left__container {
+            width: 35%;
+            display: flex;
+            justify-content: center;
+            border-right: 1px solid #42434e;
+            padding: 1.25rem 0;
+            margin-right: 2rem;
+            padding-right: 1.8rem
+        }
+
+        .side__titles {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center
+        }
+
+        .title__name {
+            padding: 0.6rem 0.1rem;
+            margin-bottom: 0.25rem
+        }
+
+        .title__name h3 {
+            margin-bottom: 0.20rem;
+            text-align: right;
+            color: #000;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+
+        .title__name p {
+            text-align: right;
+            color: var(--shadow-color);
+            font-size: 0.75rem
+        }
+
+        .progress__bar__container {
+            padding-top: 0.6rem
+        }
+
+        .progress__bar__container ul .active {
+            background-color: var(--secondery-color)
+        }
+
+        .progress__bar__container ul li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+            background: var(--shadow-color);
+            padding: 0.5rem 0.6rem;
+            margin-bottom: 1.2rem;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-left: 2rem
+        }
+
+        .progress__bar__container ul li::before {
+            content: '';
+            width: 1px;
+            height: 11vh;
+            position: absolute;
+            background-color: var(--shadow-color)
+        }
+
+        .progress__bar__container ul .active::before {
+            content: '';
+            width: 1px;
+            height: 11vh;
+            position: absolute;
+            background-color: var(--secondery-color)
+        }
+
+        .right__container {
+            display: flex;
+            padding: 1.5rem 1.5rem
+        }
+
+        .right__container fieldset {
+            border: none
+        }
+
+        .sub__title__container {
+            padding: 1rem 0 1.2rem 0;
+        }
+
+        .sub__title__container h2 {
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin: 0.4rem 0
+        }
+
+        .sub__title__container p {
+            font-size: 0.75rem;
+            color: var(--shadow-color)
+        }
+
+        .active__form {
+            display: none
+        }
+
+        .input__container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 1.25rem
+        }
+
+        .input__container label {
+            color: #ffffff;
+            font-size: 0.75rem;
+            margin-bottom: 0.4rem
+        }
+
+        .input__container input {
+            padding: 0.5rem;
+            font-size: 1.4rem;
+            border-radius: 0.75rem;
+            background: none;
+            border: 1px solid var(--secondery-color);
+            margin-bottom: 1.2rem;
+            outline: none;
+            color: #ffffff
+        }
+
+        .nxt__btn {
+            width: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 0;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 2rem;
+            background: var(--secondery-color);
+            color: #ffffff
+        }
+
+        .nxt__btn:hover {
+            transform: scale(1.03);
+            background: #1cd68c;
+            cursor: pointer
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0
+        }
+
+        .prev__btn {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer
+        }
+
+        .selection {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--shadow-color);
+            padding: 0.5rem 0.5rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            width: 100%
+        }
+
+        .selection:hover {
+            border: 1px solid var(--secondery-color);
+            background-color: var(--primary-color);
+            cursor: pointer
+        }
+
+        .imoji {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.4rem 0.4rem;
+            margin: 0 0.2rem;
+            margin-right: 0.4rem;
+            font-size: 2rem;
+            font-weight: 900;
+            color: yellow;
+            border-radius: 50%;
+            background: var(--shadow-color)
+        }
+
+        .descriptionTitle h3 {
+            color: #ffffff;
+            margin-bottom: 4px
+        }
+
+        .descriptionTitle p {
+            font-size: 0.75rem;
+            color: var(--shadow-color)
+        }
+
+        .slider {
+            display: flex;
+            align-items: center;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 0.75rem;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            position: relative;
+            margin-top: 3rem
+        }
+
+        .slider:hover {
+            opacity: 1
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--secondery-color);
+            cursor: pointer;
+            position: relative
+        }
+
+        .slider::-webkit-range-thumb {
+            width: 50px;
+            height: 50px;
+            background: var(--secondery-color);
+            cursor: pointer;
+            position: relative
+        }
+
+        .output__value {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            border-radius: 2em;
+            padding: 0.8rem 0.8rem;
+            position: absolute;
+            background-color: var(--secondery-color)
+        }
+
+        .output__value::after {
+            content: '';
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: black;
+            transform: rotate(45deg);
+            position: absolute;
+            margin-top: 40px;
+            background-color: var(--secondery-color)
+        }
+
+        .firstform select {
+            width: 100%;
+        }
+
+        .firstform input {
+            width: 100%;
+        }
+
+        .firstform textarea {
+            width: 100%;
+        }
+
+        .navigationbuttons .review-comment {
+            padding: 13px 45px;
+            border-radius: 4px;
+        }
+
+        .commeninput input,
+        textarea {
+            padding: .375rem 1.75rem .375rem .75rem;
+            vertical-align: middle;
+            border: 1px solid rgba(0, 0, 0, .15);
+            border-radius: 0.25rem;
+            margin: 10px 0;
+        }
+
+        .marginbtn {
+            margin: 0 15px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                background-color: var(--primary-color)
+            }
+
+            .form__container {
+                margin: 0;
+                padding: 0
+            }
+
+            .body__container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin: 0;
+                padding: 0
+            }
+
+            .right__container {
+                width: 90%;
+                margin: 0
+            }
+
+            .title__container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 0.5rem
+            }
+
+            .left__container {
+                display: flex;
+                flex-direction: column;
+                margin: 0;
+                padding: 0;
+                border: none
+            }
+
+            .buttons {
+                justify-content: space-between
+            }
+
+            .descriptionTitle h3 {
+                font-size: 1rem
+            }
+
+            .descriptionTitle p {
+                font-size: 0.6rem
+            }
+
+            .side__titles {
+                display: none;
+                flex-direction: row;
+                justify-content: space-evenly
+            }
+
+            .title__name h3 {
+                font-size: 0.75rem
+            }
+
+            .title__name p {
+                font-size: 0.5rem
+            }
+
+            .progress__bar__container {
+                margin-bottom: 0
+            }
+
+            .progress__bar__container ul {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 0;
+                padding: 0 2rem
+            }
+
+            .progress__bar__container ul::before {
+                height: 5vh
+            }
+
+            .progress__bar__container ul li {
+                margin: 10px;
+                padding: 10px
+            }
+
+            .progress__bar__container ul .active::before {
+                transform: rotate(90deg)
+            }
+        }
+    </style>
+</head>
+
+<body class="">
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="preloader"></div>
+
+    <!-- =========================
+        Header Top Section
+    ============================== -->
+
+
+    <!-- =========================
+        Header Section
+    ============================== -->
+    <section id="wd-header" class="">
+        <div class="container-fluid custom-width">
+            <div class="row">
+                <div class="col-md-12 col-lg-3 col-xl-3 text-center second-home-main-logo">
+                    <a href="index.html"><img src="img/logo.jpeg" alt="Logo" style="max-width:130px"></a>
+                </div>
+                <div class="col-md-6 col-lg-6 slider-search-section d-none d-lg-block">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-secondary wd-slider-search-btn" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                All Categories <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu wd-dropdown-menu">
+                                <div class="search-category">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="search-category-title">Cameras and photos</h6>
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i> Camera Electronice</a></li>
+                                                <li><a href="#"><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i> Camera Appereances</a></li>
+                                                <li><a href="#"><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i> DSLR</a></li>
+                                                <li><a href="#"><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i> Video cameras</a></li>
+                                                <li><a href="#"><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i> Top Cameras</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="search-category-title">Cameras and photos</h6>
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i> Camera Electronice</a></li>
+                                                <li><a href="#"><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i> Camera Appereances</a></li>
+                                                <li><a href="#"><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i> DSLR</a></li>
+                                                <li><a href="#"><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i> Video cameras</a></li>
+                                                <li><a href="#"><i class="fa fa-angle-double-right"
+                                                            aria-hidden="true"></i> Top Cameras</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control input-search-box"
+                            placeholder="Enter your search key ...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary wd-search-btn" type="button"><i class="fa fa-search"
+                                    aria-hidden="true"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3  col-xl-3 text-right">
+                    <button class="btn btn-primary my-account d-none d-lg-block" data-toggle="modal"
+                        data-target=".bd-example-modal-lg2">
+                        <i class="fa fa-user" aria-hidden="true"></i> My account
+                    </button>
+                    <div class="modal fade bd-example-modal-lg2" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="container">
+                                    <div class="row text-left">
+                                        <div class="col-md-12 p0">
+
+                                            <div class="modal-tab-section wd-modal-tabs">
+                                                <ul class="nav nav-tabs wd-modal-tab-menu text-center" id="myTabs"
+                                                    role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" id="login-tab" data-toggle="tab"
+                                                            href="#login" role="tab" aria-controls="login"
+                                                            aria-expanded="true">Login</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="sign-up-tab" data-toggle="tab"
+                                                            href="#sign-up" role="tab" aria-controls="sign-up">Sign
+                                                            up</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content" id="myTabContent">
+                                                    <div class="tab-pane fade show active" id="login" role="tabpanel"
+                                                        aria-labelledby="login-tab">
+
+                                                        <div class="row">
+                                                            <div class="col-md-6 p0 brand-description-area">
+                                                                <img src="img/login-img-1.jpg" class="img-fluid" alt="">
+                                                                <div class="brand-description">
+                                                                    <div class="brand-logo">
+                                                                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                                                                    </div>
+                                                                    <div class="modal-description">
+
+                                                                    </div>
+                                                                    <ul class="list-unstyled">
+
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 col-lg-6 p0">
+                                                                <div class="login-section text-center">
+                                                                    <div class="social-media">
+                                                                        <a href="#" class="facebook-bg"><i
+                                                                                class="fa fa-facebook"
+                                                                                aria-hidden="true"></i> Login</a>
+                                                                        <a href="#" class="twitter-bg"><i
+                                                                                class="fa fa-twitter"
+                                                                                aria-hidden="true"></i> Login</a>
+                                                                        <a href="#" class="google-bg"><i
+                                                                                class="fa fa-google-plus"
+                                                                                aria-hidden="true"></i> Login</a>
+                                                                    </div>
+                                                                    <div class="login-form text-left">
+                                                                        <form>
+                                                                            <div class="form-group">
+                                                                                <label for="exampleInputEmaillogin">User
+                                                                                    name</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    id="exampleInputEmaillogin"
+                                                                                    placeholder="John mist |">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label
+                                                                                    for="exampleInputPasswordlogin">Password</label>
+                                                                                <input type="password"
+                                                                                    class="form-control"
+                                                                                    id="exampleInputPasswordlogin"
+                                                                                    placeholder="*** *** ***">
+                                                                            </div>
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary wd-login-btn">LOGIN</button>
+
+                                                                            <div class="form-check">
+                                                                                <label class="form-check-label">
+                                                                                    <input type="checkbox"
+                                                                                        class="form-check-input">
+                                                                                    Save this password
+                                                                                </label>
+                                                                            </div>
+
+                                                                            <div class="wd-policy">
+                                                                                <p>
+                                                                                    By Continuing. I conferm that i have
+                                                                                    read and userstand the <a
+                                                                                        href="#">terms of uses</a> and
+                                                                                    <a href="#">Privacy Policy</a>.
+                                                                                    Don’t have an account? <a href="#"
+                                                                                        class="black-color"><strong><u>Sign
+                                                                                                up</u></strong></a>
+                                                                                </p>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="tab-pane fade" id="sign-up" role="tabpanel"
+                                                        aria-labelledby="sign-up-tab">
+
+                                                        <div class="row">
+                                                            <div class="col-md-6 p0 brand-login-section">
+                                                                <img src="img/login-img-2.jpg" class="img-fluid" alt="">
+                                                                <div class="brand-description">
+                                                                    <div class="brand-logo">
+                                                                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                                                                    </div>
+                                                                    <div class="modal-description">
+
+                                                                    </div>
+                                                                    <ul class="list-unstyled">
+
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 p0">
+                                                                <div class="sign-up-section text-center">
+                                                                    <div class="login-form text-left">
+                                                                        <form>
+                                                                            <div class="form-group">
+                                                                                <label
+                                                                                    for="exampleInputname-sign-up">First
+                                                                                    name</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    id="exampleInputname-sign-up"
+                                                                                    placeholder="First Name">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label
+                                                                                    for="exampleInputname2-sign-up">Last
+                                                                                    name</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    id="exampleInputname2-sign-up"
+                                                                                    placeholder="Last Name">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label
+                                                                                    for="exampleInputEmailsign-up">Email</label>
+                                                                                <input type="text" class="form-control"
+                                                                                    id="exampleInputEmailsign-up"
+                                                                                    placeholder="Enter you email ...">
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <label
+                                                                                    for="exampleInputPasswordsign-up">Password</label>
+                                                                                <input type="password"
+                                                                                    class="form-control"
+                                                                                    id="exampleInputPasswordsign-up"
+                                                                                    placeholder="*** *** ***">
+                                                                            </div>
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary wd-login-btn">Sign
+                                                                                Up</button>
+
+                                                                            <div class="wd-policy">
+                                                                                <p>
+                                                                                    By Continuing. I conferm that i have
+                                                                                    read and userstand the <a
+                                                                                        href="#">terms of uses</a> and
+                                                                                    <a href="#">Privacy Policy</a>.
+                                                                                    Don’t have an account? <a href="#"
+                                                                                        class="black-color"><strong><u>Sign
+                                                                                                up</u></strong></a>
+                                                                                </p>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+        Header Section
+    ============================== -->
+    <section id="wd-header-2" class="wd-header-nav sticker-nav mob-sticky bg-orange">
+        <div class="container-fluid custom-width">
+            <div class="row">
+                <div class="col-md-8 col-2 col-sm-6 col-md-4 d-block d-lg-none">
+                    <div class="accordion-wrapper hide-sm-up">
+                        <a href="#" class="mobile-open"><i class="fa fa-bars"></i></a>
+                        <!--Mobile Menu start-->
+
+                        <ul id="mobilemenu" class="accordion">
+                            <!-- <li class="mob-logo"><a href="index.html"><img src="img/logo.png" alt=""></a></li>-->
+                            <li><a class="closeme" href="#"><i class="fa fa-times"></i></a></li>
+                            <li class="mob-logo"><a href="index.html"><img src="img/logo.png" alt=""></a></li>
+
+
+                            <li>
+                                <div class="link">Home</div>
+
+                            </li>
+                            <li>
+                                <div class="link">Comparison Product <i class="fa fa-chevron-down"></i></div>
+                                <ul class="submenu font-sky">
+                                    <li><a href="compare-products.html">Comparison Product</a></li>
+                                    <li><a href="compare-products-single.html">Compare Products Single</a></li>
+                                    <li><a href="compare-products-choose-market.html">Compare Products Choose Market</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="link ">shop<i class="fa fa-chevron-down"></i></div>
+                                <ul class="submenu">
+
+                                    <li><a href="#">Shop Page</a></li>
+                                    <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+                                    <li><a href="shop-left-sidebar-full-grid.html">Shop Left Sidebar Full Grid</a></li>
+                                    <li><a href="shop-right-sidebar-full-grid.html">Shop Right Sidebar Full Grid</a>
+                                    </li>
+                                    <li><a href="product-details.html">Product Details</a></li>
+                                    <li><a href="product-details-scroll.html">Product Details v2</a></li>
+                                    <li><a href="wishlist.html">Wishlist View</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <div class="link">megamenu<i class="fa fa-chevron-down"></i></div>
+                                <ul class="submenu ">
+                                    <li><a href="#">Visual Phones</a></li>
+                                    <li><a href="#">Chinese phones</a></li>
+                                    <li><a href="#">Google Phones</a></li>
+                                    <li><a href="#">Video cameras</a></li>
+                                    <li><a href="#">Top Cameras</a></li>
+                                    <li><a href="#">Cheap Cameras</a></li>
+                                    <li><a href="#">Best Cameras</a></li>
+                                    <li><a href="#">Luxury Cameras</a></li>
+                                    <li><a href="#">Simple Cameras</a></li>
+                                    <li><a href="#">Phone Electronice</a></li>
+                                    <li><a href="#">Phone Appereances</a></li>
+                                    <li><a href="#">Visual Phones</a></li>
+                                    <li><a href="#">Chinese phones</a></li>
+                                    <li><a href="#">Google Phones</a></li>
+                                    <li><a href="#">Cheap Phones</a></li>
+                                    <li><a href="#">Luxury phones</a></li>
+                                    <li><a href="#">Simple phones</a></li>
+                                    <li><a href="#">Camera Electronice</a></li>
+                                    <li><a href="#">Camera Appereances</a></li>
+                                    <li><a href="#">DSLR</a></li>
+                                    <li><a href="#">Video cameras</a></li>
+                                    <li><a href="#">Top Cameras</a></li>
+                                    <li><a href="#">Cheap Cameras</a></li>
+                                    <li><a href="#">Best Cameras</a></li>
+                                    <li><a href="#">Luxury Cameras</a></li>
+                                    <li><a href="#">Simple Cameras</a></li>
+                                </ul>
+
+                            </li>
+                            <li>
+                                <div class="link">Reviews<i class="fa fa-chevron-down"></i></div>
+                                <ul class="submenu">
+                                    <li><a href="product-details-review-history.html">Product History</a></li>
+                                    <li><a href="product-details-single-review.html">Single Review</a></li>
+                                    <li><a href="review-left-sidebar.html">Review Left Sidebar</a></li>
+                                    <li><a href="review-right-sidebar.html">Review Right Sidebar</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="link">Blog<i class="fa fa-chevron-down"></i></div>
+                                <ul class="submenu">
+                                    <li><a href="blog-full-grid.html">Blog Full Grid</a></li>
+                                    <li><a href="blog-two-grid.html">Blog Two Grid</a></li>
+                                    <li><a href="blog-three-grid.html">Blog Three Grid</a></li>
+                                    <li><a href="blog-four-grid.html">Blog Four Grid</a></li>
+                                    <li><a href="blog-four-grid-left-sidebar.html">Blog Four Grid Left Sidebar</a></li>
+                                    <li><a href="blog-four-grid-right-sidebar.html">Blog Four Grid Right Sidebar</a>
+                                    </li>
+                                    <li><a href="single-blog-with.html">Single Blog</a></li>
+                                    <li><a href="single-blog-with-add.html">Single Blog With Add</a></li>
+                                </ul>
+                            </li>
+                            <li class="out-link"><a class="" href="contact-us.html">Contact</a></li>
+                            <li class="out-link"><a class="" href="coupon.html">Coupon</a></li>
+
+                        </ul>
+                        <!--Mobile Menu end-->
+                    </div>
+                </div>
+                <!--Mobile menu end-->
+                <div class="col-xl-3 d-none d-xl-block">
+                    <div class="department" id="cat-department">
+                        <img src="img/menu-bar.png" alt="menu-bar">
+                        All Department
+                        <div class="shape-img">
+                            <img src="img/department-shape-img.png" class="img-fluid" alt="department img">
+                        </div>
+                        <div id="department-list" class="department-list" style="display:none">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <a href="#!">
+                                        <div class="department-list-logo">
+                                            <img src="img/department-img/department-img-1.png" alt="">
+                                        </div>
+                                        <span class="sub-list-main-menu">Furniture</span> <i class="fa fa-angle-right"
+                                            aria-hidden="true"></i>
+                                    </a>
+                                    <div class="wd-sub-list">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <h6 class="black-color wd-sub-list-title">Cameras and photos</h6>
+                                                    <ul class="wd-sub-menu">
+                                                        <li><a href="#">Camera Electronice</a></li>
+                                                        <li><a href="#">Camera Appereances</a></li>
+                                                        <li><a href="#">DSLR</a></li>
+                                                        <li><a href="#">Video cameras</a></li>
+                                                        <li><a href="#">Top Cameras</a></li>
+                                                        <li><a href="#">Cheap Cameras</a></li>
+                                                        <li><a href="#">Best Cameras</a></li>
+                                                        <li><a href="#">Luxury Cameras</a></li>
+                                                        <li><a href="#">Simple Cameras</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h6 class="black-color wd-sub-list-title">Cameras and photos</h6>
+                                                    <ul class="wd-sub-menu">
+                                                        <li><a href="#">Camera Electronice</a></li>
+                                                        <li><a href="#">Camera Appereances</a></li>
+                                                        <li><a href="#">DSLR</a></li>
+                                                        <li><a href="#">Video cameras</a></li>
+                                                        <li><a href="#">Top Cameras</a></li>
+                                                        <li><a href="#">Cheap Cameras</a></li>
+                                                        <li><a href="#">Best Cameras</a></li>
+                                                        <li><a href="#">Luxury Cameras</a></li>
+                                                        <li><a href="#">Simple Cameras</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h6 class="black-color wd-sub-list-title">Cameras and photos</h6>
+                                                    <ul class="wd-sub-menu">
+                                                        <li><a href="#">Camera Electronice</a></li>
+                                                        <li><a href="#">Camera Appereances</a></li>
+                                                        <li><a href="#">DSLR</a></li>
+                                                        <li><a href="#">Video cameras</a></li>
+                                                        <li><a href="#">Top Cameras</a></li>
+                                                        <li><a href="#">Cheap Cameras</a></li>
+                                                        <li><a href="#">Best Cameras</a></li>
+                                                        <li><a href="#">Luxury Cameras</a></li>
+                                                        <li><a href="#">Simple Cameras</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <a href="product-details-scroll.html"><img
+                                                            src="img/department-img/department-sub-list-img-1.jpg"
+                                                            class="department-sub-list-img"
+                                                            alt="department-sub-list-img"></a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <a href="product-details-scroll.html"><img
+                                                            src="img/department-img/department-sub-list-img-2.jpg"
+                                                            class="department-sub-list-img"
+                                                            alt="department-sub-list-img"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                        <div class="department-list-logo">
+                                            <img src="img/department-img/department-img-2.png" alt="">
+                                        </div><span class="sub-list-main-menu">Household</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                        <div class="department-list-logo">
+                                            <img src="img/department-img/department-img-3.png" alt="">
+                                        </div><span class="sub-list-main-menu">Clothes</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                        <div class="department-list-logo">
+                                            <img src="img/department-img/department-img-4.png" alt="">
+                                        </div><span class="sub-list-main-menu">Accessories</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                        <div class="department-list-logo">
+                                            <img src="img/department-img/department-img-5.png" alt="">
+                                        </div><span class="sub-list-main-menu">Electronics</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                        <div class="department-list-logo">
+                                            <img src="img/department-img/department-img-6.png" alt="">
+                                        </div><span class="sub-list-main-menu">Corporate staff</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                        <div class="department-list-logo">
+                                            <img src="img/department-img/department-img-7.png" alt="">
+                                        </div><span class="sub-list-main-menu">Sinking staff</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                        <div class="department-list-logo">
+                                            <img src="img/department-img/department-img-8.png" alt="">
+                                        </div><span class="sub-list-main-menu">Plant</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                        <div class="department-list-logo">
+                                            <img src="img/department-img/department-img-9.png" alt="">
+                                        </div><span class="sub-list-main-menu">Washing machine</span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item"><a href="product-details-scroll.html">
+                                        <div class="department-list-logo">
+                                            <img src="img/department-img/department-img-10.png" alt="">
+                                        </div><span class="sub-list-main-menu">Winding staff</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-10 col-xl-7 header-search-box d-none d-lg-block">
+                    <div id="main-menu-2" class="main-menu-desktop no-border main-menu-sh">
+                        <div class="menu-container wd-megamenu text-left">
+                            <div class="menu">
+                                <ul class="wd-megamenu-ul">
+                                    <li><a href="index.html" class="main-menu-list"><i class="fa fa-home"
+                                                aria-hidden="true"></i> Home</a>
+
+                                    </li>
+
+                                    <li><a href="products.html" class="main-menu-list">Product </a>
+                                        <!-- <ul class="single-dropdown">
+                                                <li><a href="#">Shop Page</a></li>
+                                                <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+                                                <li><a href="shop-left-sidebar-full-grid.html">Shop Left Sidebar Full Grid</a></li>
+                                                <li><a href="shop-right-sidebar-full-grid.html">Shop Right Sidebar Full Grid</a></li>
+                                                <li><a href="product-details.html">Product Details</a></li>
+                                                <li><a href="product-details-scroll.html">Product Details v2</a></li>
+                                                <li><a href="wishlist.html">Wishlist View</a></li>
+                                            </ul> -->
+                                    </li>
+                                    <li><a href="#" class="main-menu-list">Submit A Review </a>
+                                        <!-- <ul class="single-dropdown">
+                                                <li><a href="#">Shop Page</a></li>
+                                                <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+                                                <li><a href="shop-left-sidebar-full-grid.html">Shop Left Sidebar Full Grid</a></li>
+                                                <li><a href="shop-right-sidebar-full-grid.html">Shop Right Sidebar Full Grid</a></li>
+                                                <li><a href="product-details.html">Product Details</a></li>
+                                                <li><a href="product-details-scroll.html">Product Details v2</a></li>
+                                                <li><a href="wishlist.html">Wishlist View</a></li> 
+                                            </ul> -->
+                                    </li>
+
+                                    <li><a href="review-left-sidebar.html" class="main-menu-list">Product Review</a>
+                                        <ul class="single-dropdown">
+                                            <li><a href="#">Electronics</a></li>
+                                            <li><a href="#">Groceries</a></li>
+                                            <li><a href="#">Brand</a></li>
+
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-6 col-md-4 col-lg-2 col-xl-2 text-right">
+                    <!-- =========================
+                             Cart Out 
+                        ============================== -->
+
+                    <div class="header-cart">
+                        <div class="account-section d-md-block d-lg-none">
+                            <button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg2">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i><span>Login/Register</span>
+                            </button>
+
+                        </div>
+                        <div class="serch-wrapper">
+                            <div class="search">
+                                <input class="search-input" placeholder="Search" type="text">
+                                <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+        Slider Section
+        ============================== -->
+    <section id="main-slider-section" class="shop-slider-section">
+        <div id="shop-slider" class="owl-carousel owl-theme product-review">
+            <div class="item bc-slider-bg">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="slider-text col-12">
+                            <!-- <h1 class="slider-title">Deals for the <span class="strong">Amazing Gamer</span></h1>
+						  <p class="slider-content">Comparison Your Product with Best Review from Multi-Vendor Store <br>
+						  Hurry to go affiliate on this day successfully with BLURB Theme.</p>
+						  <a href="shop-left-sidebar.html" class="btn btn-primary wd-shop-btn slider-btn">
+							 Go to store <i class="fa fa-arrow-right" aria-hidden="true"></i>
+						 </a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item bc-slider-bg-2">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="slider-text col-12">
+                            <!--<h1 class="slider-title">Make your day <span class="strong">Elipkart</span></h1>
+					  <p class="slider-content">Comparison Your Product with Best Review from Multi-Vendor Store <br>
+					  Hurry to go affiliate on this day successfully with BLURB Theme.</p>
+					  <a href="" class="btn btn-primary wd-shop-btn slider-btn">
+						 Go to store <i class="fa fa-arrow-right" aria-hidden="true"></i>
+					 </a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+		 Product Section
+		 ============================== -->
+    <div class="product-view-modal modal fade bd-example-modal-lg-product-1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- ====================================
+				 Product Details Gallery Section
+			   ========================================= -->
+                <div class="row">
+                    <div class="product-gallery col-12 col-md-12 col-lg-6">
+                        <!-- ====================================
+						 Single Product Gallery Section
+						 ========================================= -->
+                        <div class="row">
+                            <div class="col-md-12 product-slier-details">
+                                <div id="product-view-model" class="product-view owl-carousel owl-theme">
+                                    <div class="item">
+                                        <img src="img/product-img/product-view-img-1.jpg" class="img-fluid"
+                                            alt="Product Img">
+                                    </div>
+                                    <div class="item">
+                                        <img src="img/product-img/product-view-img-2.jpg" class="img-fluid"
+                                            alt="Product Img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-12 col-md-12 col-lg-6">
+                        <div class="product-details-gallery">
+                            <div class="list-group">
+                                <h4 class="list-group-item-heading product-title">
+                                    Vigo SP111-31N-P2GH Spin 1
+                                </h4>
+                                <div class="media">
+                                    <div class="media-left media-middle">
+                                        <div class="rating">
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <p>3.7/5 <span class="product-ratings-text"> -1747 Ratings</span><span
+                                                class="compare-btn">
+                                                <a class="btn btn-primary btn-sm" href="product-detail.html"><i class=""
+                                                        aria-hidden="true"></i>More Reviews</a>
+                                            </span></p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group content-list">
+                                <p><i class="fa fa-dot-circle-o" aria-hidden="true"></i> 100% Original product</p>
+                                <p><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Manufacturer Warranty</p>
+                            </div>
+                        </div>
+                        <div class="product-store row">
+
+                        </div>
+                    </div>
+                    <div class="col-12 product-store-box">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    </div>
+    </div>
+    <!----------------------------------review section-------------------------------------------------->
+    <div class="container-fluid">
+        <div class="form__container">
+            <div class="title__container">
+                <h1 class="text-center">Submit Review</h1>
+            </div>
+            <div class="body__container">
+                <!-- <div class="left__container">
+                <div class="side__titles">
+                    <div class="title__name">
+                        <h3>Selection</h3>
+                         <p>Enter & press next</p> 
+                    </div>
+                    <div class="title__name">
+                        <h3>Submit Review</h3>
+                    <p>select & press next</p>
+                    </div>
+                </div>
+                <div class="progress__bar__container">
+                    <ul>
+                        <li class="active" id="icon1">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </li>
+                        <li id="icon2">
+                            <ion-icon name="book-outline"></ion-icon>
+                        </li>
+                    </ul>
+                </div> 
+            </div> -->
+                <div class="right__container container-fluid">
+                    <fieldset id="form1" class="col-xl-12">
+                        <div class="sub__title__container ">
+                            <!-- <h2>Let's start with your name</h2>
+                    <p>Please fill the details below so that we can we can get in contacat with you about our product</p>
+                </div>
+                <div class="input__container"> <label for="name">Enter your name</label> <input type="text"> <a class="nxt__btn" onclick="nextForm();"> Next</a> </div> -->
+                            <div class="row firstform">
+                                <div class="col-md-12 d-flex">
+                                    <div class="col-md-6">
+                                        <select class="custom-select custom-select-lg mb-3">
+                                            <option selected hidden>Categories</option>
+                                            <option value="1">Products</option>
+                                            <option value="2">Services</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select class="custom-select custom-select-lg mb-3">
+                                            <option selected>Online</option>
+                                            <option value="1">Offline</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 d-flex commeninput">
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="website/Application">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 d-flex commeninput">
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="shopname">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" placeholder="city">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 commeninput">
+                                    <div class="col-md-12">
+                                        <textarea name="adress" id="adress" cols="30" rows="5"
+                                            placeholder="Your adress"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 commeninput">
+                                    <div class="col-md-6">
+                                        <select class="custom-select custom-select-lg mb-3">
+                                            <option selected>Product</option>
+                                            <option value="1">Fashion</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="buttons navigationbuttons"><a class="review-comment marginbtn ml-auto"
+                                    onclick="nextForm();">Next</a> </div>
+                    </fieldset>
+                    <fieldset id="form2" class="active__form">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="first" class="color-black">Name *</label>
+                                        <input type="text" class="form-control" placeholder="" id="first">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="last" class="color-black">Email *</label>
+                                        <input type="email" class="form-control" placeholder="" id="last">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="last" class="color-green"></label>
+                                        <textarea class="form-control col-md-12" id="exampleFormControlTextarea1"
+                                            placeholder="Write your Opinion here ... "></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="last" class="color-green">Prons</label>
+                                        <textarea class="form-control col-md-12" id="exampleFormControlTextarea1"
+                                            placeholder="Write your Opinion here ... "></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea2wd" class="color-red">Cons</label>
+                                        <textarea class="form-control col-12" id="exampleFormControlTextarea2wd"
+                                            placeholder="Write your Opinion here ... "></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-12 product-rating-area">
+                                    <div class="product-rating-ph">
+                                        <div class="rating-area">
+                                            <div class="d-flex justify-content-between">
+                                                <p>Camera</p>
+                                                <div class="rating">
+                                                    <a href="#"><i class="fa fa-star cat-1" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-2" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-3" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-4" aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-5" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="rating-slider-1"></div>
+                                        </div>
+                                        <div class="rating-area">
+                                            <div class="d-flex justify-content-between">
+                                                <p>Video Quality</p>
+                                                <div class="rating">
+                                                    <a href="#"><i class="fa fa-star cat-2-1"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-2-2"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-2-3"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-2-4"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-2-5"
+                                                            aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="rating-slider-2"></div>
+                                        </div>
+                                        <div class="rating-area">
+                                            <div class="d-flex justify-content-between">
+                                                <p>Box Quality</p>
+                                                <div class="rating">
+                                                    <a href="#"><i class="fa fa-star cat-3-1"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-3-2"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-3-3"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-3-4"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-3-5"
+                                                            aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="rating-slider-3"></div>
+                                        </div>
+                                        <div class="rating-area">
+                                            <div class="d-flex justify-content-between">
+                                                <p>Video Quality</p>
+                                                <div class="rating">
+                                                    <a href="#"><i class="fa fa-star cat-4-1"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-4-2"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-4-3"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-4-4"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-4-5"
+                                                            aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="rating-slider-4"></div>
+                                        </div>
+                                        <div class="rating-area">
+                                            <div class="d-flex justify-content-between">
+                                                <p>Box Quality</p>
+                                                <div class="rating">
+                                                    <a href="#"><i class="fa fa-star cat-5-1"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-5-2"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-5-3"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-5-4"
+                                                            aria-hidden="true"></i></a>
+                                                    <a href="#"><i class="fa fa-star cat-5-5"
+                                                            aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="rating-slider-5"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="buttons mt-2"> <a class="prev__btn" onclick="prevForm();">Back</a>
+                            <button type="submit" class="btn btn-primary review-comment"><i class="fa fa-check"
+                                    aria-hidden="true"></i>Submit</button>
+                        </div>
+                    </fieldset>
+                    <!-- <fieldset class="active__form" id="form2">
+                <div class="sub__title__container">
+                    <p>Step 2/2</p>
+                    <h2>What best describes you ?</h2>
+                    <p>Please let us know what type of business best describes you as entreprenuer or businessman.</p>
+                </div>
+                <div class="input__container">
+                    <div class="selection newB">
+                        <div class="imoji">
+                            <ion-icon name="happy"></ion-icon>
+                        </div>
+                        <div class="descriptionTitle">
+                            <h3>New Business</h3>
+                            <p>Started trading in last 12 months</p>
+                        </div>
+                    </div>
+                    <div class="selection exitB">
+                        <div class="imoji">
+                            <ion-icon name="business"></ion-icon>
+                        </div>
+                        <div class="descriptionTitle">
+                            <h3>Existing Business</h3>
+                            <p>Have been operating beyond 12 months</p>
+                        </div>
+                    </div>
+                    <div class="buttons"> <a class="prev__btn" onclick="prevForm();">Back</a> <a class="nxt__btn" onclick="nextForm();">Next</a> </div>
+                </div>
+            </fieldset> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================
+        Footer Section
+    ============================== -->
+    <footer class="footer wow fadeInUp animated footer-3" data-wow-delay="900ms">
+        <div class="container-fluid custom-width">
+            <div class="row">
+                <div class="col-md-12 col-lg-2">
+                    <!-- ===========================
+    						Footer About
+    					 =========================== -->
+                    <div class="footer-about">
+                        <a href="index.html" class="footer-about-logo">
+                            <img src="img/logo.png" alt="Logo">
+                        </a>
+                        <div class="footer-description">
+                            <p>Lorem ipsum dolor sit amet, anim id est laborum. Sed ut perspconsectetur, adipisci vam
+                                aliquam qua.</p>
+                        </div>
+                        <div class="wb-social-media">
+                            <a href="#" class="bh"><i class="fa fa-behance"></i></a>
+                            <a href="#" class="fb"><i class="fa fa-facebook-official"></i></a>
+                            <a href="#" class="db"><i class="fa fa-dribbble"></i></a>
+                            <a href="#" class="gp"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="vn"><i class="fa fa-vine"></i></a>
+                            <a href="#" class="yt"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 footer-nav">
+                    <!-- ===========================
+    						Festival Deals
+    					 =========================== -->
+                    <h6 class="footer-subtitle">Festival Deals</h6>
+                    <ul>
+                        <li><a href="index.html"> Home </a></li>
+                        <li><a href="compare-products.html">Comparison Product </a></li>
+                        <li><a href="#">Shop </a></li>
+                        <li><a href="review-left-sidebar.html">Reviews</a></li>
+                        <li><a href="blog-four-grid-left-sidebar.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 footer-nav">
+                    <!-- ===========================
+    						Top Stores
+    					 =========================== -->
+                    <div class="stores-list">
+                        <h6 class="footer-subtitle">Top Stores</h6>
+                        <ul>
+                            <li><a href="#">Affiliate Market 1</a></li>
+                            <li><a href="#">Affiliate Market 2</a></li>
+                            <li><a href="#">Affiliate Market 3</a></li>
+                            <li><a href="#">Affiliate Market 4</a></li>
+                            <li><a href="#">Affiliate Market 5</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 footer-nav">
+                    <!-- ===========================
+    						Need Help ?
+    					 =========================== -->
+                    <h6 class="footer-subtitle">Need Help ?</h6>
+                    <ul>
+                        <li><a href="product-details-scroll.html">Getting Started</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                        <li><a href="product-details-scroll.html">FAQ's</a></li>
+                        <li><a href="product-details-scroll.html">Press</a></li>
+                        <li><a href="product-details-scroll.html">Product Feed</a></li>
+                        <li><a href="product-details-scroll.html">Best Rated Product</a></li>
+                        <li><a href="product-details-scroll.html">Feature product</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 footer-nav">
+                    <!-- ===========================
+    						About
+    					 =========================== -->
+                    <h6 class="footer-subtitle">About</h6>
+                    <ul>
+                        <li><a href="conditions.html">Privacy</a></li>
+                        <li><a href="conditions.html">Return Policy</a></li>
+                        <li><a href="conditions.html">Order &#38; Return</a></li>
+                        <li><a href="conditions.html">Terms &#38; Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-12 col-lg-2">
+                    <h6 class="footer-subtitle">Newsletter Signup</h6>
+                    <p class="newsletter-content">By subscribing to our mailing list you will always be update with the
+                        latest news from us.</p>
+                    <div class="newsletter-form">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control newsletter-input" placeholder="Enter your email">
+                            </div>
+                            <button type="submit" class="btn btn-primary newsletter-btn">Join us</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="copyright-text">
+                        <p class="text-uppercase">COPYRIGHT &copy; 2022</p><a class="created-by" href=""></a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="brand-logo d-flex justify-content-start">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- =========================
+        CopyRight
+    ============================== -->
+
+
+
+
+    <!-- =========================
+    	Main Loding JS Script
+    ============================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/jquery.nav.js"></script>
+    <!-- <script src="js/jquery.nicescroll.js"></script> -->
+    <script src="js/jquery.rateyo.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/mobile.js"></script>
+    <script src="js/lightslider.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/circle-progress.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+
+    <script src="js/simplePlayer.js"></script>
+
+    <script src="js/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        const nxtBtn = document.querySelector('#submitBtn');
+        const form1 = document.querySelector('#form1');
+        const form2 = document.querySelector('#form2');
+        const form3 = document.querySelector('#form3');
+        const form4 = document.querySelector('#form4');
+        const form5 = document.querySelector('#form5');
+
+
+        const icon1 = document.querySelector('#icon1');
+        const icon2 = document.querySelector('#icon2');
+        const icon3 = document.querySelector('#icon3');
+        const icon4 = document.querySelector('#icon4');
+        const icon5 = document.querySelector('#icon5');
+
+
+        var viewId = 1;
+        function nextForm() {
+            console.log("hellonext");
+            viewId = viewId + 1;
+            // progressBar();
+            displayForms();
+
+            console.log(viewId);
+
+        }
+
+        function prevForm() {
+            console.log("helloprev");
+            viewId = viewId - 1;
+            console.log(viewId);
+            progressBar1();
+            displayForms();
+        }
+        function progressBar1() {
+            if (viewId === 1) {
+                icon2.classList.add('active');
+                icon2.classList.remove('active');
+                icon3.classList.remove('active');
+                icon4.classList.remove('active');
+                icon5.classList.remove('active');
+            }
+            if (viewId === 2) {
+                icon2.classList.add('active');
+                icon3.classList.remove('active');
+                icon4.classList.remove('active');
+                icon5.classList.remove('active');
+            }
+            if (viewId === 3) {
+                icon3.classList.add('active');
+                icon4.classList.remove('active');
+                icon5.classList.remove('active');
+            }
+            if (viewId === 4) {
+                icon4.classList.add('active');
+                icon5.classList.remove('active');
+            }
+            if (viewId === 5) {
+                icon5.classList.add('active');
+                nxtBtn.innerHTML = "Submit"
+            }
+            if (viewId > 5) {
+                icon2.classList.remove('active');
+                icon3.classList.remove('active');
+                icon4.classList.remove('active');
+                icon5.classList.remove('active');
+
+            }
+        }
+
+        function progressBar() {
+            if (viewId === 2) {
+                icon2.classList.add('active');
+            }
+            if (viewId === 3) {
+                icon3.classList.add('active');
+            }
+            if (viewId === 4) {
+                icon4.classList.add('active');
+            }
+            if (viewId === 5) {
+                icon5.classList.add('active');
+                nxtBtn.innerHTML = "Submit"
+            }
+            if (viewId > 5) {
+                icon2.classList.remove('active');
+                icon3.classList.remove('active');
+                icon4.classList.remove('active');
+                icon5.classList.remove('active');
+
+            }
+        }
+
+        function displayForms() {
+
+            if (viewId > 2) {
+                viewId = 1;
+            }
+
+            if (viewId === 1) {
+                form1.style.display = 'block';
+                form2.style.display = 'none';
+            } else if (viewId === 2) {
+                form1.style.display = 'none';
+                form2.style.display = 'block';
+            } else if (viewId === 3) {
+                form1.style.display = 'none';
+                form2.style.display = 'none';
+            } else if (viewId === 4) {
+                form1.style.display = 'none';
+                form2.style.display = 'none';
+            } else if (viewId === 5) {
+                form1.style.display = 'none';
+                form2.style.display = 'none';
+            }
+        }
+
+        // for slider
+
+        var slider = document.querySelector(".slider");
+        var output = document.querySelector(".output__value");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function () {
+            output.innerHTML = this.value;
+
+
+        }
+    </script>
+</body>
+
+</html>
