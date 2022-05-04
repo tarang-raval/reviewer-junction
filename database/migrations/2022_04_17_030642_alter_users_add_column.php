@@ -15,9 +15,9 @@ class AlterUsersAddColumn extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('mobile_no')->unique()->nullable();
+            $table->string('first_name')->nullable()->after('id');
+            $table->string('last_name')->nullable()->after('first_name');
+            $table->string('mobile_no')->unique()->nullable()->after('email');
         });
     }
 
@@ -29,7 +29,7 @@ class AlterUsersAddColumn extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+
         });
     }
 }

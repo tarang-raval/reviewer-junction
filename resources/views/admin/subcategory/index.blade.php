@@ -6,9 +6,9 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="card-title">Category</h3>
+                    <h3 class="card-title">Sub Category</h3>
 
-                    <button class="btn  btn-outline-primary" id="newCategory" >Add Category</button>
+                    <button class="btn  btn-outline-primary" id="newSubCategory" >Add Sub Category</button>
 
                 </div>
 
@@ -21,21 +21,31 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="addCategoryModal" style="display: none;" aria-hidden="true">
+    <div class="modal fade" id="addSubCategoryModal" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Category</h4>
+                    <h4 class="modal-title">Add Sub Category</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="Addcategory" method="post" >
+                <form id="Addsubcategory" method="post" >
                     <div class="modal-body">
                         @method('POST')
-
                         <div class="form-group">
-                            <label for="name">Category Name</label>
+                            <label for="name">Parent Category Name</label>
+                            <select class="form-control" id="categories"  name="category">
+                                <option value="">-- Select Category</option>
+                                @forelse ($category as $key=>$name)
+                                <option value="{{$key}}">{{$name}}</option>
+                                @empty
+
+                                @endforelse
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Sub Category Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter Category Name">
                         </div>
                         <input type="hidden" name="id" id="id" value="">
@@ -54,7 +64,7 @@
 
                     </div>
                     <div class="modal-footer flex-end">
-                        <button type="submit" class="btn btn-primary" id="add_category" >Add</button>
+                        <button type="submit" class="btn btn-primary" id="add_sub_category" >Add</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </form>
@@ -82,11 +92,12 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    "url": '{{ route('admin.category.datatable') }}',
+                    "url": '{{ route('admin.sub-category.datatable') }}',
                     'method': "POST"
                 },
                 columns: [
                     { data: "name", title:"Name" },
+                    { data: "category_name", title:"category name" },
                     { data: "action", title:"Action", orderable:false,width:'100px' },
 
                 ],
@@ -101,7 +112,7 @@
             return promise = new Promise(function(resolve, reject){
 
                 $.ajax({
-                    url: "{{route('admin.category.unique.check')}}",
+                    url: "{{route('admin.subcategory.unique.check')}}",
                     method:"POST",
                     data:{
                         'category_name':$('input[name="name"]').val(),
@@ -120,27 +131,34 @@
                 });
         }
 
-          $('#Addcategory').validate({
+          $('#Addsubcategory').validate({
                 rules: {
+                    'category':{required:true},
                     name: {
                         required: true,
                         remote:{
-                            url: "{{route('admin.category.unique.check')}}",
+                            url: "{{route('admin.subcategory.unique.check')}}",
                             type: "post",
                             data: {
-                                category_name: function() {
+                                sub_category_name: function() {
                                 return $('input[name="name"]').val();
+                                },
+
+                                category: function() {
+                                return $('select[name="category"]').val();
                                 },
                                 id: function() {
                                     return $('input[name="id"]').val();
+
                                 }
                             }
+
                          },
                     }
                 },
                 messages: {
                     name: {
-                        required: "Please enter a category name",
+                        required: "Please enter a sub category name",
 
                     }
                 },
@@ -158,32 +176,32 @@
             });
 
         $(function() {
-            $('#addCategoryModal').modal({
+            $('#addSubCategoryModal').modal({
                 keyboard: false,
                 backdrop:'static',
                 show:false
                 })
 
-        $('#add_category').on('click',function(e){
+        $('#add_sub_category').on('click',function(e){
             e.preventDefault();
 
-            if($('#Addcategory').valid()){
-                let id=$('#addCategoryModal #id').val();
-                let  updateurl="{{ route('admin.category.update',':id') }}";
+            if($('#Addsubcategory').valid()){
+                let id=$('#addSubCategoryModal #id').val();
+                let  updateurl="{{ route('admin.sub-category.update',':id') }}";
                 updateurl=updateurl.replace(':id',id);
                 $.ajax({
-                    "url": ((id=='' && id!="undefined")?'{{ route('admin.category.store') }}':updateurl),
+                    "url": ((id=='' && id!="undefined")?'{{ route('admin.sub-category.store') }}':updateurl),
                     'method': "POST",
-                     data: $('#Addcategory').serialize(),
+                     data: $('#Addsubcategory').serialize(),
                      success:function(response){
                             if(response.status){
                                 ToastSuccess(response.message);
-                                $('#addCategoryModal').modal('hide');
-                                $('#Addcategory').get(0).reset();
+                                $('#addSubCategoryModal').modal('hide');
+                                $('#Addsubcategory').get(0).reset();
                                 categorylist.ajax.reload();
                             }else{
                                 ToastError(response.message);
-                                $('#addCategoryModal').modal('hide');
+                                $('#addSubCategoryModal').modal('hide');
                             }
                      }
                 });
@@ -196,25 +214,27 @@
         $('#categorylist tbody').on( 'click', 'tr>td>.edit', function () {
 
                    data=categorylist.row( this.closest('tr') ).data();
-                   $('#addCategoryModal .modal-title').html('Edit Category');
-                   $('#addCategoryModal input[name="_method"]').val('PUT');
-                   $('#addCategoryModal #name').val(data.name);
-                   $('#addCategoryModal #id').val(data.id);
-                   $('#addCategoryModal #add_category').html('Update');
-                   $('#addCategoryModal').modal('show');
+                   $('#addSubCategoryModal .modal-title').html('Edit Sub Category');
+                   $('#addSubCategoryModal input[name="_method"]').val('PUT');
+                   $('#addSubCategoryModal #name').val(data.name);
+
+                   $('#addSubCategoryModal #categories').val(data.category_id);
+                   $('#addSubCategoryModal #id').val(data.id);
+                   $('#addSubCategoryModal #add_sub_category').html('Update');
+                   $('#addSubCategoryModal').modal('show');
 
 
         } );
         // oprn model
 
-        $('#newCategory').on('click',function(){
-                 $('#addCategoryModal .modal-title').html('Add Category');
-                 $('#addCategoryModal input[name="_method"]').val('POST');
-                   $('#addCategoryModal #name').val('');
-                   $('#addCategoryModal #id').val('');
-                   $('#addCategoryModal #add_category').html('Add');
-                   $('#Addcategory').get(0).reset();
-                   $('#addCategoryModal').modal('show');
+        $('#newSubCategory').on('click',function(){
+                 $('#addSubCategoryModal .modal-title').html('Add Category');
+                 $('#addSubCategoryModal input[name="_method"]').val('POST');
+                   $('#addSubCategoryModal #name').val('');
+                   $('#addSubCategoryModal #id').val('');
+                   $('#addSubCategoryModal #add_sub_category').html('Add');
+                   $('#Addsubcategory').get(0).reset();
+                   $('#addSubCategoryModal').modal('show');
         })
 
 
@@ -222,7 +242,7 @@
         function deleterow(id){
 
             Swal.fire({
-  title: 'Are you sure want to delete category?',
+  title: 'Are you sure want to delete sub category?',
   text: "You won't be able to revert this!",
   icon: 'warning',
   showCancelButton: true,
@@ -233,7 +253,7 @@
   if (result.isConfirmed) {
 
     //
-    let deleteurl= "{{ route('admin.category.destroy',':id') }}";
+    let deleteurl= "{{ route('admin.sub-category.destroy',':id') }}";
         deleteurl=deleteurl.replace(':id',id);
         $.ajax({
                     "url":deleteurl,
@@ -242,7 +262,7 @@
                      success:function(response){
                             if(response.status){
                                 ToastSuccess(response.message);
-                                $('#addCategoryModal').modal('hide');
+                                $('#addSubCategoryModal').modal('hide');
                                 categorylist.ajax.reload();
 
                             }else{

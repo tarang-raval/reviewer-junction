@@ -14,29 +14,58 @@ class UserController extends Controller
 {
     //
 
-    function index(){
-
-    }
-
     function register(Request $request){
         $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'mobile_no' => ['required', 'string', 'email', 'max:255', 'unique:users,mobile_no'],
+            'email' => ['required', 'string', 'email:rfc,dns', 'max:255', 'unique:users,email'],
+            'mobile_no' => ['required', 'unique:users,mobile_no'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'name' => $request->last_name.' '.$request->last_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        //event(new Registered($user));
+        //event(new Registered($user))
 
         Auth::login($user);
         return response()->json(['status'=>true,'message'=>"Register Successfully"]);
-        //return redirect(RouteServiceProvider::HOME);
+
     }
+    /**
+     * Check Unique Mobile No
+     */
+    function checkMobileNo(Request $request){
+
+            $mobile_no=$request->mobile_no;
+
+            $check=User::where('mobile_no',$mobile_no)->count();
+            if($check>0){
+                return response()->json(false);
+            }else{
+                return response()->json(true);
+            }
+
+    }
+
+     /**
+     * Check Unique Mobile No
+     */
+    function checkEmailId(Request $request){
+
+        $email=$request->email;
+
+        $check=User::where('email',$email)->count();
+        if($check>0){
+            return response()->json(false);
+        }else{
+            return response()->json(true);
+        }
+
+}
 }

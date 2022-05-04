@@ -53,6 +53,22 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.sub-category.index') }}" class="nav-link {{ (request()->is('admin/sub-category')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Sub Category
+              </p>
+            </a>
+          </li>
+        {{--   <li class="nav-item">
+            <a href="{{ route('admin.user.index') }}" class="nav-link {{ (request()->is('admin/users')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                User
+              </p>
+            </a>
+          </li> --}}
           {{--<li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-copy"></i>
