@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,9 +32,14 @@ Route::group([
     Route::post('category/check', [\App\Http\Controllers\Admin\CategoryController::class,'checkunique'])->name('category.unique.check');
 
 
+     // category
+     Route::resource('sub-category', SubCategoryController::class);
+     Route::post('sub-category/list', [\App\Http\Controllers\Admin\SubCategoryController::class,'datatable'])->name('sub-category.datatable');
+     Route::post('sub-category/check', [\App\Http\Controllers\Admin\SubCategoryController::class,'checkunique'])->name('subcategory.unique.check');
 
+     // User
 
-
+     Route::get('user', [\App\Http\Controllers\Admin\UsersController::class,'index'])->name('admin.user.index');
 
 
 });

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,8 @@ Route::get('/', function () {
 Route::get('/clear-cache', function () {
     Artisan::call('optimize:clear');
 });
-
+Route::post("uniqueMobile",[UserController::class,'checkMobileNo'])->name('unique.mobile.check');
+Route::post("uniqueEmail",[UserController::class,'checkEmailId'])->name('unique.email.check');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
