@@ -36,12 +36,15 @@ Route::group([
      Route::resource('sub-category', SubCategoryController::class);
      Route::post('sub-category/list', [\App\Http\Controllers\Admin\SubCategoryController::class,'datatable'])->name('sub-category.datatable');
      Route::post('sub-category/check', [\App\Http\Controllers\Admin\SubCategoryController::class,'checkunique'])->name('subcategory.unique.check');
+     Route::post('category/subcategory', [\App\Http\Controllers\Admin\SubCategoryController::class,'getsubcategory'])->name('category.subcategory');
 
      // User
 
      Route::get('user', [\App\Http\Controllers\Admin\UsersController::class,'index'])->name('admin.user.index');
 
-
+    //Product
+    Route::resource('product', ProductController::class);
+    Route::post('product/list', [\App\Http\Controllers\Admin\ProductController::class,'datatable'])->name('product.datatable');
 });
 
 

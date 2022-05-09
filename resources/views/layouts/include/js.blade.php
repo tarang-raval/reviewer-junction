@@ -10,6 +10,10 @@
 <script src="{{asset('asset/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 <script src="{{asset('asset/plugins/jquery-validation/additional-methods.min.js')}}"></script>
 <script src="{{asset('asset/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+<script src="{{asset('asset/plugins/summernote/summernote-bs4.js')}}"></script>
+<script src="{{asset('asset/plugins/select2/js/select2.full.min.js')}}"></script>
+<script src="{{asset('asset/plugins/dropzone/dropzone.js')}}"></script>
+
 <!-- AdminLTE App -->
 <script src="{{asset('asset/dist/js/adminlte.min.js')}}"></script>
 <script src="{{asset('asset/dist/js/main.js')}}"></script>
