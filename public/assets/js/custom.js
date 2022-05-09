@@ -74,11 +74,58 @@
                  $(element).removeClass('is-invalid');
             }
         })
+        // register Form
+        $('#loginform').validate({
+            rules: {
+                email:{required:true,email:true,regex:`([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])`,
+                password:{required:true},
+            },
+            messages:{
+                first_name:{
+                    regex:"please enter first name in alphabetic"
+                },
+                last_name:{
+                    regex:"please enter last name in alphabetic"
+                },
+                email:{
+                    regex:"Please enter valid email",
+                    remote:"Email is already availbale, try  another email id",
+                },
+                mopbile_name:{
+                    regex:"Please enter valid email",
+                    remote:"Mobile no is already availbale, try another mobile no.",
+                }
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                 $(element).removeClass('is-invalid');
+            }
+        })
     });
     $('#registerform').submit(function(e){
             e.preventDefault();
             if($('#registerform').valid()){
+                $.ajax({
+                    "url": "/user/register",
+                    'method': "POST",
+                    data: $('#registerform').serialize(),
+                    success: function(response) {
+                        if (response.status) {
+                           window.location.reload(true);
 
+                        } else {
+                            ToastError(response.message);
+
+                        }
+                    }
+                });
             }else{
 
             }

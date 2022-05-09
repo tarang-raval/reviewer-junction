@@ -103,9 +103,24 @@
 					</div>
 				<div class="col-md-6 col-lg-4  col-xl-3  d-flex align-items-center">
 					<button class="btn btn-info btn-xs review-btn">Write A Review</button>
-					<button class="btn btn-primary my-account ml-2  pt-0" data-toggle="modal" data-target=".bd-example-modal-lg2">
-						<i class="fa fa-user" aria-hidden="true"></i> My account
-					</button>
+                    @guest
+                        <button class="btn btn-primary my-account ml-2  pt-0" data-toggle="modal" data-target=".bd-example-modal-lg2">
+                            <i class="fa fa-user" aria-hidden="true"></i> My account
+                        </button>
+                    @endguest
+                    @auth
+                       HI, {{Auth::user()->name}}
+                       <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form>
+                    @endauth
+
 					<div class="modal fade bd-example-modal-lg2" tabindex="-1" aria-hidden="true">
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
@@ -148,14 +163,15 @@
 																	<a href="#" class="google-bg"><i class="fa fa-google-plus" aria-hidden="true"></i> Login</a>
 																</div>
 																<div class="login-form text-left">
-																	<form>
+																	<form  id="loginform" method="post">
+                                                                        @csrf
 																		<div class="form-group">
 																			<label for="exampleInputEmaillogin">User name</label>
-																			<input type="text" class="form-control" id="exampleInputEmaillogin" placeholder="John mist |">
+																			<input type="text" class="form-control" id="exampleInputEmaillogin" placeholder="John mist |" name="email">
 																		</div>
 																		<div class="form-group">
 																			<label for="exampleInputPasswordlogin">Password</label>
-																			<input type="password" class="form-control" id="exampleInputPasswordlogin" placeholder="*** *** ***" autocomplete="off">
+																			<input type="password" class="form-control" id="exampleInputPasswordlogin" placeholder="*** *** ***" autocomplete="off" name="passwors">
 																		</div>
 																		<button type="submit" class="btn btn-primary wd-login-btn">LOGIN</button>
 
@@ -200,6 +216,7 @@
 															<div class="sign-up-section text-center">
 																<div class="login-form text-left">
 																	<form id="registerform" >
+                                                                        @csrf
 																		<div class="form-group">
 																			<label for="first_name">First Name</label>
 																			<input type="text" class="form-control" id="firstName-sign-up" placeholder="First Name" name="first_name" >

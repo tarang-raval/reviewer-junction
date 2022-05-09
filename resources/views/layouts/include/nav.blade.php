@@ -16,7 +16,10 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
           </li>
          <li class="nav-item">
-            <a href="{{route('admin.dashboard')}}" class="nav-linkv {{ (request()->is('admin/dashboard')) ? 'active' : '' }}">Home</a>
+            <a href="{{route('admin.dashboard')}}" class="nav-link {{ (request()->is('admin/dashboard')) ? 'active' : '' }}">Home</a>
+          </li>
+         <li class="nav-item">
+            <a href="{{route('admin.product.index')}}" class="nav-link {{ (request()->is('admin/product/*')) ? 'active' : '' }}">Product</a>
           </li>
            {{-- <li class="nav-item">
             <a href="#" class="nav-link">Contact</a>

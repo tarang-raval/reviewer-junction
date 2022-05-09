@@ -27,6 +27,6 @@ Route::post("uniqueEmail",[UserController::class,'checkEmailId'])->name('unique.
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
+Route::post("user/register",[UserController::class,'register'])->name('user.register');
 
 require __DIR__.'/auth.php';
