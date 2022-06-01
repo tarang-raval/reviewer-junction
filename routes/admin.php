@@ -45,6 +45,11 @@ Route::group([
     //Product
     Route::resource('product', ProductController::class);
     Route::post('product/list', [\App\Http\Controllers\Admin\ProductController::class,'datatable'])->name('product.datatable');
+
+    //points
+    Route::resource('points', PointsController::class);
+    Route::post('points/list', [\App\Http\Controllers\Admin\PointsController::class,'datatable'])->name('points.datatable');
+
 });
 
 
