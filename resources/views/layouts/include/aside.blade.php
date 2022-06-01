@@ -47,7 +47,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.category.index') }}" class="nav-link {{ (request()->is('admin/category')) ? 'active' : '' }}">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-list-alt"></i>
               <p>
                 Category
               </p>
@@ -55,7 +55,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.sub-category.index') }}" class="nav-link {{ (request()->is('admin/sub-category')) ? 'active' : '' }}">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-list-alt"></i>
               <p>
                 Sub Category
               </p>
@@ -63,9 +63,17 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('admin.product.index') }}" class="nav-link {{ (request()->is('admin/product/*')) ? 'active' : '' }}">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-box"></i>
               <p>
              Product
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.points.index') }}" class="nav-link {{ (request()->is('admin/points/*')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+             Points
               </p>
             </a>
           </li>
