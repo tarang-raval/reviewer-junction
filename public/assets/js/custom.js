@@ -77,7 +77,7 @@
         // register Form
         $('#loginform').validate({
             rules: {
-                email:{required:true,email:true,regex:`([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])`,
+                email:{required:true,email:true,regex:`([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])`},
                 password:{required:true},
             },
             messages:{
@@ -107,7 +107,7 @@
             unhighlight: function (element, errorClass, validClass) {
                  $(element).removeClass('is-invalid');
             }
-        })
+        });
     });
     $('#registerform').submit(function(e){
             e.preventDefault();

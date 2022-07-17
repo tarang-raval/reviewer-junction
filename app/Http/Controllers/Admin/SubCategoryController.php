@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class SubCategoryController extends Controller
 {
@@ -43,11 +44,26 @@ class SubCategoryController extends Controller
         //
         $request->validate([
             'name'=>'required|unique:subcategories,name',
+            'subcategory_icon'=>'mimes:png,jpg',
         ]);
+
+        $filename=null;
+        $uploadedFile = $request->file('subcategory_icon');
+        if(!empty($uploadedFile)){
+                $filename = time().$uploadedFile->getClientOriginalName();
+
+            Storage::putFileAs(
+                'files/'.$filename,
+                $uploadedFile,
+                $filename
+            );
+       }
 
         $subcategory=new Subcategory();
         $subcategory->name=$request->name;
         $subcategory->category_id=$request->category;
+        $subcategory->category_icon= $filename;
+        $subcategory->slug= Str::slug($request->name);
         $subcategory->status=1;
         $s=$subcategory->save();
         if($s){
@@ -93,9 +109,23 @@ class SubCategoryController extends Controller
             'name'=>'required|unique:subcategories,name',
         ]);
 
+        $filename=null;
+        $uploadedFile = $request->file('category_image');
+         if(!empty($uploadedFile)){
+         $filename = time().$uploadedFile->getClientOriginalName();
+
+        Storage::putFileAs(
+            'files/'.$filename,
+            $uploadedFile,
+            $filename
+        );
+        }
+
         $subcategory=Subcategory::findOrFail($id);
         $subcategory->name=$request->name;
         $subcategory->category_id=$request->category;
+        $subcategory->category_icon= (!empty($filename)?$filename:$subcategory->category_icon);
+        $subcategory->slug= Str::slug($request->name);
         $subcategory->status=1;
         $s=$subcategory->save();
         if($s){
