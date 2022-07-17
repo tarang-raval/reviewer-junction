@@ -25,6 +25,9 @@ Route::get('/subcatgory/{category_slug}/{subcategory_slug}',[HomeController::cla
 Route::get('/clear-cache', function () {
     Artisan::call('optimize:clear');
 });
+Route::get('/migrate', function () {
+    Artisan::call('migrate');
+});
 Route::post("uniqueMobile",[UserController::class,'checkMobileNo'])->name('unique.mobile.check');
 Route::post("uniqueEmail",[UserController::class,'checkEmailId'])->name('unique.email.check');
 Route::get('/dashboard', function () {

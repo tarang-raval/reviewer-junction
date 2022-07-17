@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Subcategory;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -106,7 +107,7 @@ class SubCategoryController extends Controller
     {
         //
         $request->validate([
-            'name'=>'required|unique:subcategories,name',
+            'name'=>['required',Rule::unique('subcategories', 'name')->ignore($id)]
         ]);
 
         $filename=null;
