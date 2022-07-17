@@ -147,6 +147,33 @@
                                         </div>
                                     </div>
                                     @endforelse
+                                    @else
+                                    <div data-repeater-item>
+
+                                        <div class="row align-items-center">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Attribute Name</label>
+                                                    <input type="text" class="form-control" name="attribute_name" id=""
+                                                        aria-describedby="helpId" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Attribute Name</label>
+                                                    <input type="text" class="form-control" name="attribute_value" id=""
+                                                        aria-describedby="helpId" placeholder="">
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="attribute_id" value="">
+                                            <div class="col-md-3 ">
+                                                <input data-repeater-delete type="button" class="btn btn-danger mt-3"
+                                                    value="Delete" />
+                                                {{-- <button class="btn btn-danger mt-3">Delete</button> --}}
+                                                {{-- <input data-repeater-create type="button"  class="btn btn-primary mt-3" value="Add"/> --}}
+                                            </div>
+                                        </div>
+                                    </div>
                                     @endif
 
                                     @else
@@ -167,7 +194,7 @@
                                                         aria-describedby="helpId" placeholder="">
                                                 </div>
                                             </div>
-                                            <input type="hidden" name="attribute_id" value="">
+                                            <input type="hidden" name="attribute_id" value="{{$attribute->id}}">
                                             <div class="col-md-3 ">
                                                 <input data-repeater-delete type="button" class="btn btn-danger mt-3"
                                                     value="Delete" />
