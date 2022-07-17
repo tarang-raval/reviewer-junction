@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -41,10 +43,24 @@ class CategoryController extends Controller
     {
          $request->validate([
              'name'=>'required|unique:categories,name',
+             'category_image'=>'mimes:png,jpg'
          ]);
+         $filename=null;
+         $uploadedFile = $request->file('category_image');
+         if(!empty($uploadedFile)){
+            $filename = time().$uploadedFile->getClientOriginalName();
+
+            Storage::putFileAs(
+                'public/files/',
+                $uploadedFile,
+                $filename
+            );
+        }
 
          $category=new Category();
          $category->name=$request->name;
+         $category->category_icon= $filename;
+         $category->slug= Str::slug($request->name);
          $category->status=1;
          $s=$category->save();
          if($s){
@@ -87,11 +103,24 @@ class CategoryController extends Controller
     {
         //
         $request->validate([
-            'name'=>['required',Rule::unique('categories', 'name')->ignore($id),],
+            'name'=>['required',Rule::unique('categories', 'name')->ignore($id)],
+            'category_image'=>'mimes:png,jpg'
         ]);
+        $filename=null;
+        $uploadedFile = $request->file('category_image');
+         if(!empty($uploadedFile)){
+         $filename = time().$uploadedFile->getClientOriginalName();
 
+        Storage::putFileAs(
+            'public/files/',
+            $uploadedFile,
+            $filename
+        );
+        }
         $category=Category::findOrFail($id);
         $category->name=$request->name;
+        $category->category_icon= (!empty($filename)?$filename:$category->category_icon);
+        $category->slug= Str::slug($request->name);
         $category->status=1;
         $s=$category->save();
         if($s){

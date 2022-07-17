@@ -39,6 +39,11 @@
                             <input type="text" class="form-control" id="name" name="name"
                                 placeholder="Enter Category Name">
                         </div>
+                        <div class="form-group">
+
+                            <input type="file" class="form-control" id="filename" name="category_image"  accept=".jpg,.png">
+                            <small>only allow to jpg,png</small>
+                        </div>
                         <input type="hidden" name="id" id="id" value="">
                         {{-- <div class="form-group">
                             <label for="exampleInputFile">Icon Image</label>
@@ -140,16 +145,24 @@
                             },
                             id: function() {
                                 return $('input[name="id"]').val();
-                            }
+                            },
+
                         }
-                    },
-                }
+                    }
+                },
+                category_image: {
+                                required: false,
+                                accept:"image/png,image/jpg,image/jpeg"
+                                }
             },
             messages: {
                 name: {
                     required: "Please enter a category name",
+                },
+                category_image: {
 
-                }
+                                accept: " Please Select only .jpg and .png file"
+                                }
             },
             errorElement: 'span',
             errorPlacement: function(error, element) {
@@ -175,6 +188,8 @@
                 e.preventDefault();
 
                 if ($('#Addcategory').valid()) {
+                    var form = document.querySelector('#Addcategory');
+                    var formData = new FormData(form);
                     let id = $('#addCategoryModal #id').val();
                     let updateurl = "{{ route('admin.category.update', ':id') }}";
                     updateurl = updateurl.replace(':id', id);
@@ -182,7 +197,9 @@
                         "url": ((id == '' && id != "undefined") ?
                             '{{ route('admin.category.store') }}' : updateurl),
                         'method': "POST",
-                        data: $('#Addcategory').serialize(),
+                        contentType: false,
+                         processData: false,
+                        data: formData,
                         success: function(response) {
                             if (response.status) {
                                 ToastSuccess(response.message);

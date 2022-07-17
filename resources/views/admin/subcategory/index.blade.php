@@ -49,18 +49,16 @@
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter Category Name">
                         </div>
                         <input type="hidden" name="id" id="id" value="">
-                       {{--  <div class="form-group">
+                        <div class="form-group">
                             <label for="exampleInputFile">Icon Image</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="exampleInputFile">
+                                    <input type="file" class="custom-file-input" id="subcategory_icon" name="subcategory_icon">
                                     <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                 </div>
-                                <div class="input-group-append">
-                                    <span class="input-group-text">Upload</span>
-                                </div>
+
                             </div>
-                        </div> --}}
+                        </div>
 
                     </div>
                     <div class="modal-footer flex-end">
@@ -154,12 +152,23 @@
                             }
 
                          },
-                    }
+
+                    },
+                    subcategory_icon:{
+                                 required: false,
+                                accept:"image/png,image/jpg,image/jpeg"
+
+                         }
+
                 },
                 messages: {
                     name: {
                         required: "Please enter a sub category name",
 
+                    },
+                    subcategory_icon: {
+
+                         accept: " Please Select only .jpg and .png file"
                     }
                 },
                 errorElement: 'span',
@@ -186,13 +195,17 @@
             e.preventDefault();
 
             if($('#Addsubcategory').valid()){
+                var form = document.querySelector('#Addsubcategory');
+                    var formData = new FormData(form);
                 let id=$('#addSubCategoryModal #id').val();
                 let  updateurl="{{ route('admin.sub-category.update',':id') }}";
                 updateurl=updateurl.replace(':id',id);
                 $.ajax({
                     "url": ((id=='' && id!="undefined")?'{{ route('admin.sub-category.store') }}':updateurl),
                     'method': "POST",
-                     data: $('#Addsubcategory').serialize(),
+                    contentType: false,
+                         processData: false,
+                        data: formData,
                      success:function(response){
                             if(response.status){
                                 ToastSuccess(response.message);

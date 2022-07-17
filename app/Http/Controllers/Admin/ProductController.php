@@ -8,6 +8,7 @@ use App\Models\Subcategory;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -53,6 +54,7 @@ class ProductController extends Controller
         $product=new Product();
 
         $product->product_name=$request->product_name;
+        $product->slug=Str::slug($request->product_name);
         $product->category=$request->category;
         $product->sub_category=$request->subcategory;
         $product->price=$request->price;
@@ -135,6 +137,7 @@ class ProductController extends Controller
         $product=Product::findOrFail($id);
 
         $product->product_name=$request->product_name;
+        $product->slug=Str::slug($request->product_name);
         $product->category=$request->category;
         $product->sub_category=$request->subcategory;
         $product->price=$request->price;
