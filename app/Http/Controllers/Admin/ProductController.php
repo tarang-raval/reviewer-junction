@@ -66,15 +66,17 @@ class ProductController extends Controller
         if($product->save()){
             $product_id=$product->id;
             $attribute=$request->attribute;
+
             $data=[];
             if(!empty($attribute)){
                 foreach($attribute as $attr){
-                    if(!empty($attr->attribute_name)){
-                        $data=['product_id'=>$product_id,'attribute_name'=>$attr->attribute_name,'attribute_value'=>$attr->attribute_value];
+                    if(!empty($attr['attribute_name'])){
+                        $data=['product_id'=>$product_id,'attribute_name'=>$attr['attribute_name'],'attribute_value'=>$attr['attribute_value']];
                     }
-                if(!empty($data)){
-                    ProductAttribute::create($data);
+
                 }
+            if(!empty($data)){
+                ProductAttribute::create($data);
             }
             }
         return redirect()->route('admin.product.index');
@@ -149,16 +151,24 @@ class ProductController extends Controller
         if($product->save()){
             $product_id=$product->id;
             $attribute=$request->attribute;
+            $existingId=array_filter(array_column($attribute,'attribute_id'));
+            $tableid=ProductAttribute::where('product_id',$product_id)->get()->pluck('id')->toArray();
+
+            $delid=array_diff($tableid,$existingId);
+            if(!empty($delid)){
+                ProductAttribute::whereIn('id',$delid)->delete();
+            }
             $data=[];
             if(!empty($attribute)){
-                /*foreach($attribute as $attr){
-                    if(!empty($attr->attribute_name)){
-                        $data=['product_id'=>$product_id,'attribute_name'=>$attr->attribute_name,'attribute_value'=>$attr->attribute_value];
-                    }*/
-                if(!empty($data)){
-                    //ProductAttribute::create($data);
+                foreach($attribute as $attr){
+                    if(!empty($attr['attribute_name'])){
+                        $data=['product_id'=>$product_id,'attribute_name'=>$attr['attribute_name'],'attribute_value'=>$attr['attribute_value'],'id'=>$attr['attribute_id']];
+                        if(!empty($data)){
+                            ProductAttribute::updateOrCreate($data);
+                        }
+                    }
+
                 }
-            //}
             }
         return redirect()->route('admin.product.index');
         }else{

@@ -94,6 +94,62 @@
 
                             <div class="col-md-12 repeater">
                                 <div data-repeater-list="attribute">
+                                    @if(isset($product) && !empty($product))
+                                    @if($product->productAttributes->count()>0)
+                                    @forelse ($product->productAttributes as $attribute)
+                                    <div data-repeater-item>
+
+                                        <div class="row align-items-center">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Attribute Name</label>
+                                                    <input type="text" class="form-control" name="attribute_name" id=""
+                                                        aria-describedby="helpId" placeholder="" value="{{$attribute->attribute_name}}" >
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="">Attribute Name</label>
+                                                    <input type="text" class="form-control" name="attribute_value" id=""
+                                                        aria-describedby="helpId" placeholder="" value="{{$attribute->attribute_value}}">
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="attribute_id" value="{{$attribute->id}}">
+                                            <div class="col-md-3 ">
+                                                <input data-repeater-delete type="button" class="btn btn-danger mt-3"
+                                                    value="Delete" />
+                                                {{-- <button class="btn btn-danger mt-3">Delete</button> --}}
+                                                {{-- <input data-repeater-create type="button"  class="btn btn-primary mt-3" value="Add"/> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @empty
+                                    <div class="row align-items-center">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="">Attribute Name</label>
+                                                <input type="text" class="form-control" name="attribute_name" id=""
+                                                    aria-describedby="helpId" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="">Attribute Name</label>
+                                                <input type="text" class="form-control" name="attribute_value" id=""
+                                                    aria-describedby="helpId" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 ">
+                                            <input data-repeater-delete type="button" class="btn btn-danger mt-3"
+                                                value="Delete" />
+                                            {{-- <button class="btn btn-danger mt-3">Delete</button> --}}
+                                            {{-- <input data-repeater-create type="button"  class="btn btn-primary mt-3" value="Add"/> --}}
+                                        </div>
+                                    </div>
+                                    @endforelse
+                                    @endif
+
+                                    @else
                                     <div data-repeater-item>
 
                                         <div class="row align-items-center">
@@ -111,6 +167,7 @@
                                                         aria-describedby="helpId" placeholder="">
                                                 </div>
                                             </div>
+                                            <input type="hidden" name="attribute_id" value="">
                                             <div class="col-md-3 ">
                                                 <input data-repeater-delete type="button" class="btn btn-danger mt-3"
                                                     value="Delete" />
@@ -119,6 +176,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
+
+
 
 
                                 </div>
