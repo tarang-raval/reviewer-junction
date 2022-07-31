@@ -30,9 +30,20 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if($request->ajax()){
+            if(Auth::user()->hasRole('customer')){
+                $request->session()->regenerate();
+                return response()->json(['status'=>true,'message'=>'login successfuly']);
+            }else{
+                Auth::guard('web')->logout();
+
+                return response()->json(['status'=>false,'message'=>'not match successfuly']);
+            }
+        }else{
+            $request->session()->regenerate();
+             return redirect()->intended(RouteServiceProvider::HOME);
+        }
     }
 
     /**

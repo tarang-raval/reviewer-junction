@@ -40,7 +40,7 @@ class UserController extends Controller
         ]);
         $user->assignRole('customer');
 
-        //event(new Registered($user))
+        //event(new Registered($user));
 
         Auth::login($user);
         return response()->json(['status' => true, 'message' => "Register Successfully"]);

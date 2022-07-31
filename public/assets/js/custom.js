@@ -130,4 +130,43 @@
 
             }
             return false;
-    })
+    });
+
+    $('#loginform').submit(function(e){
+        e.preventDefault();
+        $('#loginalert').html('').removeClass('alert-danger');
+        if($('#loginform').valid()){
+            $.ajax({
+                "url": "/login",
+                'method': "POST",
+                data: $('#loginform').serialize(),
+                success: function(response) {
+                    if (response.status) {
+                      window.location.assign(currentPage);
+
+
+                    } else {
+                        //ToastError(response.message);
+                        if(response.message!='undefined' && response.message!=null){
+                            $('#loginalert').html(response.message).addClass('alert-danger');
+                        }else if(response.errors!=undefined  && response.errors!=null){
+                            $('#loginalert').html(response.errors.email.email[0]).addClass('alert-danger');
+                        }
+
+                    }
+                },
+                error:function(response){
+                    debugger
+                     response=response.responseJSON;
+                     if(response.errors!=undefined  && response.errors!=null){
+                        $('#loginalert').html(response.errors.email[0]).addClass('alert-danger');
+                    }
+                }
+            });
+        }else{
+
+        }
+        return false;
+});
+
+

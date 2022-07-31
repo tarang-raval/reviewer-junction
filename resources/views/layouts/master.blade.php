@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('assets/css/megamenu.css')}}">
+    <script src="{{asset('assets/plugin/summernote/summernote-bs4.min.css')}}"></script>
 
     <!-- =========================
         Loding Main Theme Style
@@ -103,9 +104,9 @@
 						</div>
 					</div>
 				<div class="col-md-6 col-lg-4  col-xl-3  d-flex align-items-center">
-					<button class="btn btn-info btn-xs review-btn">Write A Review</button>
+					<button class="btn btn-info btn-xs review-btn" id="write-review">Write A Review</button>
                     @guest
-                        <button class="btn btn-primary my-account ml-2  pt-0" data-toggle="modal" data-target=".bd-example-modal-lg2">
+                        <button id="myaccount" class="btn btn-primary my-account ml-2  pt-0" data-toggle="modal" data-target=".bd-example-modal-lg2">
                             <i class="fa fa-user" aria-hidden="true"></i> My account
                         </button>
                     @endguest
@@ -164,6 +165,7 @@
 																	<a href="#" class="google-bg"><i class="fa fa-google-plus" aria-hidden="true"></i> Login</a>
 																</div>
 																<div class="login-form text-left">
+                                                                    <div class="alert" id="loginalert"></div>
 																	<form  id="loginform" method="post">
                                                                         @csrf
 																		<div class="form-group">
@@ -172,7 +174,7 @@
 																		</div>
 																		<div class="form-group">
 																			<label for="exampleInputPasswordlogin">Password</label>
-																			<input type="password" class="form-control" id="exampleInputPasswordlogin" placeholder="*** *** ***" autocomplete="off" name="passwors">
+																			<input type="password" class="form-control" id="exampleInputPasswordlogin" placeholder="*** *** ***" autocomplete="off" name="password">
 																		</div>
 																		<button type="submit" class="btn btn-primary wd-login-btn">LOGIN</button>
 
@@ -755,16 +757,31 @@
     <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('assets/js/circle-progress.min.js')}}"></script>
     <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('assets/plugin/summernote/summernote-bs4.min.js')}}"></script>
 
     <script src="{{asset('assets/js/simplePlayer.js')}}"></script>
-
+        <script>
+            // login
+            var AuthUser = "{{{ (Auth::check()) ? Auth::id() : null }}}";
+            var previousPage='{{ url()->previous() }}';
+            var currentPage='{{ url()->current() }}';
+        </script>
     <script src="{{asset('assets/js/main.js')}}"></script>
     <script src="{{asset('assets/js/custom.js')}}"></script>
     <script>
         $(document).ready(function(){
+
+            //$('.summernote').summernote();
             @if(!Request::is('/'))
                 $('#cat-department').trigger('click');
             @endif
+        });
+        $('#write-review').on('click',function(){
+            if(AuthUser!=null && AuthUser!='undefined' && AuthUser!="" ){
+                    location.assign("{{route('submit.review')}}");
+            }else{
+                $('#myaccount').trigger('click');
+            }
         });
     </script>
     @stack('js')
