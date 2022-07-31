@@ -13,3 +13,4 @@
  <link rel="stylesheet" href="{{asset('asset/plugins/dropzone/min/dropzone.min.css')}}">
  <link rel="stylesheet" href="{{asset('asset/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
  <link rel="stylesheet" href="{{asset('asset/dist/css/adminlte.css')}}">
+ <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
