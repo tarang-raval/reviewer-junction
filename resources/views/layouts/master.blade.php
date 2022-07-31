@@ -40,6 +40,7 @@
     	Header Loding JS Script
     ============================== -->
     <script src="{{asset('assets/js/modernizr.js') }}"></script>
+    @stack('css')
   </head>
   <body class="">
     <!--[if lt IE 8]>
@@ -738,6 +739,7 @@
     ============================== -->
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-ui.js')}}"></script>
+
     <script src="{{asset('assets/js/popper.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
@@ -765,6 +767,7 @@
             @endif
         });
     </script>
+    @stack('js')
 
   </body>
 </html>

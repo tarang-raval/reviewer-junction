@@ -21,6 +21,9 @@
          <li class="nav-item">
             <a href="{{route('admin.product.index')}}" class="nav-link {{ (request()->is('admin/product/*')) ? 'active' : '' }}">Product</a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('admin.user.index')}}" class="nav-link {{ (request()->is('admin/user/*')) ? 'active' : '' }}">User</a>
+          </li>
            {{-- <li class="nav-item">
             <a href="#" class="nav-link">Contact</a>
           </li>
@@ -167,7 +170,7 @@
 
               <li class="dropdown-divider"></li>
               <li>
-                <form method="POST" action="{{ route('logout') }}">
+                <form method="POST" action="{{ route('admin.user.logout') }}">
                     @csrf
 
                     <x-dropdown-link :href="route('logout')" class="dropdown-item"

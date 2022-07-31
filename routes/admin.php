@@ -23,7 +23,7 @@ Route::group([
 ], function () {
 
 
-    Route::get('/', [\App\Http\Controllers\Admin\UsersController::class,'login'])->name('adminlogin');
+    Route::get('/', [\App\Http\Controllers\Admin\UsersController::class,'login'])->name('login');
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class,'index'])->name('dashboard');
 
     // category
@@ -40,8 +40,9 @@ Route::group([
 
      // User
 
-     Route::get('user', [\App\Http\Controllers\Admin\UsersController::class,'index'])->name('admin.user.index');
-
+     Route::get('user', [\App\Http\Controllers\Admin\UsersController::class,'index'])->name('user.index');
+     Route::post('user/list', [\App\Http\Controllers\Admin\UsersController::class,'datatable'])->name('user.datatable');
+     Route::post('logout', [\App\Http\Controllers\Admin\UsersController::class,'logout'])->name('user.logout');
     //Product
     Route::resource('product', ProductController::class);
     Route::post('product/list', [\App\Http\Controllers\Admin\ProductController::class,'datatable'])->name('product.datatable');

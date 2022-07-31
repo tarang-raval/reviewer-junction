@@ -6,79 +6,26 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="card-title">Sub Category</h3>
-
-                    <button class="btn  btn-outline-primary" id="newSubCategory" >Add Sub Category</button>
+                    <h3 class="card-title">User</h3>
 
                 </div>
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="categorylist" class="table table-bordered table-hover">
+                        <table id="userlist" class="table table-bordered table-hover">
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="addSubCategoryModal" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Sub Category</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form id="Addsubcategory" method="post" >
-                    <div class="modal-body">
-                        @method('POST')
-                        <div class="form-group">
-                            <label for="name">Parent Category Name</label>
-                            <select class="form-control" id="categories"  name="category">
-                                <option value="">-- Select Category</option>
-                                @forelse ($category as $key=>$name)
-                                <option value="{{$key}}">{{$name}}</option>
-                                @empty
 
-                                @endforelse
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Sub Category Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Category Name">
-                        </div>
-                        <input type="hidden" name="id" id="id" value="">
-                       {{--  <div class="form-group">
-                            <label for="exampleInputFile">Icon Image</label>
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="exampleInputFile">
-                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                </div>
-                                <div class="input-group-append">
-                                    <span class="input-group-text">Upload</span>
-                                </div>
-                            </div>
-                        </div> --}}
-
-                    </div>
-                    <div class="modal-footer flex-end">
-                        <button type="submit" class="btn btn-primary" id="add_sub_category" >Add</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-
-    </div>
 @endsection
 
 @push('js')
     <script>
 
-        const categorylist=$('#categorylist').DataTable({
+        const userlist=$('#userlist').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,
@@ -92,12 +39,13 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    "url": '{{ route('admin.sub-category.datatable') }}',
+                    "url": '{{ route('admin.user.datatable') }}',
                     'method': "POST"
                 },
                 columns: [
                     { data: "name", title:"Name" },
-                    { data: "category_name", title:"category name" },
+                    { data: "email", title:"Email" },
+                    { data: "created_at", title:"Created" },
                     { data: "action", title:"Action", orderable:false,width:'100px' },
 
                 ],

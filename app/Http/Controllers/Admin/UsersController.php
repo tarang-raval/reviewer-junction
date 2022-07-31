@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Auth;
 
 class UsersController extends Controller
 {
@@ -94,10 +97,31 @@ class UsersController extends Controller
 
     function datatable(Request $request){
 
+        $user=User::with("roles")->whereHas("roles", function($q) {
+            $q->whereIn("name", ["customer"]);
+        })->get();
+        $user= $user->map(function($row){
+            return [
+                'id'=>$row->id,
+                'name'=>$row->fullName(),
+                'email'=>$row->email,
+                'created_at'=>Carbon::parse($row->created_at)->format('Y/m/d'),
+                'action'=>''
+                //'<a href="javascript:void(0)" class="edit" data-toggle="tooltip" data-placement="top" title="Edit" > <i class="las la-edit"></i></a><a href="javascript:void(0)" onclick="deleterow('.$row['id'].')" data-toggle="tooltip" data-placement="top" title="Delete"> <i class="las la-trash"></i></a>',
+            ];
+         });
+         return response()->json(['data'=>$user]);
     }
 
     function checkunique(Request $request){
 
 
     }
+
+    function logout(){
+            Auth::logout();
+         return redirect()->route('admin.login');
+    }
+
+
 }
