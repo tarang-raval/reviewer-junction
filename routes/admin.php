@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,16 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/admin/login', [\App\Http\Controllers\Admin\UsersController::class,'login'])->name('admin.login');
 Route::group([
     'prefix' => 'admin',
     'as' => 'admin.',
     'namespace' => '\App\Http\Controllers\Admin',
-    'middleware' => []
+    'middleware' => ['auth.basic','admin']
 ], function () {
 
 
-    Route::get('/', [\App\Http\Controllers\Admin\UsersController::class,'login'])->name('login');
+
     Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class,'index'])->name('dashboard');
 
     // category
@@ -42,7 +41,7 @@ Route::group([
 
      Route::get('user', [\App\Http\Controllers\Admin\UsersController::class,'index'])->name('user.index');
      Route::post('user/list', [\App\Http\Controllers\Admin\UsersController::class,'datatable'])->name('user.datatable');
-     Route::post('logout', [\App\Http\Controllers\Admin\UsersController::class,'logout'])->name('user.logout');
+
     //Product
     Route::resource('product', ProductController::class);
     Route::post('product/list', [\App\Http\Controllers\Admin\ProductController::class,'datatable'])->name('product.datatable');
@@ -51,7 +50,13 @@ Route::group([
     Route::resource('points', PointsController::class);
     Route::post('points/list', [\App\Http\Controllers\Admin\PointsController::class,'datatable'])->name('points.datatable');
 
-});
 
+    //Review
+    Route::resource('review',ReviewController::class);
+    Route::post('review/list', [\App\Http\Controllers\Admin\ReviewController::class,'datatable'])->name('review.datatable');
+    Route::post('review/statusupdate', [\App\Http\Controllers\Admin\ReviewController::class,'statusupdate'])->name('review.statusupdate');
+
+});
+Route::post('admin/logout', [\App\Http\Controllers\Admin\UsersController::class,'logout'])->name('admin.user.logout');
 
 require __DIR__.'/auth.php';

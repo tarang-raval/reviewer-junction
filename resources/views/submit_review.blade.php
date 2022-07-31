@@ -154,6 +154,14 @@
 
                                 </div>
                                 <div class="form-group">
+                                    <label for="sub Category">Product</label>
+                                    <select class="form-control" name="product" id="product">
+                                        <option value="">-- Select Product --</option>
+
+                                    </select>
+
+                                </div>
+                                <div class="form-group">
 
                                     <label for="type ofpurchase">How do you purchase Product ?</label>
                                     <input class="" type="radio" name="type_of_purchase" id="type_of_purchase"
@@ -211,10 +219,12 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea2wd" class="color-red">Cons</label>
-                                            <textarea class="form-control col-12" id="exampleFormControlTextarea2wd" placeholder="Write your Opinion here ... "></textarea>
+                                            <textarea class="form-control col-12 summernote" id="exampleFormControlTextarea2wd" placeholder="Write your Opinion here ... "></textarea>
+                                            <div id="summernote"></div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <div class="wrap">
                                         <div class="stars">
@@ -330,11 +340,38 @@
                     data: {category_id:$(this).val()},
                     success: function(response) {
                         if (response.status) {
-                                var str="";
+                                var str=`<option value="">-- Select Sub Category --</option>`;
                             for (const d of response.data) {
-                                    str+=`<option value='${d.id}'>${d.name}</option>`
+                                    str+=`<option value='${d.id}'>${d.name}</option>`;
                             }
-                            $().html()
+                            $('#subcategory').html(str);
+
+                        }
+                    }
+
+
+                })
+
+
+
+            }
+        });
+        $('#subcategory').on('change',function(){
+
+            if($(this).val()!=''){
+                var url="{{route('getproductbysubcategory')}}";
+
+                $.ajax({
+                    "url":url,
+                    "method":"post",
+                    data: {subcategory_id:$(this).val()},
+                    success: function(response) {
+                        if (response.status) {
+                                var str=`<option value="">-- Select Product --</option>`;
+                            for (const d of response.data) {
+                                    str+=`<option value='${d.id}'>${d.name}</option>`;
+                            }
+                            $('#product').html(str);
 
                         }
                     }

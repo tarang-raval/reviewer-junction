@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Review;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -27,30 +28,32 @@ class ReviewController extends Controller
                 'type_of_purchase'=>'required',
                 'review_text'=>'required',
              ]);
-             $review=new Review();
-             $review->category_id=$request->category;
-             $review->subcategory_id=$request->subcategory;
-             $review->product_id = $request->product;
-             $review->type_of_purchase = $request->type_of_purchase;
-             $review->website = $request->website;
-             $review->shop_name = $request->shop_name;
-             $review->address_line1 = $request->address_line1;
-             $review->address_line2 = $request->address_line2;
-             $review->city = $request->city;
-             $review->state = $request->state;
-             $review->pincode = $request->pincode;
-             $review->review_text = $request->review_text;
-             $review->rating = $request->star_review;
-             if($review->save()){
-                return redirect()->route('submit.review')->with('success','Thank you for submit review.') ;
-            }else{
-                return redirect()->route('submit.review')->with('error','some thing is wrong.') ;
-            }
 
+                $review=new Review();
+                $review->category_id=$request->category;
+                $review->subcategory_id=$request->subcategory;
+                $review->product_id = $request->product;
+                $review->type_of_purchase = $request->type_of_purchase;
+                $review->website = $request->website;
+                $review->shop_name = $request->shop_name;
+                $review->address_line1 = $request->address_line1;
+                $review->address_line2 = $request->address_line2;
+                $review->city = $request->city;
+                $review->state = $request->state;
+                $review->pincode = $request->pincode;
+                $review->review_text = $request->review_text;
+                $review->rating = $request->star_review;
+                $review->user_id = Auth::id();
+                if($review->save()){
+                    return redirect()->route('submit.review')->with('success','Thank you for submit review.') ;
+                }else{
+                    return redirect()->route('submit.review')->with('error','some thing is wrong.') ;
+                }
           }
           catch(\Exception $exception){
-            return back()->with('error',$exception->getMessage());
+            return back()->with('error',$exception->getMessage())->withInput();
           }
+
     }
     /**
      * Subcategory List
@@ -62,5 +65,16 @@ class ReviewController extends Controller
                         $subcategories=Subcategory::select('id','name')->where('category_id',$request->category_id)->get();
              }
              return response()->json(['status'=>1,'data'=>$subcategories]);
+     }
+    /**
+     * Subcategory List
+     */
+
+     function getproductbysubcategory(Request $request){
+                $product=[];
+             if(!empty($request->subcategory_id)){
+                        $product=Product::select('id','product_name as name')->where('sub_category',$request->subcategory_id)->get();
+             }
+             return response()->json(['status'=>1,'data'=>$product]);
      }
 }

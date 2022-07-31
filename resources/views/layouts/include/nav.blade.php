@@ -24,6 +24,9 @@
           <li class="nav-item">
             <a href="{{route('admin.user.index')}}" class="nav-link {{ (request()->is('admin/user/*')) ? 'active' : '' }}">User</a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('admin.review.index')}}" class="nav-link {{ (request()->is('admin/review/*')) ? 'active' : '' }}">Review</a>
+          </li>
            {{-- <li class="nav-item">
             <a href="#" class="nav-link">Contact</a>
           </li>
