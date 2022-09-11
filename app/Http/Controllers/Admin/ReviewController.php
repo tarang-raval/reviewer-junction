@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Review;
+use App\Models\EarnPoint;
+use App\Models\Point;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -131,10 +133,29 @@ class ReviewController extends Controller
     }
 
     function statusupdate(Request $request){
-
+        try{
              if(!empty($request->id)){
                     $review=Review::findOrFail($request->id);
                     $review->status=$request->status;
+                    if($request->status==1){
+                        $earnpoint=EarnPoint::where(['review_id'=>$review->id,'user_id'=>$review->user_id])->first();
+                        $point=Point::getSubcategoryPoint($review->subcategory_id);
+                        if(empty($earnpoint)){
+                                $earnPoint=new EarnPoint();
+                                $earnPoint->user_id=$review->user_id;
+                                $earnPoint->review_id=$review->id;
+                                $earnPoint->subcategory_id=$review->subcategory_id;
+                                $earnPoint->subcategory_points=$point;
+                                $earnPoint->earn_points=$point;
+                                $earnPoint->save();
+                        }
+                    }else if($request->status==1){
+
+                        $earnpoint=EarnPoint::where(['review_id'=>$review->id,'user_id'=>$review->user_id])->first();
+                        if(empty($earnpoint)){
+                            $earnpoint->delete();
+                        }
+                    }
                     if($review->save()){
                         return response()->json(['status'=>true,'message'=>'Review is approved']);
                     }else{
@@ -142,5 +163,9 @@ class ReviewController extends Controller
                     }
 
              }
+        }
+        catch(\Exception $exception){
+            return response()->json(['status'=>false,'message'=>'something is wrong, please Try again later']);
+        }
     }
 }

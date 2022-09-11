@@ -1,7 +1,7 @@
 // IIFE with jQuery Wrapper
 (function ($) {
     'use strict';
-    
+
     $(window).on('load', function () {
         $('.preloader').delay(1000).fadeOut(600);
         });
@@ -11,9 +11,11 @@
      *----------------------------------
      */
     $(document).ready(function () {
-        
-        
-          
+
+
+
+
+            $('.select2').selectpicker();
 
         /*
 		====================================
@@ -94,14 +96,14 @@
         $('#main-slider').on('translated.owl.carousel', function () {
             $('.slider-img-two').addClass('fadeInDown animated').show();
         });
-        
+
         $('#main-slider').on('translate.owl.carousel', function () {
             $('.slider-countdown').removeClass('fadeInUp animated').hide();
         });
         $('#main-slider').on('translated.owl.carousel', function () {
             $('.slider-countdown').addClass('fadeInUp animated').show();
         });
-        
+
         $('#main-slider').on('translate.owl.carousel', function () {
             $('.cou-slider-img').removeClass('fadeInDown animated').hide();
         });
@@ -109,16 +111,16 @@
             $('.cou-slider-img').addClass('fadeInDown animated').show();
         });
 
-        
-        
-        
+
+
+
         $('#th-main-slider').owlCarousel({
             loop: true,
             margin: 0,
             items: 1
         })
-        
-        
+
+
         $('.holiday-carousel').owlCarousel({
             loop: true,
             autoplay:true,
@@ -143,7 +145,7 @@
                 }
             }
         })
-        
+
         $('.fullwidth-carousel').owlCarousel({
             loop: true,
             autoplay:true,
@@ -169,8 +171,8 @@
                 }
             }
         })
-        
-        
+
+
          $('.pro-carousel-start').owlCarousel({
             loop: true,
             autoplay:true,
@@ -195,17 +197,17 @@
                 }
             }
         })
-        
+
             /*---------------------
                 countdown
             --------------------- */
-        
+
         $('[data-countdown]').each(function() {
         var $this = $(this), finalDate = $(this).data('countdown');
         $this.countdown(finalDate, function(event) {
         $this.html(event.strftime('<span class="cdown day"><span class="time-count separator">%-D</span> <p class="cdown-tex">Days</p>  </span> <span class="cdown hour"><span class="time-count separator">%-H</span> <p class="cdown-tex">Hours</p>  </span> <span class="cdown minutes"><span class="time-count separator">%M</span> <p class="cdown-tex">Min</p>  </span> <span class="cdown"><span class="time-count">%S</span> <p class="cdown-tex">Sec</p> </span>'));
           });
-        });	
+        });
 
         $('#product-slider').owlCarousel({
             loop: true,
@@ -400,7 +402,7 @@
             slideMargin: 0,
             thumbItem: 5
         });
-        
+
 
         $('#related-product').owlCarousel({
             loop: true,
@@ -432,7 +434,7 @@
 			Coupon Page Slider Section
 		====================================
   	     */
-        
+
         $('.mark-logo-slider').owlCarousel({
             loop: true,
             nav: false,
@@ -454,7 +456,7 @@
                 }
             }
         })
-        
+
 
         /*
         	Progress Bar
@@ -484,9 +486,9 @@
         	Rating Star Yollo Color
         	==================
         */
-        $('.review-rating-yellow-5').rateYo({
-            rating: 5,
-            starWidth: '19px',
+        $('.review-rating').rateYo({
+            rating: 0,
+            starWidth: "24px",
             ratedFill: '#ff9800',
             normalFill: '#e3e3e3'
         });
@@ -997,13 +999,13 @@
             );
         });
 
-        //============= Search   ============ 
+        //============= Search   ============
 
         $(".search a").on('click', function () {
             $(".search-input").toggleClass("active");
         });
 
-        //============= Mobile Button  ============ 
+        //============= Mobile Button  ============
 
         $(".accordion-wrapper .mobile-open").on('click', function () {
             $(".accordion").toggleClass("active");
@@ -1041,23 +1043,23 @@
 			Sticky Nav
 		====================================
   	*/
-       
-          
-     
-        
+
+
+
+
      if ($(window).width() >= 992) {
             $('.sticker-nav').sticky({
                 topSpacing: 0
             });
         }
-        
+
      if ($(window).width() < 992) {
             $('.mob-sticky').sticky({
                 topSpacing: 0
             });
         }
-  
-      
+
+
 
         /*
 		====================================
@@ -1090,7 +1092,7 @@
 		====================================
   	*/
         $('#nav').onePageNav();
-        
+
 
 
         /*
@@ -1137,9 +1139,9 @@
             animationSpeed: 500
         });
 
-        
-        
-  
+
+
+
          /*
 		====================================
 			Mobile menu accordion
@@ -1173,12 +1175,27 @@
 		// Show animated elements
 		animateElements();
 		$(window).scroll(animateElements);
-         
+
 
 
 
     }); // DOM Ready
-    
-    
+
+
 
 }(jQuery)); // IIFE
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }

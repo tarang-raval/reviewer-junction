@@ -40,4 +40,11 @@ class HomeController extends Controller
 
        return view('single-product',compact('product'));
      }
+     function productlist(Request $request){
+        $products=Product::join('categories','categories.id','products.category')
+        ->leftJoin('subcategories','subcategories.id','products.sub_category')
+        ->get();
+
+        return view('category-product',compact('products'));
+     }
 }

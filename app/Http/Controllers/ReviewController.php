@@ -45,7 +45,7 @@ class ReviewController extends Controller
                 $review->rating = $request->star_review;
                 $review->user_id = Auth::id();
                 if($review->save()){
-                    return redirect()->route('submit.review')->with('success','Thank you for submit review.') ;
+                    return redirect()->route('submit.review')->with('success','Thank you for submit review.')->withCookie(cookie('requiredLogin', '1', 30)) ;
                 }else{
                     return redirect()->route('submit.review')->with('error','some thing is wrong.') ;
                 }
@@ -77,4 +77,19 @@ class ReviewController extends Controller
              }
              return response()->json(['status'=>1,'data'=>$product]);
      }
+
+     /**
+      * checkAlreadyReview
+      */
+      function checkAlreadyReview(Request $request){
+
+         $product_id=$request->product_id;
+         $user_id=$request->user_id;
+         $review=Review::where(['product_id'=>$product_id,'user_id'=>$user_id])->count();
+         if($review>0){
+            return response()->json(false, 200);
+         }else{
+            return response()->json(true, 200);
+         }
+      }
 }

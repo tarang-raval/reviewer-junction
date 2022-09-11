@@ -168,5 +168,13 @@
         }
         return false;
 });
+$('#write-review').on('click',function(){
+    // location.assign("{{route('submit.review')}}");
+     if(AuthUser!=null && AuthUser!='undefined' && AuthUser!="" ){
+             location.assign("/submit/review");
+     }else{
+         $('#myaccount').trigger('click');
+     }
+ });
 
 

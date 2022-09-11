@@ -37,6 +37,7 @@ class UserController extends Controller
             'name' => $request->first_name . ' ' . $request->last_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'mobile_no'=>$request->mobile_no
         ]);
         $user->assignRole('customer');
 
