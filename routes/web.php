@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MyaccountController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class,'index'] )->name('home');
 Route::post('/getsubcatgory',[ReviewController::class,'subcategory'])->name('getsubcategory');
 Route::post('/getproductbysubcategory',[ReviewController::class,'getproductbysubcategory'])->name('getproductbysubcategory');
+Route::get('/product',[HomeController::class,'productlist'] )->name('productlist');
 Route::get('/product/{product_slug}',[HomeController::class,'singleProduct'] )->name('singleProduct');
 Route::get('/category/{category_slug}',[HomeController::class,'category'] )->name('category.list');
 Route::get('/subcatgory/{category_slug}/{subcategory_slug}',[HomeController::class,'subcategory'] )->name('subcategory.list');
@@ -39,7 +41,12 @@ Route::get('/dashboard', function () {
 Route::post("user/register",[UserController::class,'register'])->name('user.register');
 Route::get("submit/review",[ReviewController::class,'index'])->name('submit.review');
 Route::post("submit/review/store",[ReviewController::class,'store'])->name('submit.review.store');
+Route::post("/checkAlreadyReview",[ReviewController::class,'checkAlreadyReview'])->name('checkAlreadyReview');
 // login
+Route::get('myaccount',[MyaccountController::class,'index'] )->name('myaccount');
+Route::post('profile/update',[MyaccountController::class,'profileupdate'] )->name('profile.update');
+Route::post('profile/change-password',[MyaccountController::class,'changepassword'] )->name('profile.changepassword');
+Route::post('review/list', [MyaccountController::class,'userReviewlist'])->name('userReviewlist');
 
 
 

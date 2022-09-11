@@ -136,7 +136,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="categories">Category</label>
-                                    <select class="form-control" name="category" id="category">
+                                    <select class="form-control select2" data-size="5" name="category" id="category" data-live-search="true" >
                                         <option value="">-- select Category --</option>
                                         @forelse ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -147,15 +147,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="sub Category">Sub Category</label>
-                                    <select class="form-control" name="subcategory" id="subcategory">
+                                    <select class="form-control select2" name="subcategory" id="subcategory">
                                         <option value="">-- Select Sub Category --</option>
 
                                     </select>
 
                                 </div>
                                 <div class="form-group">
-                                    <label for="sub Category">Product</label>
-                                    <select class="form-control" name="product" id="product">
+                                    <label for="sub Category ">Product</label>
+                                    <select class="form-control select2" name="product" id="product">
                                         <option value="">-- Select Product --</option>
 
                                     </select>
@@ -226,38 +226,21 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="wrap">
-                                        <div class="stars">
-                                            <label class="rate">
-                                                <input type="radio" name="star_review" id="star1" value="1">
-                                                <div class="face"></div>
-                                                <i class="fa fa-star-o  one-star"></i>
-                                            </label>
-                                            <label class="rate">
-                                                <input type="radio" name="star_review" id="star2" value="2">
-                                                <div class="face"></div>
-                                                <i class="fa fa-star-o  two-star"></i>
-                                            </label>
-                                            <label class="rate">
-                                                <input type="radio" name="star_review" id="star3" value="3">
-                                                <div class="face"></div>
-                                                <i class="fa fa-star-o  three-star"></i>
-                                            </label>
-                                            <label class="rate">
-                                                <input type="radio" name="star_review" id="star4" value="4">
-                                                <div class="face"></div>
-                                                <i class="fa fa-star-o  four-star"></i>
-                                            </label>
-                                            <label class="rate">
-                                                <input type="radio" name="star_review" id="star5" value="5">
-                                                <div class="face"></div>
-                                                <i class="fa fa-star-o  five-star"></i>
-                                            </label>
+
+                                        <div class="rating-market-section d-flex justify-content-center ">
+                                            <div class="rating-star " style="position:relative">
+                                                <div class="review-rating"></div>
+                                                <div class="rating-number m-0" style="position: absolute;
+                                                top: -7px;
+                                                left: 45px;" >0</div>
+                                            </div>
+
+
                                         </div>
-                                    </div>
+                                        <input type="hidden" name="rating">
                                 </div>
 
-                                <input type="submit" class="form-control">
+                                <input type="submit" class="form-control" value="Submit Review">
 
 
                             </form>
@@ -274,7 +257,14 @@
 @push('js')
     <script>
         $(function() {
-
+            if(getCookie('requiredLogin')){
+                $('#myaccount').trigger('click');
+            }
+            $('.review-rating').on('click',function(){
+                let r=$('.review-rating').rateYo("rating");
+                $('.rating-number').html(r);
+                $('[name="rating"]').html(r);
+            })
             $(document).on({
                 mouseover: function(event) {
                     $(this).find('.fa').addClass('star-over');
@@ -310,12 +300,50 @@
             });
 
         });
+        $.validator.addMethod(
+            "checkAlreadyReview",
+            function(value, element, regexp) {
+                let check=false;
+                fetch('/checkAlreadyReview', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        body: JSON.stringify({product_id: value, user_id: AuthUser})
+                    }).then((response)=>response.json()).then(resposne=>{ check=resposne.status});
+                    console.log(check);
+              return check;
+            },
+            "already review ."
+          );
         $('#reviewForm').validate({
                 rules:{
                     'category':{required:true},
                     'subcategory':{required:true},
                     'type_of_purchase':{required:true},
                     'review_text':{required:true},
+                    'product':{required:true,
+                                remote: {
+                                url: "/checkAlreadyReview",
+                                type: "POST",
+                                headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  },
+                                data: {
+                                product_id: function() {
+                                    return $( "#product" ).val();
+                                },
+                                user_id:function(){
+                                    return  AuthUser;
+                                }
+                                }
+                            }
+                        },
+                },
+                messages:{
+                    "product":{
+                        'remmote':"product review already added"
+                    }
                 },
                 errorElement: 'span',
             errorPlacement: function (error, element) {
@@ -327,7 +355,30 @@
             },
             unhighlight: function (element, errorClass, validClass) {
                  $(element).removeClass('is-invalid');
-            }
+            },
+            submitHandler : function(form) {
+                    //do something here
+                  /*   if(AuthUser==null || AuthUser=='undefined' || AuthUser=="" ){
+
+                        localStorage.setItem('review', $(form).serialize());
+
+                        $('#myaccount').trigger('click');
+                        return false;
+
+                    }else{ */
+                       // form.submit();
+
+                    /* } */
+                    fetch('/checkAlreadyReview', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        body: JSON.stringify({product_id: $('#product').val() , user_id: AuthUser})
+                    }).then((response)=>response.json()).then(resposne=>{ if(resposne){
+                        form.submit();
+                    }});
+                }
         })
         $('#category').on('change',function(){
 
@@ -345,6 +396,7 @@
                                     str+=`<option value='${d.id}'>${d.name}</option>`;
                             }
                             $('#subcategory').html(str);
+                            $('#subcategory').selectpicker('refresh');
 
                         }
                     }
@@ -372,6 +424,7 @@
                                     str+=`<option value='${d.id}'>${d.name}</option>`;
                             }
                             $('#product').html(str);
+                            $('#product').selectpicker('refresh');
 
                         }
                     }
@@ -383,5 +436,6 @@
 
             }
         });
+
     </script>
 @endpush

@@ -23,9 +23,10 @@
     <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">
-
-    <link rel="stylesheet" href="{{asset('assets/css/megamenu.css')}}">
-    <script src="{{asset('assets/plugin/summernote/summernote-bs4.min.css')}}"></script>
+    <link rel="stylesheet" href="{{asset('assets/css/rateyo.css')}}">
+       <link rel="stylesheet" href="{{asset('assets/css/megamenu.css')}}">
+    <link href="{{asset('assets/plugin/select2/css/select2.min.css')}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css" integrity="sha512-ARJR74swou2y0Q2V9k0GbzQ/5vJ2RBSoCWokg4zkfM29Fb3vZEQyv0iWBMW/yvKgyHSR/7D64pFMmU8nYmbRkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- =========================
         Loding Main Theme Style
@@ -54,12 +55,72 @@
         Header Top Section
     ============================== -->
 
+    <section id="wd-header-top">
+        <div class="container-fluid custom-width">
+            <div class="row">
+
+                <div class="col-6 col-sm-6 col-md-6  col-lg-6 col-xl-6">
+                </div>
+
+                <!-- =========================
+                        Select Country and Language
+                    ============================== -->
+                <div class="col-6 col-sm-6 col-md-6  col-lg-6 col-xl-6">
+                    <div class="language-and-currency-btn d-flex justify-content-end">
+
+                            <button class="btn btn-primary btn-theme">
+                                <i class="fa fa-comments" aria-hidden="true"></i>
+                                Write Review
+                            </button>
+
+
+
+                            @guest
+                            <button id="myaccount" class="btn btn-secondary  btn-theme " data-toggle="modal" data-target=".bd-example-modal-lg2">
+                                <i class="fa fa-user" aria-hidden="true"></i> Sign In | sign up
+                            </button>
+                         @endguest
+                         @auth
+
+                         <a href="{{route('myaccount')}}" >
+                            <button id="btnGroupDrop4" type="button" class="btn btn-secondary wd-btn-language" >
+                                Hi, {{Auth::user()->name}}
+                            </button>
+                            </a>
+                         <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                                 <button  type="button" class="btn btn-secondary wd-btn-language" >
+                                {{ __('Logout') }}
+                                                 </button>
+                                                </a>
+                        </form>
+                        @endauth
+                           {{--  <div class="btn-group" role="group">
+                                <button id="btnGroupDrop4" type="button" class="btn btn-secondary wd-btn-language dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  My Account
+                                </button>
+                                <div class="dropdown-menu wd-btn-language-list" aria-labelledby="btnGroupDrop4" x-placement="bottom-start" style="position: absolute; transform: translate3d(10px, 19px, 0px); top: 0px; left: 0px; will-change: transform;">
+
+                                </div>
+                            </div> --}}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- =========================
         Header Section
     ============================== -->
 	<section id="wd-header" class="">
-		<div class="container-fluid custom-width">
+
+		<div class="container-fluid">
+
 			<div class="row">
 				<div class="col-md-12 col-lg-3 col-xl-3 text-center second-home-main-logo">
 					<a href="{{route('home')}}"><img src="{{asset('assets/img/logo.jpeg')}}" alt="Logo" style="max-width:160px"></a>
@@ -104,24 +165,6 @@
 						</div>
 					</div>
 				<div class="col-md-6 col-lg-4  col-xl-3  d-flex align-items-center">
-					<button class="btn btn-info btn-xs review-btn" id="write-review">Write A Review</button>
-                    @guest
-                        <button id="myaccount" class="btn btn-primary my-account ml-2  pt-0" data-toggle="modal" data-target=".bd-example-modal-lg2">
-                            <i class="fa fa-user" aria-hidden="true"></i> My account
-                        </button>
-                    @endguest
-                    @auth
-                       HI, {{Auth::user()->name}}
-                       <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-
-                        <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                            {{ __('Log Out') }}
-                        </x-dropdown-link>
-                    </form>
-                    @endauth
 
 					<div class="modal fade bd-example-modal-lg2" tabindex="-1" aria-hidden="true">
 						<div class="modal-dialog modal-lg">
@@ -429,113 +472,7 @@
                                     @empty
 
                                     @endforelse
-                                    <li class="list-group-item">
-                                        <a href="#!">
-                                            <div class="department-list-logo">
-                                                <img src="{{asset('assets/img/department-img/department-img-1.png')}}" alt="">
-                                            </div>
-                                            <span class="sub-list-main-menu">Furniture</span> <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                        </a>
-                                        <div class="wd-sub-list">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <h6 class="black-color wd-sub-list-title">Cameras and photos</h6>
-                                                        <ul class="wd-sub-menu">
-                                                            <li><a href="#">Camera Electronice</a></li>
-                                                            <li><a href="#">Camera Appereances</a></li>
-                                                            <li><a href="#">DSLR</a></li>
-                                                            <li><a href="#">Video cameras</a></li>
-                                                            <li><a href="#">Top Cameras</a></li>
-                                                            <li><a href="#">Cheap Cameras</a></li>
-                                                            <li><a href="#">Best Cameras</a></li>
-                                                            <li><a href="#">Luxury Cameras</a></li>
-                                                            <li><a href="#">Simple Cameras</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <h6 class="black-color wd-sub-list-title">Cameras and photos</h6>
-                                                        <ul class="wd-sub-menu">
-                                                            <li><a href="#">Camera Electronice</a></li>
-                                                            <li><a href="#">Camera Appereances</a></li>
-                                                            <li><a href="#">DSLR</a></li>
-                                                            <li><a href="#">Video cameras</a></li>
-                                                            <li><a href="#">Top Cameras</a></li>
-                                                            <li><a href="#">Cheap Cameras</a></li>
-                                                            <li><a href="#">Best Cameras</a></li>
-                                                            <li><a href="#">Luxury Cameras</a></li>
-                                                            <li><a href="#">Simple Cameras</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <h6 class="black-color wd-sub-list-title">Cameras and photos</h6>
-                                                        <ul class="wd-sub-menu">
-                                                            <li><a href="#">Camera Electronice</a></li>
-                                                            <li><a href="#">Camera Appereances</a></li>
-                                                            <li><a href="#">DSLR</a></li>
-                                                            <li><a href="#">Video cameras</a></li>
-                                                            <li><a href="#">Top Cameras</a></li>
-                                                            <li><a href="#">Cheap Cameras</a></li>
-                                                            <li><a href="#">Best Cameras</a></li>
-                                                            <li><a href="#">Luxury Cameras</a></li>
-                                                            <li><a href="#">Simple Cameras</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <a href="product-details-scroll.html"><img src="{{asset('assets/img/department-img/department-sub-list-img-1.jpg') }}" class="department-sub-list-img" alt="department-sub-list-img"></a>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <a href="product-details-scroll.html"><img src="{{asset('assets/img/department-img/department-sub-list-img-2.jpg') }}" class="department-sub-list-img" alt="department-sub-list-img"></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item"><a href="product-details-scroll.html">
-                                        <div class="department-list-logo">
-                                            <img src="{{asset('assets/img/department-img/department-img-2.png')}}" alt="">
-                                        </div><span class="sub-list-main-menu">Household</span></a>
-                                    </li>
-                                    <li class="list-group-item"><a href="product-details-scroll.html">
-                                        <div class="department-list-logo">
-                                            <img src="{{asset('assets/img/department-img/department-img-3.png')}}" alt="">
-                                        </div><span class="sub-list-main-menu">Clothes</span></a>
-                                    </li>
-                                    <li class="list-group-item"><a href="product-details-scroll.html">
-                                        <div class="department-list-logo">
-                                            <img src="{{asset('assets/img/department-img/department-img-4.png')}}" alt="">
-                                        </div><span class="sub-list-main-menu">Accessories</span></a>
-                                    </li>
-                                    <li class="list-group-item"><a href="product-details-scroll.html">
-                                        <div class="department-list-logo">
-                                            <img src="{{asset('assets/img/department-img/department-img-5.png')}}" alt="">
-                                        </div><span class="sub-list-main-menu">Electronics</span></a>
-                                    </li>
-                                    <li class="list-group-item"><a href="product-details-scroll.html">
-                                        <div class="department-list-logo">
-                                            <img src="{{asset('assets/img/department-img/department-img-6.png')}}" alt="">
-                                        </div><span class="sub-list-main-menu">Corporate staff</span></a>
-                                    </li>
-                                    <li class="list-group-item"><a href="product-details-scroll.html">
-                                        <div class="department-list-logo">
-                                            <img src="{{asset('assets/img/department-img/department-img-7.png')}}" alt="">
-                                        </div><span class="sub-list-main-menu">Sinking staff</span></a>
-                                    </li>
-                                    <li class="list-group-item"><a href="product-details-scroll.html">
-                                        <div class="department-list-logo">
-                                            <img src="{{asset('assets/img/department-img/department-img-8.png')}}" alt="">
-                                        </div><span class="sub-list-main-menu">Plant</span></a>
-                                    </li>
-                                    <li class="list-group-item"><a href="product-details-scroll.html">
-                                        <div class="department-list-logo">
-                                            <img src="{{asset('assets/img/department-img/department-img-9.png')}}" alt="">
-                                        </div><span class="sub-list-main-menu">Washing machine</span></a>
-                                    </li>
-                                    <li class="list-group-item"><a href="product-details-scroll.html">
-                                        <div class="department-list-logo">
-                                            <img src="{{asset('assets/img/department-img/department-img-10.png')}}" alt="">
-                                        </div><span class="sub-list-main-menu">Winding staff</span></a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -545,11 +482,11 @@
                             <div class="menu-container wd-megamenu text-left">
                                 <div class="menu">
                                     <ul class="wd-megamenu-ul">
-                                        <li><a href="index.html" class="main-menu-list"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                                        <li><a href="{{url('/')}}" class="main-menu-list"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
 
                                         </li>
 
-                                        <li><a href="products.html" class="main-menu-list">Product </a>
+                                        <li><a href="{{route('productlist')}}" class="main-menu-list">Product </a>
                                             <!-- <ul class="single-dropdown">
                                                 <li><a href="#">Shop Page</a></li>
                                                 <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
@@ -560,26 +497,16 @@
                                                 <li><a href="wishlist.html">Wishlist View</a></li>
                                             </ul> -->
                                         </li>
-										<li><a href="#" class="main-menu-list">Submit A Review </a>
-                                            <!-- <ul class="single-dropdown">
-                                                <li><a href="#">Shop Page</a></li>
-                                                <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                <li><a href="shop-left-sidebar-full-grid.html">Shop Left Sidebar Full Grid</a></li>
-                                                <li><a href="shop-right-sidebar-full-grid.html">Shop Right Sidebar Full Grid</a></li>
-                                                <li><a href="product-details.html">Product Details</a></li>
-                                                <li><a href="product-details-scroll.html">Product Details v2</a></li>
-                                                <li><a href="wishlist.html">Wishlist View</a></li>
-                                            </ul> -->
-                                        </li>
+										<li><a href="{{route('submit.review')}}" class="main-menu-list">Submit A Review </a></li>
 
-                                        <li><a href="review-left-sidebar.html" class="main-menu-list">Product Review</a>
+                                      {{--   <li><a href="review-left-sidebar.html" class="main-menu-list">Product Review</a>
                                             <ul class="single-dropdown">
                                                 <li><a href="#">Electronics</a></li>
                                                 <li><a href="#">Groceries</a></li>
                                                 <li><a href="#">Brand</a></li>
 
                                             </ul>
-                                        </li>
+                                        </li> --}}
 
                                     </ul>
                                 </div>
@@ -757,12 +684,13 @@
     <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('assets/js/circle-progress.min.js')}}"></script>
     <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
-    <script src="{{asset('assets/plugin/summernote/summernote-bs4.min.js')}}"></script>
+    <script src="{{asset('asset/plugin/summernote/summernote-bs4.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="{{asset('assets/js/simplePlayer.js')}}"></script>
         <script>
             // login
-            var AuthUser = "{{{ (Auth::check()) ? Auth::id() : null }}}";
+            var AuthUser = "{{ (Auth::check()) ? Auth::id() : null }}";
             var previousPage='{{ url()->previous() }}';
             var currentPage='{{ url()->current() }}';
         </script>
@@ -776,13 +704,7 @@
                 $('#cat-department').trigger('click');
             @endif
         });
-        $('#write-review').on('click',function(){
-            if(AuthUser!=null && AuthUser!='undefined' && AuthUser!="" ){
-                    location.assign("{{route('submit.review')}}");
-            }else{
-                $('#myaccount').trigger('click');
-            }
-        });
+
     </script>
     @stack('js')
 
