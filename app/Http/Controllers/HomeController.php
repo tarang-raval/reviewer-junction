@@ -38,10 +38,12 @@ class HomeController extends Controller
         ->where('products.slug',$product_slug)
        ->firstorFail();
 
+
        return view('single-product',compact('product'));
      }
      function productlist(Request $request){
-        $products=Product::join('categories','categories.id','products.category')
+        $products=Product::select('products.*','categories.name as category_name','subcategories.name as subcategory_name')
+        ->join('categories','categories.id','products.category')
         ->leftJoin('subcategories','subcategories.id','products.sub_category')
         ->get();
 

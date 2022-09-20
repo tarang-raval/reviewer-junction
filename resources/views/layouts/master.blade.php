@@ -68,22 +68,19 @@
                 <div class="col-6 col-sm-6 col-md-6  col-lg-6 col-xl-6">
                     <div class="language-and-currency-btn d-flex justify-content-end">
 
-                            <button class="btn btn-primary btn-theme">
+                            <a href="{{route('submit.review')}}" class="btn btn-primary btn-theme mx-2">
                                 <i class="fa fa-comments" aria-hidden="true"></i>
                                 Write Review
-                            </button>
-
-
-
+                            </a>
                             @guest
-                            <button id="myaccount" class="btn btn-secondary  btn-theme " data-toggle="modal" data-target=".bd-example-modal-lg2">
+                            <button id="myaccount" class="btn btn-secondary  btn-theme mx-2 " data-toggle="modal" data-target=".bd-example-modal-lg2">
                                 <i class="fa fa-user" aria-hidden="true"></i> Sign In | sign up
                             </button>
                          @endguest
                          @auth
-
+                        <a href="javascripr:void(0);" class="badge badge-primary mx-2"><span class="p-2">{{round(auth()->user()->getUserEarnPoints(),2)}}</span></a>
                          <a href="{{route('myaccount')}}" >
-                            <button id="btnGroupDrop4" type="button" class="btn btn-secondary wd-btn-language" >
+                            <button id="btnGroupDrop4" type="button" class="btn btn-secondary wd-btn-language mx-2" >
                                 Hi, {{Auth::user()->name}}
                             </button>
                             </a>

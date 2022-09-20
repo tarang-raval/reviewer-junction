@@ -1287,3 +1287,16 @@
         </div>
     </section>
 @endsection
+
+@push('js')
+
+<script>
+    $(document).ready(funtion(e){
+        loadreview();
+    });
+    function loadreview(){
+
+    }
+</script>
+
+@endpush

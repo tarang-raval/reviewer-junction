@@ -25,6 +25,8 @@ Route::get('/product',[HomeController::class,'productlist'] )->name('productlist
 Route::get('/product/{product_slug}',[HomeController::class,'singleProduct'] )->name('singleProduct');
 Route::get('/category/{category_slug}',[HomeController::class,'category'] )->name('category.list');
 Route::get('/subcatgory/{category_slug}/{subcategory_slug}',[HomeController::class,'subcategory'] )->name('subcategory.list');
+Route::get('/product/{produt_id}/{produc_slug}',[HomeController::class,'subcategory'] )->name('produreview.list');
+
 
 
 Route::get('/clear-cache', function () {
