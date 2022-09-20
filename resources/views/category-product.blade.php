@@ -281,11 +281,11 @@
                                                     </div>
                                                     <div class="quick-view-btn">
                                                         <div class="compare-btn">
-                                                            <button type="button" class="btn btn-primary btn-sm"
+                                                            {{-- <button type="button" class="btn btn-primary btn-sm"
                                                                 data-toggle="modal"
                                                                 data-target=".bd-example-modal-lg-product-1"><i
                                                                     class="fa fa-eye" aria-hidden="true"></i> Quick
-                                                                view</button>
+                                                                view</button> --}}
                                                         </div>
                                                     </div>
 
@@ -300,7 +300,7 @@
                                                         <div class="content-excerpt">
                                                             <p>{{$product->product_name}}</p>
                                                         </div>
-                                                        <div class="rating">
+                                                      {{--   <div class="rating">
                                                             <a href="#"><i class="fa fa-star active-color"
                                                                     aria-hidden="true"></i></a>
                                                             <a href="#"><i class="fa fa-star active-color"
@@ -309,7 +309,7 @@
                                                                     aria-hidden="true"></i></a>
                                                             <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
                                                             <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                                                        </div>
+                                                        </div> --}}
                                                         <div class="compare-btn">
                                                             <a class="btn btn-primary btn-sm" href="{{route('singleProduct',[$product->slug])}}"><i
                                                                     class="fa fa-exchange" aria-hidden="true"></i>View

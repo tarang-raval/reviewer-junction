@@ -49,4 +49,7 @@ class User extends Authenticatable
     function fullName(){
         return $this->first_name.' '.$this->last_name;
     }
+    function getUserEarnPoints(){
+            return EarnPoint::select('earn_points')->where('user_id',$this->id)->get()->sum('earn_points');
+    }
 }

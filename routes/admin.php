@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +56,11 @@ Route::group([
     Route::resource('review',ReviewController::class);
     Route::post('review/list', [\App\Http\Controllers\Admin\ReviewController::class,'datatable'])->name('review.datatable');
     Route::post('review/statusupdate', [\App\Http\Controllers\Admin\ReviewController::class,'statusupdate'])->name('review.statusupdate');
+
+
+    // setting
+    Route::resource('setting', SiteSettingController::class);
+
 
 });
 Route::post('admin/logout', [\App\Http\Controllers\Admin\UsersController::class,'logout'])->name('admin.user.logout');
