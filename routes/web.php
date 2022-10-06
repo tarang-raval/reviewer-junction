@@ -44,6 +44,7 @@ Route::post("user/register",[UserController::class,'register'])->name('user.regi
 Route::get("submit/review",[ReviewController::class,'index'])->name('submit.review');
 Route::post("submit/review/store",[ReviewController::class,'store'])->name('submit.review.store');
 Route::post("/checkAlreadyReview",[ReviewController::class,'checkAlreadyReview'])->name('checkAlreadyReview');
+Route::get("/assignReviewtoUser/{review_id}",[ReviewController::class,'assignuser'])->name('assignuser');
 // login
 Route::get('myaccount',[MyaccountController::class,'index'] )->name('myaccount');
 Route::post('profile/update',[MyaccountController::class,'profileupdate'] )->name('profile.update');
