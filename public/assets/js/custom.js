@@ -1,4 +1,29 @@
-
+function assignReviewtoUser(){
+    return new Promise(function(resolve,reject){
+        let reviewformId=sessionStorage.getItem('reviewformID');
+             if(reviewformId!=null){
+                $.ajax({
+                    "url": "/assignReviewtoUser/"+reviewformId,
+                    'method': "GET",
+                    success: function(response) {
+                        if (response.status) {
+                            sessionStorage.removeItem('reviewformID');
+                                resolve(response.review_id);
+                        }else{
+                            sessionStorage.removeItem('reviewformID');
+                            reject(response);
+                        }
+                    }
+                });
+             }
+    })
+ }
+ function stripHtml(html)
+{
+   let tmp = document.createElement("DIV");
+   tmp.innerHTML = html;
+   return tmp.textContent || tmp.innerText || "";
+}
     $(function() {
 
 
@@ -118,7 +143,16 @@
                     data: $('#registerform').serialize(),
                     success: function(response) {
                         if (response.status) {
-                           window.location.reload(true);
+                            assignReviewtoUser().then(function(review_id){
+                                if(review_id!=null){
+                                   window.location.assign('/myaccount');
+                                }else{
+                                   window.location.assign(currentPage);
+                                }
+                       }).catch(response=>{
+                        alert(response.message);
+                        window.location.assign(currentPage);
+                    });;
 
                         } else {
                             ToastError(response.message);
@@ -142,7 +176,17 @@
                 data: $('#loginform').serialize(),
                 success: function(response) {
                     if (response.status) {
-                      window.location.assign(currentPage);
+                        assignReviewtoUser().then(function(review_id){
+                                 if(review_id!=null){
+                                    window.location.assign('/myaccount');
+                                 }else{
+                                    window.location.assign(currentPage);
+                                 }
+                        }).catch(response=>{
+                            alert(response.message);
+                            window.location.assign(currentPage);
+                        });
+
 
 
                     } else {
@@ -176,5 +220,6 @@ $('#write-review').on('click',function(){
          $('#myaccount').trigger('click');
      }
  });
+
 
 
