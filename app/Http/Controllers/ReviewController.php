@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Review;
+use App\Models\SiteSetting;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class ReviewController extends Controller
 {
@@ -15,9 +18,10 @@ class ReviewController extends Controller
 
     function index(){
 
-            $categories=Category::all();
-            $subcategories=Subcategory::all();
-            return view('submit_review', compact('categories','subcategories'));
+            $categories = Category::all();
+            $subcategories = Subcategory::all();
+            $sitesetting = SiteSetting::first()->toJson();
+            return view('submit_review', compact('categories', 'subcategories' , 'sitesetting'));
     }
 
     function store(Request $request){
@@ -57,6 +61,7 @@ class ReviewController extends Controller
                 $review->review_text = $request->review_text;
                 $review->rating = $request->star_review;
                 $review->user_id = Auth::id();
+                $review->files =$request->filesNameList;
                 if($review->save()){
                     if($request->ajax()){
                         return response()->json(['status'=>true,'message'=>"review Submitted Successfully",'guestID'=>$review->id]);
@@ -129,21 +134,130 @@ class ReviewController extends Controller
                 if(!empty($review)){
                     $review_user=Review::where(['user_id'=>Auth::id(),'product_id'=>$review->product_id])->first();
 
-                        if(empty($review_user)){
+                        if (empty($review_user)) {
                             $review->user_id=Auth::id();
                             $review->save();
                             $response['status']=1;
                             $response['review_id']=$review_id;
                             $response['message']='Updated successfully';
-                        }else{
+
+                            Session::flash('success', 'Thanks for sign Up! Please check you email , please verify Your indetity.<br/>The review has been submitted. Your review is under review. We will review it and update you shortly!');
+                        } else {
                             $response['status']=0;
                             $response['review_id']=$review_id;
                             $response['message']='You Already addred review before';
+                            Session::flash('error', 'You have already reviewed the selected product.');
                         }
 
 
+                } else {
+                    $response['message']='something is wrong please re submit Review';
                 }
                 return response()->json($response);
 
+       }
+
+       function uploadmedia(Request $request){
+        $response=['status'=>false,
+                   "message" =>"Something is wrong, please try again later"];
+            $request->validate([
+                'file' => 'required|mimes:jpeg,jpg,png,mp4|max:2048'
+                ]);
+
+            if(!empty($request->file('file'))) {
+                $file = $request->file('file');
+                $fileName = uniqid(). '.' .pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+                $filePath = $request->file('file')->storeAs('review', $fileName, 'public');
+                $response['status'] = true;
+                $response['message'] = 'file uploaded Successfully';
+                $response['fileName'] = $fileName;
+                $response['filePath'] = $filePath;
+
+            }
+            if ($response['status']) {
+                return response() ->json($response, 200);
+            } else {
+                return response() ->json($response, 400);
+            }
+       }
+       public function removemedia(Request $request) {
+         $name= $request->name;
+         $response=['status'=>0];
+         if(Storage::exists('public/review/'.$name)){
+            Storage::delete('public/review/'.$name);
+             return response() ->json($response, 200);
+             $response=['status'=>1];
+         }
+         return response() ->json($response, 200);
+       }
+       public function edit(Request $request, $id){
+
+            $review = Review::findOrFail($id);
+            $categories = Category::all();
+            $subcategories = Subcategory::all();
+            $sitesetting = SiteSetting::first()->toJson();
+        //dd($review);
+            return view('edit_review', compact('categories', 'subcategories' , 'sitesetting', 'review'));
+       }
+
+
+       function update(Request $request){
+
+        //try{
+            $request->validate([
+               'category'=>'required',
+               'subcategory'=>'required',
+               'type_of_purchase'=>'required',
+               'review_text'=>'required',
+            ]);
+
+
+
+               $review=Review::find($request->id);
+
+               /* $review->category_id=$request->category;
+               $review->subcategory_id=$request->subcategory;
+               $review->product_id = $request->product;
+               $review->type_of_purchase = $request->type_of_purchase;
+               $review->website = $request->website;
+               $review->shop_name = $request->shop_name;
+               $review->address_line1 = $request->address_line1;
+               $review->address_line2 = $request->address_line2;
+               $review->city = $request->city;
+               $review->state = $request->state;
+               $review->pincode = $request->pincode; */
+//$review->review_text = $request->review_text;
+               $review->rating = $request->rating;
+
+               $review->files =$request->filesNameList;
+               dump( $request);
+               dump($review->isDirty());
+                dd($review->save());
+                exit;
+               if($review->save()){
+
+                   if($request->ajax()){
+                       return response()->json(['status'=>true,'message'=>"review Submitted Successfully",'guestID'=>$review->id]);
+                   }else{
+                       return redirect()->route('review.edit',[$request->id])->with('success','update Successfully');
+                   }
+               }else{
+
+                   if($request->ajax()){
+                       return response()->json(['status'=>false,'message'=>"some thing is wrong."]);
+                   }else{
+                    dd('');
+                        return redirect()->route('review.edit',[$request->id])->with('error','some thing is wrong.') ;
+                   }
+               }
+         //}
+        /*  catch(\Exception $exception){
+                dd($exception->getMessage());
+           if($request->ajax()){
+               return response()->json(['status'=>false,'message'=>$exception->getMessage(),'debug'=>$exception->getTraceAsString()]);
+           }else{
+               return back()->with('error',$exception->getMessage())->withInput();
+           }
+         } */
        }
 }

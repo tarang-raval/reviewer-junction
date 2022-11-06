@@ -19,6 +19,32 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="deleteReviewModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Decline </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="declinedreasonForm">
+                <input type="hidden" name="id" id="review_id">
+                <input type="hidden" name="status" value="2" id="status">
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Reason:</label>
+                  <textarea class="form-control" name="declined_reason" id="reason"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="declinedbtn">Declined</button>
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection
 
 @push('js')
@@ -69,6 +95,10 @@
                     title: "Status"
                 },
                 {
+                    data: "declined_reason",
+                    title: "Reason"
+                },
+                {
                     data: "action",
                     title: "Action",
                     orderable: false,
@@ -76,12 +106,31 @@
                 },
 
             ],
+            columnDefs: [
+                { responsivePriority: 1, targets: 0 },
+                { responsivePriority: 2, targets: -1 }
+            ],
             drawCallback: function(settings) {
                 $('[data-toggle="tooltip"]').tooltip()
             }
 
         });
-
+        $('#declinedreasonForm').validate({
+            rules: {
+                "declined_reason" : {required:true},
+            },
+            errorElement: 'span',
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            }
+        })
 
         function checkunique() {
             return promise = new Promise(function(resolve, reject) {
@@ -231,6 +280,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
 
+                    $('#deleteReviewModel').modal('show');
                     //
                     let deleteurl = "{{ route('admin.sub-category.destroy', ':id') }}";
                     deleteurl = deleteurl.replace(':id', id);
@@ -304,20 +354,28 @@
                 confirmButtonText: 'Yes, Decline it!'
             }).then((result) => {
                 if(result.isConfirmed){
+                    $('#review_id').val(id);
+                    $('#status').val(id);
+                    $('#deleteReviewModel').modal('show');
 
 
-                    $.ajax({
+                }
+
+            });
+        }
+
+        $('#declinedbtn').on('click', function(e){
+
+            if($('#declinedreasonForm').valid()){
+                $.ajax({
                         "url": "{{ route('admin.review.statusupdate') }}",
                         'method': "POST",
-                        data: {
-                           'id':id,
-                           'status':2
-                        },
+                        data:$('#declinedreasonForm').serialize() ,
                         success: function(response) {
                             if (response.status) {
                                 ToastSuccess(response.message);
-                                reviewlist.ajax.reload();
 
+                                $$('#declinedreasonForm').reset();
                             } else {
                                 ToastError(response.message);
 
@@ -326,7 +384,6 @@
                     });
                 }
 
-            });
-        }
+        })
     </script>
 @endpush

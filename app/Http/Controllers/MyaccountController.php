@@ -109,4 +109,5 @@ class MyaccountController extends Controller
                 });
                 return response()->json(['data'=>$review]);
     }
+
 }

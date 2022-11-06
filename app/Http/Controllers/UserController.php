@@ -44,6 +44,7 @@ class UserController extends Controller
         //event(new Registered($user));
 
         Auth::login($user);
+        $request->session()->put('is_new', 1);
         return response()->json(['status' => true, 'message' => "Register Successfully"]);
     }
     /**
@@ -76,5 +77,11 @@ class UserController extends Controller
         } else {
             return response()->json(true);
         }
+    }
+    function  confirmation(Request $request){
+        if($request->session()->get('')){
+            $request->session()->flash('success', 'Thanks for sign Up! Please check you email , please verify Your indetity. ');
+        }
+        return view('confirmation');
     }
 }

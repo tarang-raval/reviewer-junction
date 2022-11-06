@@ -9,10 +9,10 @@
                     <div class="page-location">
                         <ul>
                             <li><a href="#">
-                                    Home /  <span class="divider">/</span>
+                                    Home / <span class="divider">/</span>
                                 </a></li>
                             <li><a class="page-location-active" href="#">
-                                   {{$product->product_name}}
+                                    {{ $product->product_name }}
                                     <span class="divider">/</span>
                                 </a></li>
                         </ul>
@@ -20,13 +20,13 @@
                 </div>
                 <div class="col-12 product-details-section">
                     <!-- ====================================
-                        Product Details Gallery Section
-                    ========================================= -->
+                            Product Details Gallery Section
+                        ========================================= -->
                     <div class="row">
                         <div class="product-gallery col-12 col-md-12 col-lg-6">
                             <!-- ====================================
-                                Single Product Gallery Section
-                            ========================================= -->
+                                    Single Product Gallery Section
+                                ========================================= -->
                             <div class="row">
                                 <div class="col-md-12 product-slier-details">
                                     <div class="lSSlideOuter  d-none">
@@ -35,41 +35,35 @@
                                                 <div class="lSSlideWrapper usingCss">
                                                     <ul id="lightSlider" class="lightSlider lsGrab lSSlide"
                                                         style="width: 0px; transform: translate3d(0px, 0px, 0px); height: 0px; padding-bottom: 0%;">
-                                                        <li data-thumb="{{asset('images/no-image.png')}}"
+                                                        <li data-thumb="{{ asset('images/no-image.png') }}"
                                                             class="lslide active" style="width: 0px; margin-right: 0px;">
                                                             <img class="figure-img img-fluid"
-                                                                src="{{asset('images/no-image.png')}}"
-                                                                alt="product-img">
+                                                                src="{{ asset('images/no-image.png') }}" alt="product-img">
                                                         </li>
-                                                        <li data-thumb="{{asset('images/no-image.png')}}"
-                                                            class="lslide" style="width: 0px; margin-right: 0px;">
+                                                        <li data-thumb="{{ asset('images/no-image.png') }}" class="lslide"
+                                                            style="width: 0px; margin-right: 0px;">
                                                             <img class="figure-img img-fluid"
-                                                                src="{{asset('images/no-image.png')}}"
-                                                                alt="product-img">
+                                                                src="{{ asset('images/no-image.png') }}" alt="product-img">
                                                         </li>
-                                                        <li data-thumb="{{asset('images/no-image.png')}}"
-                                                            class="lslide" style="width: 0px; margin-right: 0px;">
+                                                        <li data-thumb="{{ asset('images/no-image.png') }}" class="lslide"
+                                                            style="width: 0px; margin-right: 0px;">
                                                             <img class="figure-img img-fluid"
-                                                                src="{{asset('images/no-image.png')}}"
-                                                                alt="product-img">
+                                                                src="{{ asset('images/no-image.png') }}" alt="product-img">
                                                         </li>
-                                                        <li data-thumb="{{asset('images/no-image.png')}}"
-                                                            class="lslide" style="width: 0px; margin-right: 0px;">
+                                                        <li data-thumb="{{ asset('images/no-image.png') }}" class="lslide"
+                                                            style="width: 0px; margin-right: 0px;">
                                                             <img class="figure-img img-fluid"
-                                                                src="{{asset('images/no-image.png')}}"
-                                                                alt="product-img">
+                                                                src="{{ asset('images/no-image.png') }}" alt="product-img">
                                                         </li>
-                                                        <li data-thumb="{{asset('images/no-image.png')}}"
-                                                            class="lslide" style="width: 0px; margin-right: 0px;">
+                                                        <li data-thumb="{{ asset('images/no-image.png') }}" class="lslide"
+                                                            style="width: 0px; margin-right: 0px;">
                                                             <img class="figure-img img-fluid"
-                                                                src="{{asset('images/no-image.png')}}"
-                                                                alt="product-img">
+                                                                src="{{ asset('images/no-image.png') }}" alt="product-img">
                                                         </li>
-                                                        <li data-thumb="{{asset('images/no-image.png')}}"
-                                                            class="lslide" style="width: 0px; margin-right: 0px;">
+                                                        <li data-thumb="{{ asset('images/no-image.png') }}" class="lslide"
+                                                            style="width: 0px; margin-right: 0px;">
                                                             <img class="figure-img img-fluid"
-                                                                src="{{asset('images/no-image.png')}}"
-                                                                alt="product-img">
+                                                                src="{{ asset('images/no-image.png') }}" alt="product-img">
                                                         </li>
                                                     </ul>
                                                     <div class="lSAction"><a class="lSPrev"></a><a class="lSNext"></a></div>
@@ -83,18 +77,18 @@
                                         <ul class="lSPager lSGallery"
                                             style="margin-top: 5px; transition-duration: 400ms; width: 654.5px; transform: translate3d(0px, 0px, 0px);">
                                             <li style="width:100%;width:104px;margin-right:5px" class="active"><a
-                                                    href="#"><img src="{{asset('images/no-image.png')}}"></a>
+                                                    href="#"><img src="{{ asset('images/no-image.png') }}"></a>
                                             </li>
                                             <li style="width:100%;width:104px;margin-right:5px"><a href="#"><img
-                                                        src="{{asset('images/no-image.png')}}"></a></li>
+                                                        src="{{ asset('images/no-image.png') }}"></a></li>
                                             <li style="width:100%;width:104px;margin-right:5px"><a href="#"><img
-                                                        src="{{asset('images/no-image.png')}}"></a></li>
+                                                        src="{{ asset('images/no-image.png') }}"></a></li>
                                             <li style="width:100%;width:104px;margin-right:5px"><a href="#"><img
-                                                        src="{{asset('images/no-image.png')}}"></a></li>
+                                                        src="{{ asset('images/no-image.png') }}"></a></li>
                                             <li style="width:100%;width:104px;margin-right:5px"><a href="#"><img
-                                                        src="{{asset('images/no-image.png')}}"></a></li>
+                                                        src="{{ asset('images/no-image.png') }}"></a></li>
                                             <li style="width:100%;width:104px;margin-right:5px"><a href="#"><img
-                                                        src="{{asset('images/no-image.png')}}"></a></li>
+                                                        src="{{ asset('images/no-image.png') }}"></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -104,7 +98,7 @@
                             <div class="product-details-gallery">
                                 <div class="list-group">
                                     <h4 class="list-group-item-heading product-title">
-                                        {{$product->product_name}}
+                                        {{ $product->product_name }}
                                     </h4>
                                     <div class="media">
                                         <div class="media-left media-middle">
@@ -120,7 +114,8 @@
                                             </div>
                                         </div>
                                         <div class="media-body">
-                                            <p class="d-none">3.7/5 <span class="product-ratings-text"> -1747 Ratings</span></p>
+                                            <p class="d-none">3.7/5 <span class="product-ratings-text"> -1747
+                                                    Ratings</span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -158,24 +153,24 @@
                         </ul>
 
                         <div class="tab-pane" id="description-section">
-                                {!! $product->full_description !!}
+                            {!! $product->full_description !!}
                         </div>
                         <div class="tab-pane" id="full-specifiction">
                             <h6>Full Specifiction</h6>
                             <br>
                             <ul class="list-group wd-info-section">
-                                @if($product->productAttributes)
-                                @forelse ($product->productAttributes as $productAttributes)
-                                <li class="list-group-item d-flex justify-content-between align-items-center p0">
-                                    <div class="col-12 col-md-6 info-section">
-                                        <p>{{$productAttributes->attribute_name}} :{{$productAttributes->attribute_name}} </p>
+                                @if ($product->productAttributes)
+                                    @forelse ($product->productAttributes as $productAttributes)
+                                        <li class="list-group-item d-flex justify-content-between align-items-center p0">
+                                            <div class="col-12 col-md-6 info-section">
+                                                <p>{{ $productAttributes->attribute_name }}
+                                                    :{{ $productAttributes->attribute_value }} </p>
 
-                                    </div>
+                                            </div>
 
-                                </li>
-                                @empty
-
-                                @endforelse
+                                        </li>
+                                    @empty
+                                    @endforelse
                                 @endif
 
                             </ul>
@@ -256,23 +251,23 @@
                                     <div class="reviews-market" style="">
 
                                         <!--
-                                            =================================
-                                            Review Our Market
-                                            =================================
-                                        -->
+                                                =================================
+                                                Review Our Market
+                                                =================================
+                                            -->
 
 
                                         <!--
-                                            =================================
-                                            Review Our Product
-                                            =================================
-                                        -->
+                                                =================================
+                                                Review Our Product
+                                                =================================
+                                            -->
                                         <div class="review-our-product text-left row">
                                             <div class="col-12 col-lg-6 reviews-title">
                                                 <h3>Review</h3>
                                             </div>
 
-                                            <div class="col-12 col-lg-6 text-right display-none-md">
+                                            <div class="col-12 col-lg-6 text-right display-none-md d-none">
                                                 <div class="filter">
                                                     <div class="btn-group" role="group">
                                                         <div class="d-flex">
@@ -292,843 +287,588 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button type="button" class="btn btn-warning">Write A Review</button>
+                                                    <button type="button" class="btn btn-warning d-none">Write A Review</button>
                                                 </div>
                                             </div>
 
                                             <!-- =================================
-                                                Review Client Section
-                                                ================================= -->
-
-                                            <div class="col-12 review-our-product-area">
-                                                <div class="row">
-                                                    <div class="col-12 col-md-6">
+                                                    Review Client Section
+                                                    ================================= -->
+                                            @if ($product->getReview->count() > 0)
+                                                @foreach ($product->getReview->all() as $review)
+                                                    <div class="col-12 review-our-product-area">
                                                         <div class="row">
-                                                            <div class="col-12">
-                                                                <div class="media">
-                                                                    <div class="media-left media-middle">
-                                                                        <a href="#">
-                                                                            <img class="media-object rounded-circle"
-                                                                                src="img/client/client-img-1.png"
-                                                                                alt="client-img">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="media-body ml-2">
-                                                                        <h4 class="media-heading client-title">Robert Strud
-                                                                        </h4>
-                                                                        <div class="client-subtitle">GJ <a
-                                                                                href="#">India</a></div>
-                                                                        <div class="">
-                                                                            <p class="review-date">November 17, 2016</p>
-                                                                        </div>
-                                                                        <div class="rating-star d-flex">
-                                                                            <span
-                                                                                class="badge badge-secondary wd-star-market-badge text-uppercase">4.5
-                                                                                <i class="fa fa-star-o"
-                                                                                    aria-hidden="true"></i></span>
-                                                                            <div class="review-rating-yellow-5  jq-ry-container"
-                                                                                style="width: 95px;">
-                                                                                <div class="jq-ry-group-wrapper">
-                                                                                    <div
-                                                                                        class="jq-ry-normal-group jq-ry-group">
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#e3e3e3">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#e3e3e3"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#e3e3e3"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#e3e3e3"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#e3e3e3"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
+                                                            <div class="col-12 col-md-6">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <div class="media">
+                                                                            <div
+                                                                                class="media-left media-middle review-user">
+                                                                                <a href="#">
+                                                                                    <img class="media-object rounded-circle"
+                                                                                        src="{{ asset('assets/img/profile.png') }}"
+                                                                                        alt="client-img">
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="media-body ml-2">
+                                                                                <h4 class="media-heading client-title">
+                                                                                    {{ $review->getUser->fullname() }}
+                                                                                </h4>
+                                                                                {{--  <div class="client-subtitle">GJ <a
+                                                                                        href="#">India</a></div> --}}
+                                                                                <div class="">
+                                                                                    <p class="review-date">
+                                                                                        {{ date('F d, Y', strtotime($review->created_at)) }}
+                                                                                    </p>
+                                                                                </div>
+                                                                                {{-- <div class="rating-star d-flex">
+                                                                                    <span
+                                                                                        class="badge badge-secondary wd-star-market-badge text-uppercase"> {{ $review->rating}}
+                                                                                        <i class="fa fa-star-o"
+                                                                                            aria-hidden="true"></i></span>
+                                                                                    <div class="review-rating-yellow-5  jq-ry-container"
+                                                                                        style="width: 95px;">
+                                                                                        <div class="jq-ry-group-wrapper">
+                                                                                            <div
+                                                                                                class="jq-ry-normal-group jq-ry-group">
+                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
+                                                                                                    version="1.1"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 12.705 512 486.59"
+                                                                                                    x="0px" y="0px"
+                                                                                                    xml:space="preserve"
+                                                                                                    width="19px" height="19px"
+                                                                                                    fill="#e3e3e3">
+                                                                                                    <polygon
+                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
+                                                                                                    </polygon>
+                                                                                                </svg>
+                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
+                                                                                                    version="1.1"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 12.705 512 486.59"
+                                                                                                    x="0px" y="0px"
+                                                                                                    xml:space="preserve"
+                                                                                                    width="19px" height="19px"
+                                                                                                    fill="#e3e3e3"
+                                                                                                    style="margin-left: 0px;">
+                                                                                                    <polygon
+                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
+                                                                                                    </polygon>
+                                                                                                </svg>
+                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
+                                                                                                    version="1.1"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 12.705 512 486.59"
+                                                                                                    x="0px" y="0px"
+                                                                                                    xml:space="preserve"
+                                                                                                    width="19px" height="19px"
+                                                                                                    fill="#e3e3e3"
+                                                                                                    style="margin-left: 0px;">
+                                                                                                    <polygon
+                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
+                                                                                                    </polygon>
+                                                                                                </svg>
+                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
+                                                                                                    version="1.1"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 12.705 512 486.59"
+                                                                                                    x="0px" y="0px"
+                                                                                                    xml:space="preserve"
+                                                                                                    width="19px" height="19px"
+                                                                                                    fill="#e3e3e3"
+                                                                                                    style="margin-left: 0px;">
+                                                                                                    <polygon
+                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
+                                                                                                    </polygon>
+                                                                                                </svg>
+                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
+                                                                                                    version="1.1"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 12.705 512 486.59"
+                                                                                                    x="0px" y="0px"
+                                                                                                    xml:space="preserve"
+                                                                                                    width="19px" height="19px"
+                                                                                                    fill="#e3e3e3"
+                                                                                                    style="margin-left: 0px;">
+                                                                                                    <polygon
+                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
+                                                                                                    </polygon>
+                                                                                                </svg>
+                                                                                            </div>
+                                                                                            <div class="jq-ry-rated-group jq-ry-group"
+                                                                                                style="width: 100%;">
+                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
+                                                                                                    version="1.1"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 12.705 512 486.59"
+                                                                                                    x="0px" y="0px"
+                                                                                                    xml:space="preserve"
+                                                                                                    width="19px" height="19px"
+                                                                                                    fill="#ff9800">
+                                                                                                    <polygon
+                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
+                                                                                                    </polygon>
+                                                                                                </svg>
+                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
+                                                                                                    version="1.1"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 12.705 512 486.59"
+                                                                                                    x="0px" y="0px"
+                                                                                                    xml:space="preserve"
+                                                                                                    width="19px" height="19px"
+                                                                                                    fill="#ff9800"
+                                                                                                    style="margin-left: 0px;">
+                                                                                                    <polygon
+                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
+                                                                                                    </polygon>
+                                                                                                </svg>
+                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
+                                                                                                    version="1.1"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 12.705 512 486.59"
+                                                                                                    x="0px" y="0px"
+                                                                                                    xml:space="preserve"
+                                                                                                    width="19px" height="19px"
+                                                                                                    fill="#ff9800"
+                                                                                                    style="margin-left: 0px;">
+                                                                                                    <polygon
+                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
+                                                                                                    </polygon>
+                                                                                                </svg>
+                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
+                                                                                                    version="1.1"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 12.705 512 486.59"
+                                                                                                    x="0px" y="0px"
+                                                                                                    xml:space="preserve"
+                                                                                                    width="19px" height="19px"
+                                                                                                    fill="#ff9800"
+                                                                                                    style="margin-left: 0px;">
+                                                                                                    <polygon
+                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
+                                                                                                    </polygon>
+                                                                                                </svg>
+                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
+                                                                                                    version="1.1"
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    viewBox="0 12.705 512 486.59"
+                                                                                                    x="0px" y="0px"
+                                                                                                    xml:space="preserve"
+                                                                                                    width="19px" height="19px"
+                                                                                                    fill="#ff9800"
+                                                                                                    style="margin-left: 0px;">
+                                                                                                    <polygon
+                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
+                                                                                                    </polygon>
+                                                                                                </svg>
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
-                                                                                    <div class="jq-ry-rated-group jq-ry-group"
-                                                                                        style="width: 100%;">
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#ff9800">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#ff9800"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#ff9800"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#ff9800"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#ff9800"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
+                                                                                </div> --}}
+                                                                                <div class="col-md-12 py-4">
+                                                                                    {{ $review->review_text }}
+                                                                                </div>
+                                                                                @php
+                                                                                    $files = json_decode($review->files, true);
+
+                                                                                @endphp
+                                                                                @if (!empty($files) && is_array($files))
+                                                                                <div class="row gallery">
+                                                                                    @forelse ($files as $f)
+                                                                                        @php
+                                                                                            $fextension = pathinfo($f);
+
+                                                                                        @endphp
+                                                                                        @switch($fextension)
+                                                                                            @case('jpeg')
+                                                                                            @case('jpg')
+
+                                                                                            @case('png')
+                                                                                            @case('gif')
+                                                                                                <a href="{{ storage_path('public/review/' . $f) }}"
+                                                                                                    class=" col-md-3 thumbnail"
+                                                                                                    data-toggle="lightbox"
+                                                                                                    data-gallery="gallery"
+                                                                                                    class="col-md-2">
+                                                                                                    <img src="{{ storage_path('public/review/' . $f) }}"
+                                                                                                        class="img-fluid rounded">
+                                                                                                </a>
+                                                                                            @break
+
+                                                                                            @case('mp4')
+                                                                                                <a href="{{ storage_path('public/review/' . $f) }}"
+                                                                                                    class=" col-md-3 thumbnail"
+                                                                                                    data-toggle="lightbox"
+                                                                                                    data-gallery="gallery"
+                                                                                                    class="col-md-2">
+                                                                                                    <video>
+                                                                                                        <source
+                                                                                                            src="{{ storage_path('public/review/' . $f) }}">
+                                                                                                    </video>
+                                                                                                </a>
+                                                                                            @break
+
+                                                                                            @default
+                                                                                        @endswitch
+
+                                                                                        @empty
+                                                                                        @endforelse
+
+
                                                                                     </div>
                                                                                 </div>
+                                                                                @endif
                                                                             </div>
                                                                         </div>
-
                                                                     </div>
                                                                 </div>
+
+
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
+                                                            <div class="row">
 
-                                                    </div>
 
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12 pt-4">
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                            industry. Lorem Ipsum has been the industry's standard dummy
-                                                            text ever since the 1500s, when an unknown printer took a galley
-                                                            of type and scrambled it to make a type specimen book. It has
-                                                            survived not only five centuries, but also the leap into
-                                                            electronic typesetting, remaining essentially unchanged. It was
-                                                            popularised in the 1960s with the release of Letraset sheets
-                                                            containing Lorem Ipsum passages, and more recently with desktop
-                                                            publishing software like Aldus PageMaker including versions of
-                                                            Lorem Ipsum.</p>
-                                                    </div>
 
-                                                    <div class="col-6 col-md-4">
-                                                        <div class="client-review-list">
-                                                            <div class="media">
-                                                                <div class="media-left media-middle">
-                                                                    <a href="#">
-                                                                        <img class="media-object"
-                                                                            src="img/client/client-list-icon-1.png"
-                                                                            alt="client-img">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h6 class="media-heading">Prons</h6>
-                                                                </div>
+
                                                             </div>
-                                                            <ul class="check-list">
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i> All
-                                                                </li>
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i> Design
-                                                                </li>
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i>
-                                                                    Developing</li>
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i> Metalic
-                                                                </li>
-                                                            </ul>
+
+
+
+
                                                         </div>
-                                                    </div>
-                                                    <div class="col-6 col-md-4">
-                                                        <div class="client-review-list">
-                                                            <div class="media">
-                                                                <div class="media-left media-middle">
-                                                                    <a href="#">
-                                                                        <img class="media-object"
-                                                                            src="img/client/client-list-icon-2.png"
-                                                                            alt="client-img">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h6 class="media-heading">Prons</h6>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="check-list icon-red">
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i> All
-                                                                </li>
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i> Design
-                                                                </li>
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i>
-                                                                    Developing</li>
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i> Metalic
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    @endforeach
+                                                @endif
 
-                                            </div>
-                                            <div class="col-12 review-our-product-area">
-                                                <div class="row">
-                                                    <div class="col-12 col-md-6">
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <div class="media">
-                                                                    <div class="media-left media-middle">
-                                                                        <a href="#">
-                                                                            <img class="media-object rounded-circle"
-                                                                                src="img/client/client-img-1.png"
-                                                                                alt="client-img">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="media-body ml-2">
-                                                                        <h4 class="media-heading client-title">Robert Strud
-                                                                        </h4>
-                                                                        <div class="client-subtitle">GJ <a
-                                                                                href="#">India</a></div>
-                                                                        <div class="">
-                                                                            <p class="review-date">November 17, 2016</p>
-                                                                        </div>
-                                                                        <div class="rating-star d-flex">
-                                                                            <span
-                                                                                class="badge badge-secondary wd-star-market-badge text-uppercase">4.5
-                                                                                <i class="fa fa-star-o"
-                                                                                    aria-hidden="true"></i></span>
-                                                                            <div class="review-rating-yellow-5  jq-ry-container"
-                                                                                style="width: 95px;">
-                                                                                <div class="jq-ry-group-wrapper">
-                                                                                    <div
-                                                                                        class="jq-ry-normal-group jq-ry-group">
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#e3e3e3">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#e3e3e3"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#e3e3e3"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#e3e3e3"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#e3e3e3"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                    </div>
-                                                                                    <div class="jq-ry-rated-group jq-ry-group"
-                                                                                        style="width: 100%;">
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#ff9800">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#ff9800"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#ff9800"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#ff9800"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                        <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                            version="1.1"
-                                                                                            xmlns="http://www.w3.org/2000/svg"
-                                                                                            viewBox="0 12.705 512 486.59"
-                                                                                            x="0px" y="0px"
-                                                                                            xml:space="preserve"
-                                                                                            width="19px" height="19px"
-                                                                                            fill="#ff9800"
-                                                                                            style="margin-left: 0px;">
-                                                                                            <polygon
-                                                                                                points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                            </polygon>
-                                                                                        </svg>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-
-                                                    </div>
-
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12 pt-4">
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                            industry. Lorem Ipsum has been the industry's standard dummy
-                                                            text ever since the 1500s, when an unknown printer took a galley
-                                                            of type and scrambled it to make a type specimen book. It has
-                                                            survived not only five centuries, but also the leap into
-                                                            electronic typesetting, remaining essentially unchanged. It was
-                                                            popularised in the 1960s with the release of Letraset sheets
-                                                            containing Lorem Ipsum passages, and more recently with desktop
-                                                            publishing software like Aldus PageMaker including versions of
-                                                            Lorem Ipsum.</p>
-                                                    </div>
-
-                                                    <div class="col-6 col-md-4">
-                                                        <div class="client-review-list">
-                                                            <div class="media">
-                                                                <div class="media-left media-middle">
-                                                                    <a href="#">
-                                                                        <img class="media-object"
-                                                                            src="img/client/client-list-icon-1.png"
-                                                                            alt="client-img">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h6 class="media-heading">Prons</h6>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="check-list">
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i> All
-                                                                </li>
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i> Design
-                                                                </li>
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i>
-                                                                    Developing</li>
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i> Metalic
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6 col-md-4">
-                                                        <div class="client-review-list">
-                                                            <div class="media">
-                                                                <div class="media-left media-middle">
-                                                                    <a href="#">
-                                                                        <img class="media-object"
-                                                                            src="img/client/client-list-icon-2.png"
-                                                                            alt="client-img">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h6 class="media-heading">Prons</h6>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="check-list icon-red">
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i> All
-                                                                </li>
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i> Design
-                                                                </li>
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i>
-                                                                    Developing</li>
-                                                                <li><i class="fa fa-check" aria-hidden="true"></i> Metalic
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="row">
-                                                    <a href="https://unsplash.it/1200/768.jpg?image=251"
-                                                        data-toggle="lightbox" data-gallery="gallery" class="col-md-2">
-                                                        <img src="https://unsplash.it/600.jpg?image=251"
-                                                            class="img-fluid rounded">
-                                                    </a>
-                                                    <a href="https://unsplash.it/1200/768.jpg?image=252"
-                                                        data-toggle="lightbox" data-gallery="gallery" class="col-md-2">
-                                                        <img src="https://unsplash.it/600.jpg?image=252"
-                                                            class="img-fluid rounded">
-                                                    </a>
-                                                    <a href="https://unsplash.it/1200/768.jpg?image=253"
-                                                        data-toggle="lightbox" data-gallery="gallery" class="col-md-2">
-                                                        <img src="https://unsplash.it/600.jpg?image=253"
-                                                            class="img-fluid rounded">
-                                                    </a>
-                                                </div>
 
 
                                             </div>
 
-                                        </div>
+                                            <!--
+                                                    =================================
+                                                    Review Comment Section
+                                                    =================================
+                                                -->
+                                            <div class="review-comment-section d-none">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-12 col-lg-12 col-xl-8">
+                                                        <div class="reviews-title leave-opinion">
+                                                            <h3>Leave your Opinion here</h3>
+                                                        </div>
+                                                        <form>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="first" class="color-black">Name
+                                                                            *</label>
+                                                                        <input type="text" class="form-control"
+                                                                            placeholder="" id="first">
+                                                                    </div>
+                                                                </div>
 
-                                        <!--
-                                            =================================
-                                            Review Comment Section
-                                            =================================
-                                        -->
-                                        <div class="review-comment-section">
-                                            <div class="row">
-                                                <div class="col-12 col-md-12 col-lg-12 col-xl-8">
-                                                    <div class="reviews-title leave-opinion">
-                                                        <h3>Leave your Opinion here</h3>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="last" class="color-black">Email
+                                                                            *</label>
+                                                                        <input type="email" class="form-control"
+                                                                            placeholder="" id="last">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="last" class="color-green"></label>
+                                                                        <textarea class="form-control col-md-12" id="exampleFormControlTextarea1" placeholder="Write your Opinion here ... "></textarea>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="last"
+                                                                            class="color-green">Prons</label>
+                                                                        <textarea class="form-control col-md-12" id="exampleFormControlTextarea1" placeholder="Write your Opinion here ... "></textarea>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="exampleFormControlTextarea2wd"
+                                                                            class="color-red">Cons</label>
+                                                                        <textarea class="form-control col-12" id="exampleFormControlTextarea2wd" placeholder="Write your Opinion here ... "></textarea>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-12 col-md-12 product-rating-area">
+                                                                    <div class="product-rating-ph">
+                                                                        <div class="rating-area">
+                                                                            <div class="d-flex justify-content-between">
+                                                                                <p>Camera</p>
+                                                                                <div class="rating">
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-1"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-2"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-3"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-4"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-5"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div
+                                                                                class="rating-slider-1 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                                                                <span tabindex="0"
+                                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                                    style="left: 0%;"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="rating-area">
+                                                                            <div class="d-flex justify-content-between">
+                                                                                <p>Video Quality</p>
+                                                                                <div class="rating">
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-2-1"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-2-2"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-2-3"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-2-4"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-2-5"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div
+                                                                                class="rating-slider-2 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                                                                <span tabindex="0"
+                                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                                    style="left: 0%;"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="rating-area">
+                                                                            <div class="d-flex justify-content-between">
+                                                                                <p>Box Quality</p>
+                                                                                <div class="rating">
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-3-1"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-3-2"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-3-3"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-3-4"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-3-5"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div
+                                                                                class="rating-slider-3 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                                                                <span tabindex="0"
+                                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                                    style="left: 0%;"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="rating-area">
+                                                                            <div class="d-flex justify-content-between">
+                                                                                <p>Video Quality</p>
+                                                                                <div class="rating">
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-4-1"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-4-2"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-4-3"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-4-4"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-4-5"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div
+                                                                                class="rating-slider-4 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                                                                <span tabindex="0"
+                                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                                    style="left: 0%;"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="rating-area">
+                                                                            <div class="d-flex justify-content-between">
+                                                                                <p>Box Quality</p>
+                                                                                <div class="rating">
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-5-1"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-5-2"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-5-3"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-5-4"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                    <a href="#"><i
+                                                                                            class="fa fa-star cat-5-5"
+                                                                                            aria-hidden="true"></i></a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div
+                                                                                class="rating-slider-5 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                                                                <span tabindex="0"
+                                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                                    style="left: 0%;"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-12">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary review-comment"><i
+                                                                            class="fa fa-check" aria-hidden="true"></i> Post
+                                                                        Comment</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
                                                     </div>
-                                                    <form>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="first" class="color-black">Name
-                                                                        *</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="" id="first">
-                                                                </div>
-                                                            </div>
 
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="last" class="color-black">Email
-                                                                        *</label>
-                                                                    <input type="email" class="form-control"
-                                                                        placeholder="" id="last">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <label for="last" class="color-green"></label>
-                                                                    <textarea class="form-control col-md-12" id="exampleFormControlTextarea1" placeholder="Write your Opinion here ... "></textarea>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="last"
-                                                                        class="color-green">Prons</label>
-                                                                    <textarea class="form-control col-md-12" id="exampleFormControlTextarea1" placeholder="Write your Opinion here ... "></textarea>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="exampleFormControlTextarea2wd"
-                                                                        class="color-red">Cons</label>
-                                                                    <textarea class="form-control col-12" id="exampleFormControlTextarea2wd" placeholder="Write your Opinion here ... "></textarea>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-12 col-md-12 product-rating-area">
-                                                                <div class="product-rating-ph">
-                                                                    <div class="rating-area">
-                                                                        <div class="d-flex justify-content-between">
-                                                                            <p>Camera</p>
-                                                                            <div class="rating">
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-1"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-2"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-3"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-4"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-5"
-                                                                                        aria-hidden="true"></i></a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="rating-slider-1 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                                            <span tabindex="0"
-                                                                                class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                                style="left: 0%;"></span></div>
-                                                                    </div>
-                                                                    <div class="rating-area">
-                                                                        <div class="d-flex justify-content-between">
-                                                                            <p>Video Quality</p>
-                                                                            <div class="rating">
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-2-1"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-2-2"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-2-3"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-2-4"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-2-5"
-                                                                                        aria-hidden="true"></i></a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="rating-slider-2 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                                            <span tabindex="0"
-                                                                                class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                                style="left: 0%;"></span></div>
-                                                                    </div>
-                                                                    <div class="rating-area">
-                                                                        <div class="d-flex justify-content-between">
-                                                                            <p>Box Quality</p>
-                                                                            <div class="rating">
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-3-1"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-3-2"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-3-3"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-3-4"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-3-5"
-                                                                                        aria-hidden="true"></i></a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="rating-slider-3 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                                            <span tabindex="0"
-                                                                                class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                                style="left: 0%;"></span></div>
-                                                                    </div>
-                                                                    <div class="rating-area">
-                                                                        <div class="d-flex justify-content-between">
-                                                                            <p>Video Quality</p>
-                                                                            <div class="rating">
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-4-1"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-4-2"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-4-3"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-4-4"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-4-5"
-                                                                                        aria-hidden="true"></i></a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="rating-slider-4 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                                            <span tabindex="0"
-                                                                                class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                                style="left: 0%;"></span></div>
-                                                                    </div>
-                                                                    <div class="rating-area">
-                                                                        <div class="d-flex justify-content-between">
-                                                                            <p>Box Quality</p>
-                                                                            <div class="rating">
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-5-1"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-5-2"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-5-3"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-5-4"
-                                                                                        aria-hidden="true"></i></a>
-                                                                                <a href="#"><i
-                                                                                        class="fa fa-star cat-5-5"
-                                                                                        aria-hidden="true"></i></a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div
-                                                                            class="rating-slider-5 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                                            <span tabindex="0"
-                                                                                class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                                style="left: 0%;"></span></div>
+                                                    <div class="col-12 col-md-12 col-lg-12 col-xl-4 product-rating-area">
+                                                        <div class="product-rating-list product-rating-desktop">
+                                                            <div class="rating-area">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p>Camera</p>
+                                                                    <div class="rating">
+                                                                        <a href="#"><i class="fa fa-star cat-1"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-2"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-3"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-4"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-5"
+                                                                                aria-hidden="true"></i></a>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-
-                                                            <div class="col-md-12">
-                                                                <button type="submit"
-                                                                    class="btn btn-primary review-comment"><i
-                                                                        class="fa fa-check" aria-hidden="true"></i> Post
-                                                                    Comment</button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-
-                                                <div class="col-12 col-md-12 col-lg-12 col-xl-4 product-rating-area">
-                                                    <div class="product-rating-list product-rating-desktop">
-                                                        <div class="rating-area">
-                                                            <div class="d-flex justify-content-between">
-                                                                <p>Camera</p>
-                                                                <div class="rating">
-                                                                    <a href="#"><i class="fa fa-star cat-1"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-2"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-3"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-4"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-5"
-                                                                            aria-hidden="true"></i></a>
+                                                                <div
+                                                                    class="rating-slider-1 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                                                    <span tabindex="0"
+                                                                        class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                        style="left: 0%;"></span>
                                                                 </div>
                                                             </div>
-                                                            <div
-                                                                class="rating-slider-1 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                                <span tabindex="0"
-                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                    style="left: 0%;"></span></div>
-                                                        </div>
-                                                        <div class="rating-area">
-                                                            <div class="d-flex justify-content-between">
-                                                                <p>Video Quality</p>
-                                                                <div class="rating">
-                                                                    <a href="#"><i class="fa fa-star cat-2-1"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-2-2"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-2-3"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-2-4"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-2-5"
-                                                                            aria-hidden="true"></i></a>
+                                                            <div class="rating-area">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p>Video Quality</p>
+                                                                    <div class="rating">
+                                                                        <a href="#"><i class="fa fa-star cat-2-1"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-2-2"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-2-3"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-2-4"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-2-5"
+                                                                                aria-hidden="true"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="rating-slider-2 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                                                    <span tabindex="0"
+                                                                        class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                        style="left: 0%;"></span>
                                                                 </div>
                                                             </div>
-                                                            <div
-                                                                class="rating-slider-2 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                                <span tabindex="0"
-                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                    style="left: 0%;"></span></div>
-                                                        </div>
-                                                        <div class="rating-area">
-                                                            <div class="d-flex justify-content-between">
-                                                                <p>Box Quality</p>
-                                                                <div class="rating">
-                                                                    <a href="#"><i class="fa fa-star cat-3-1"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-3-2"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-3-3"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-3-4"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-3-5"
-                                                                            aria-hidden="true"></i></a>
+                                                            <div class="rating-area">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p>Box Quality</p>
+                                                                    <div class="rating">
+                                                                        <a href="#"><i class="fa fa-star cat-3-1"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-3-2"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-3-3"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-3-4"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-3-5"
+                                                                                aria-hidden="true"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="rating-slider-3 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                                                    <span tabindex="0"
+                                                                        class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                        style="left: 0%;"></span>
                                                                 </div>
                                                             </div>
-                                                            <div
-                                                                class="rating-slider-3 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                                <span tabindex="0"
-                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                    style="left: 0%;"></span></div>
-                                                        </div>
-                                                        <div class="rating-area">
-                                                            <div class="d-flex justify-content-between">
-                                                                <p>Video Quality</p>
-                                                                <div class="rating">
-                                                                    <a href="#"><i class="fa fa-star cat-4-1"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-4-2"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-4-3"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-4-4"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-4-5"
-                                                                            aria-hidden="true"></i></a>
+                                                            <div class="rating-area">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p>Video Quality</p>
+                                                                    <div class="rating">
+                                                                        <a href="#"><i class="fa fa-star cat-4-1"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-4-2"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-4-3"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-4-4"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-4-5"
+                                                                                aria-hidden="true"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="rating-slider-4 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                                                    <span tabindex="0"
+                                                                        class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                        style="left: 0%;"></span>
                                                                 </div>
                                                             </div>
-                                                            <div
-                                                                class="rating-slider-4 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                                <span tabindex="0"
-                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                    style="left: 0%;"></span></div>
-                                                        </div>
-                                                        <div class="rating-area">
-                                                            <div class="d-flex justify-content-between">
-                                                                <p>Box Quality</p>
-                                                                <div class="rating">
-                                                                    <a href="#"><i class="fa fa-star cat-5-1"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-5-2"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-5-3"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-5-4"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="#"><i class="fa fa-star cat-5-5"
-                                                                            aria-hidden="true"></i></a>
+                                                            <div class="rating-area">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <p>Box Quality</p>
+                                                                    <div class="rating">
+                                                                        <a href="#"><i class="fa fa-star cat-5-1"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-5-2"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-5-3"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-5-4"
+                                                                                aria-hidden="true"></i></a>
+                                                                        <a href="#"><i class="fa fa-star cat-5-5"
+                                                                                aria-hidden="true"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="rating-slider-5 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+                                                                    <span tabindex="0"
+                                                                        class="ui-slider-handle ui-corner-all ui-state-default"
+                                                                        style="left: 0%;"></span>
                                                                 </div>
                                                             </div>
-                                                            <div
-                                                                class="rating-slider-5 ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                                <span tabindex="0"
-                                                                    class="ui-slider-handle ui-corner-all ui-state-default"
-                                                                    style="left: 0%;"></span></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1137,8 +877,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane specifiction-section" id="specifiction" style="display: none;">
+                            {{-- <div class="tab-pane specifiction-section" id="specifiction" style="display: none;">
                             <div class="row">
                                 <div class="col-12 col-md-5">
                                     <h2 class="specifiction-title">Specifiction</h2>
@@ -1279,24 +1018,20 @@
                                 </div>
 
                             </div>
+                        </div> --}}
                         </div>
                     </div>
                 </div>
+
             </div>
+        </section>
+    @endsection
 
-        </div>
-    </section>
-@endsection
-
-@push('js')
-
-<script>
-    $(document).ready(funtion(e){
-        loadreview();
-    });
-    function loadreview(){
-
-    }
-</script>
-
-@endpush
+    @push('js')
+        <script>
+            $('.gallery>.thumbnail').on('click', function(e) {
+                e.preventDefault();
+                $(this).ekkoLightbox();
+            });
+        </script>
+    @endpush

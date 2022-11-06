@@ -23,7 +23,7 @@ class HomeController extends Controller
      }
      function subcategory($category_slug,$subcategory_slug){
 
-        $products=Product::join('categories','categories.id','products.category')
+        $products=Product::select('products.*')->join('categories','categories.id','products.category')
         ->leftJoin('subcategories','subcategories.id','products.sub_category')
         ->where('categories.slug',$category_slug)
         ->where('subcategories.slug',$subcategory_slug)->get();

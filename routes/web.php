@@ -25,7 +25,9 @@ Route::get('/product',[HomeController::class,'productlist'] )->name('productlist
 Route::get('/product/{product_slug}',[HomeController::class,'singleProduct'] )->name('singleProduct');
 Route::get('/category/{category_slug}',[HomeController::class,'category'] )->name('category.list');
 Route::get('/subcatgory/{category_slug}/{subcategory_slug}',[HomeController::class,'subcategory'] )->name('subcategory.list');
-Route::get('/product/{produt_id}/{produc_slug}',[HomeController::class,'subcategory'] )->name('produreview.list');
+//Route::get('/product/{produt_id}/{produc_slug}',[HomeController::class,'subcategory'] )->name('produreview.list');
+Route::post('upload/media', [ReviewController::class,'uploadmedia'])->name('uploadmedia');
+Route::post('upload/media/remove', [ReviewController::class,'removemedia'])->name('removemedia');
 
 
 
@@ -43,13 +45,17 @@ Route::get('/dashboard', function () {
 Route::post("user/register",[UserController::class,'register'])->name('user.register');
 Route::get("submit/review",[ReviewController::class,'index'])->name('submit.review');
 Route::post("submit/review/store",[ReviewController::class,'store'])->name('submit.review.store');
+Route::post("submit/review/update",[ReviewController::class,'update'])->name('submit.review.update');
 Route::post("/checkAlreadyReview",[ReviewController::class,'checkAlreadyReview'])->name('checkAlreadyReview');
-Route::get("/assignReviewtoUser/{review_id}",[ReviewController::class,'assignuser'])->name('assignuser');
+Route::get("/assignReviewtoUser/{review_id}", [ReviewController::class,'assignuser'])->name('assignuser');
 // login
 Route::get('myaccount',[MyaccountController::class,'index'] )->name('myaccount');
 Route::post('profile/update',[MyaccountController::class,'profileupdate'] )->name('profile.update');
 Route::post('profile/change-password',[MyaccountController::class,'changepassword'] )->name('profile.changepassword');
 Route::post('review/list', [MyaccountController::class,'userReviewlist'])->name('userReviewlist');
+Route::get('review/edit/{id}', [ReviewController::class,'edit'])->name('review.edit');
+Route::get('myaccount',[MyaccountController::class,'index'] )->name('myaccount');
+Route::get('user/confirm',[UserController::class,'confirmation'] )->name('confirmation');
 
 
 
