@@ -8,6 +8,7 @@ use App\Models\Subcategory;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -63,6 +64,13 @@ class ProductController extends Controller
         $product->short_description=$request->short_description;
         $product->full_description=$request->full_description;
         $product->thumbnail_image=null;
+        $product->gallery_image=(!empty($request->filesNameList))?$request->filesNameList:null;
+        if($request->file('thumbnail_image')){
+            $file = $request->file('thumbnail_image');
+            $fileName = uniqid().date('ymdHis'). '.' .pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+            $filePath = $request->file('thumbnail_image')->storeAs('product', $fileName, 'public');
+            $product->thumbnail_image = $filePath;
+        }
         if($product->save()){
             $product_id=$product->id;
             $attribute=$request->attribute;
@@ -148,6 +156,13 @@ class ProductController extends Controller
         $product->short_description=$request->short_description;
         $product->full_description=$request->full_description;
         $product->thumbnail_image=null;
+        $product->gallery_image=(!empty($request->filesNameList))?$request->filesNameList:null;
+        if($request->file('thumbnail_image')){
+            $file = $request->file('thumbnail_image');
+            $fileName = uniqid().date('ymdHis'). '.' .pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+            $filePath = $request->file('thumbnail_image')->storeAs('product', $fileName, 'public');
+            $product->thumbnail_image = $filePath;
+        }
         if($product->save()){
             $product_id=$product->id;
             $attribute=$request->attribute;
@@ -209,4 +224,47 @@ class ProductController extends Controller
 
          return response()->json(['recordsTotal'=>count($products),'recordsFiltered'=>count($products),'data'=>$products]);
     }
+    function uploadmedia(Request $request){
+        $response=['status'=>false,
+                   "message" =>"Something is wrong, please try again later"];
+            $request->validate([
+                'file' => 'required|mimes:jpeg,jpg,png,mp4|max:2048'
+                ]);
+
+            if(!empty($request->file('file'))) {
+                $file = $request->file('file');
+                $fileName = uniqid().date('ymdHis'). '.' .pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+                $filePath = $request->file('file')->storeAs('product', $fileName, 'public');
+                $response['status'] = true;
+                $response['message'] = 'file uploaded Successfully';
+                $response['fileName'] = $fileName;
+                $response['filePath'] = $filePath;
+
+            }
+            if ($response['status']) {
+                return response() ->json($response, 200);
+            } else {
+                return response() ->json($response, 400);
+            }
+       }
+       public function removemedia(Request $request) {
+        $name= $request->name;
+        $response=['status'=>0];
+        if($request->product_id){
+            $p = Product::find($request->product_id);
+
+            if(!empty($p)){
+               $p->gallery_image=(!empty($request->gallery_image) && count(json_decode($request->gallery_image, true))>0)?$request->gallery_image:null;
+               $p->save();
+            }
+          }
+        if(Storage::exists('public/product/'.$name)){
+           Storage::delete('public/product/'.$name);
+
+            $response=['status'=>1];
+            return response() ->json($response, 200);
+
+        }
+        return response() ->json($response, 200);
+      }
 }

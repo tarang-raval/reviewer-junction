@@ -14,7 +14,7 @@
 
                 </div>
                 @endif
-                <form id="productform" method="post" action="{{(isset($product) && !empty($product))?route('admin.product.update',$product->id):route('admin.product.store')}}">
+                <form id="productform" method="post" action="{{(isset($product) && !empty($product))?route('admin.product.update',$product->id):route('admin.product.store')}}" enctype="multipart/form-data">
                     @csrf
                     @if (isset($product) && !empty($product))
                     @method('PUT')
@@ -94,8 +94,12 @@
 
                             <div class="col-md-12 repeater">
                                 <div data-repeater-list="attribute">
-                                    @if(isset($product) && !empty($product))
+                                    @if(isset($product) && !empty($product->productAttributes->count()))
                                     @if($product->productAttributes->count()>0)
+                                    @php
+
+                                        @endphp
+
                                     @forelse ($product->productAttributes as $attribute)
                                     <div data-repeater-item>
 
@@ -111,10 +115,10 @@
                                                 <div class="form-group">
                                                     <label for="">Attribute Name</label>
                                                     <input type="text" class="form-control" name="attribute_value" id=""
-                                                        aria-describedby="helpId" placeholder="" value="{{$attribute->attribute_value}}">
+                                                        aria-describedby="helpId" placeholder="{{$attribute->declined}}" value="{{$attribute->attribute_value}}">
                                                 </div>
                                             </div>
-                                            <input type="hidden" name="attribute_id" value="{{$attribute->id}}">
+                                            <input type="hidden" name="attribute_id" value="{{(isset($attribute) && isset($attribute->id))?$attribute->id:''}}">
                                             <div class="col-md-3 ">
                                                 <input data-repeater-delete type="button" class="btn btn-danger mt-3"
                                                     value="Delete" />
@@ -194,7 +198,7 @@
                                                         aria-describedby="helpId" placeholder="">
                                                 </div>
                                             </div>
-                                            <input type="hidden" name="attribute_id" value="{{$attribute->id}}">
+
                                             <div class="col-md-3 ">
                                                 <input data-repeater-delete type="button" class="btn btn-danger mt-3"
                                                     value="Delete" />
@@ -223,6 +227,134 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Thubnail Image</label>
+                                    <input type="file"  name="thumbnail_image" accept="image/*">
+                                    @if (isset($product) && !empty($product) && isset($product->thumbnail_image))
+                                    <div class="" style="width:150px">
+                                    <img src="{{asset('storage/'.$product->thumbnail_image)}}" class="img-thumbnail" alt="product">
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Add gallery Image</label>
+                            <!--begin::Dropzone-->
+                            <div class="dropzone dropzone-queue mb-2 border-0" id="dropzonejs">
+                                <!--begin::Controls-->
+                                <div class="dropzone-panel mb-lg-0 mb-2">
+                                    <a class="dropzone-select btn btn-sm btn-primary me-2">Attach
+                                        files</a>
+                                    <a class="dropzone-remove-all btn btn-sm btn-light-primary">Remove
+                                        All</a>
+                                </div>
+                                <!--end::Controls-->
+
+                                <!--begin::Items-->
+                                <div class="dropzone-items wm-200px">
+                                    <div class="dropzone-item" style="display:none">
+                                        <!--begin::File-->
+                                        <div class="dropzone-file">
+                                            <div class="dropzone-filename"
+                                                title="some_image_file_name.jpg">
+                                                <span data-dz-name>some_image_file_name.jpg</span>
+                                                <strong>(<span data-dz-size>340kb</span>)</strong>
+                                            </div>
+
+                                            <div class="dropzone-error" data-dz-errormessage></div>
+                                        </div>
+                                        <!--end::File-->
+
+                                        <!--begin::Progress-->
+                                        <div class="dropzone-progress">
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary"
+                                                    role="progressbar" aria-valuemin="0"
+                                                    aria-valuemax="100" aria-valuenow="0"
+                                                    data-dz-uploadprogress>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Progress-->
+
+                                        <!--begin::Toolbar-->
+                                        <div class="dropzone-toolbar">
+                                            <span class="dropzone-delete" data-dz-remove><i
+                                                    class="bi bi-x fs-1"></i></span>
+                                        </div>
+                                        <!--end::Toolbar-->
+                                    </div>
+                                </div>
+                                <!--end::Items-->
+                            </div>
+                            <!--end::Dropzone-->
+
+                            <!--begin::Hint-->
+                            <span class="form-text text-muted">Max file size is 1MB and max number of
+                                files is 7.</span>
+                            <!--end::Hint-->
+                        </div>
+                        <input type="hidden"  name="filesNameList" id="uploadimage" value="{{ (isset($product) && !empty($product) && isset($product->gallery_image))?$product->gallery_image:old('gallery_image')}}">
+                        @php
+                        $files = json_decode((isset($product) && !empty($product) && isset($product->gallery_image))?$product->gallery_image:'[]', true);
+
+                    @endphp
+                    @if (!empty($files) && is_array($files))
+                    <div class="row gallery">
+                        @forelse ($files as $f)
+                            @php
+                                $fextension = pathinfo($f,PATHINFO_EXTENSION );
+
+                            @endphp
+                            @switch($fextension)
+                                @case('jpeg')
+                                @case('jpg')
+                                @case('png')
+                                @case('gif')
+                                <div>
+                                    <a href="{{ asset('storage/product/' . $f) }}"
+                                        class=" col-md-3 thumbnail"
+                                        data-toggle="lightbox"
+                                        data-gallery="gallery"
+                                        class="col-md-2" target="_blank">
+                                        <img src="{{ asset('storage/product/' . $f) }}"
+                                            class="img-fluid rounded">
+                                            <a href="javascript:void(0)" data-filename="{{$f}}" data-product-id="{{$product->id}}" class="removeImg">remove</a>
+                                    </a>
+                                </div>
+                                @break
+
+                                @case('mp4')
+
+                                <div>
+                                    <a href="{{ asset('storage/product/' . $f) }}"
+                                        class=" col-md-3 thumbnail"
+                                        data-toggle="lightbox"
+                                        data-gallery="gallery"
+                                        class="col-md-2" target="_blank">
+                                        <video>
+                                            <source  src="{{ storage_path('storage/product/' . $f) }}">
+                                        </video>
+                                            <a href="javascript:void(0)" data-filename="{{$f}}" data-product-id="{{$product->id}}" class="removeImg">remove</a>
+                                    </a>
+                                </div>
+
+                                @break
+
+                                @default
+                            @endswitch
+
+                            @empty
+                            @endforelse
+
+
+                        </div>
+                    </div>
+                    @endif
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Save</button>
@@ -310,6 +442,126 @@
                 }
             });
             $('#category').trigger('change');
+        });
+         // set the dropzone container id
+         let uploadArray={!! (isset($product) && !empty($product) && isset($product->gallery_image))?$product->gallery_image:'[]' !!};
+        const id = "#dropzonejs";
+        const dropzone = document.querySelector(id);
+
+        // set the preview element template
+        var previewNode = dropzone.querySelector(".dropzone-item");
+        previewNode.id = "";
+        var previewTemplate = previewNode.parentNode.innerHTML;
+        previewNode.parentNode.removeChild(previewNode);
+
+        var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
+            url: "/admin/upload/media", // Set the url for your upload script location
+            headers: {
+							  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							  },
+            parallelUploads: 2,
+            maxFiles: 7,
+            maxFilesize: 1, // Max filesize in MB
+            previewTemplate: previewTemplate,
+            addRemoveLinks:true,
+            acceptedFiles: ".jpeg,.jpg,.png,.mp4",
+            previewsContainer: id + " .dropzone-items", // Define the container to display the previews
+            clickable: id +
+                " .dropzone-select" // Define the element that should be used as click trigger to select files.
+        });
+
+        myDropzone.on("addedfile", function(file) {
+            // Hookup the start button
+            const dropzoneItems = dropzone.querySelectorAll('.dropzone-item');
+            dropzoneItems.forEach(dropzoneItem => {
+                dropzoneItem.style.display = '';
+            });
+        });
+
+        // Update the total progress bar
+        myDropzone.on("totaluploadprogress", function(progress) {
+            const progressBars = dropzone.querySelectorAll('.progress-bar');
+            progressBars.forEach(progressBar => {
+                progressBar.style.width = progress + "%";
+            });
+        });
+
+        myDropzone.on("sending", function(file) {
+            // Show the total progress bar when upload starts
+            const progressBars = dropzone.querySelectorAll('.progress-bar');
+            progressBars.forEach(progressBar => {
+                progressBar.style.opacity = "1";
+            });
+        });
+
+        // Hide the total progress bar when nothing"s uploading anymore
+        myDropzone.on("complete", function(progress) {
+            const progressBars = dropzone.querySelectorAll('.dz-complete');
+
+            setTimeout(function() {
+                progressBars.forEach(progressBar => {
+                    progressBar.querySelector('.progress-bar').style.opacity = "0";
+                    progressBar.querySelector('.progress').style.opacity = "0";
+                });
+            }, 300);
+        });
+        myDropzone.on("success", function (file, response)  {
+
+
+            if(response.status){
+                uploadArray.push(response.fileName);
+                    $('#uploadimage').val(JSON.stringify(uploadArray));
+                    $('.dz-remove').last() .attr('id',response.fileName);
+            }
+
+        });
+        myDropzone.on("removedfile", function (file)  {
+
+           // let response = JSON.parse(responseText);
+
+                let idfile = file._removeLink.id
+                let index = uploadArray.find((val) => val == idfile);
+                if(index > -1){
+                    uploadArray.splice(index, 1);
+                    $('#uploadimage').val(JSON.stringify(uploadArray));
+                }
+           $.ajax({
+                type: 'POST',
+                url: "/admin/upload/media/remove", // Set the url for your upload script location
+                headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                data: {name: idfile},
+                sucess: function(data){
+
+                }
+            });
+
+        });
+        $('.removeImg').click(function(e){
+                $element = $(this);
+            let fileName=$(this).data('filename');
+            let id=$(this).data('product-id');
+            if(fileName!=undefined && fileName!=''){
+                let idfile = fileName
+                let index = uploadArray.findIndex((val) => val == idfile);
+                if(index > -1){
+                    uploadArray.splice(index, 1);
+                    $('#uploadimage').val(JSON.stringify(uploadArray));
+                    $(this).closest('div').remove();
+                }
+           $.ajax({
+                type: 'POST',
+                url: "/admin/upload/media/remove", // Set the url for your upload script location
+                headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                data: {name: idfile,product_id:id,gallery_image:JSON.stringify(uploadArray)},
+                sucess: function(data){
+
+                }
+            });
+            }
         });
     </script>
 @endpush

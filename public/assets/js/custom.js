@@ -5,6 +5,7 @@ function assignReviewtoUser(){
                 $.ajax({
                     "url": "/assignReviewtoUser/"+reviewformId,
                     'method': "GET",
+                    data: {'is_new':1},
                     success: function(response) {
                         if (response.status) {
                             sessionStorage.removeItem('reviewformID');
@@ -70,6 +71,7 @@ function assignReviewtoUser(){
 
                  }},
                 password:{required:true,minlength:8},
+                acceptTermContions:{required:true}
             },
             messages:{
                 first_name:{
@@ -143,20 +145,38 @@ function assignReviewtoUser(){
                     data: $('#registerform').serialize(),
                     success: function(response) {
                         if (response.status) {
-                            assignReviewtoUser().then(function(review_id){
-                                if(review_id!=null){
-                                   window.location.assign('/myaccount');
-                                }else{
-                                   window.location.assign(currentPage);
-                                }
-                       }).catch(response=>{
-                        alert(response.message);
-                        window.location.assign(currentPage);
-                    });;
+                            let reviewformId=sessionStorage.getItem('reviewformID');
+                            if(reviewformId != null){
+
+
+                                        assignReviewtoUser().then(function(review_id){
+                                            if(review_id!=null){
+                                            window.location.assign('/confirm');
+                                            }else{
+                                            window.location.assign('/confirm');
+                                            }
+                                }).catch(response=>{
+                                    alert(response.message);
+                                    window.location.assign(currentPage);
+                                });
+                            }else{
+                                window.location.assign(currentPage);
+                            }
 
                         } else {
                             ToastError(response.message);
 
+                        }
+                    },
+                    error:function(response){
+
+                         response=response.responseJSON;
+                         if(response.errors!=undefined  && response.errors!=null){
+                            let str = '';
+                            for(let x in response.errors){
+                                 str += response.errors[x][0]+'<br/>';
+                            }
+                            $('#signupalert').html(str).addClass('alert-danger');
                         }
                     }
                 });
@@ -176,6 +196,8 @@ function assignReviewtoUser(){
                 data: $('#loginform').serialize(),
                 success: function(response) {
                     if (response.status) {
+                        let reviewformId=sessionStorage.getItem('reviewformID');
+                        if(reviewformId != null){
                         assignReviewtoUser().then(function(review_id){
                                  if(review_id!=null){
                                     window.location.assign('/myaccount');
@@ -186,6 +208,10 @@ function assignReviewtoUser(){
                             alert(response.message);
                             window.location.assign(currentPage);
                         });
+                    }
+                    else{
+                        window.location.assign(currentPage);
+                    }
 
 
 

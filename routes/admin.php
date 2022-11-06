@@ -60,6 +60,8 @@ Route::group([
 
     // setting
     Route::resource('setting', SiteSettingController::class);
+    Route::post('upload/media', [\App\Http\Controllers\Admin\ProductController::class,'uploadmedia'])->name('uploadmedia');
+    Route::post('upload/media/remove', [\App\Http\Controllers\Admin\ProductController::class,'removemedia'])->name('removemedia');
 
 
 });

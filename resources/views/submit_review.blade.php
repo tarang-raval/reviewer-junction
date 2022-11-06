@@ -1,6 +1,18 @@
 @extends('layouts.master')
 @push('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css"
+        integrity="sha512-jU/7UFiaW5UBGODEopEqnbIAHOI8fO6T99m7Tsmqs2gkdujByJfkCbbfPSN4Wlqlb9TGnsuC0YgUgWkRBK7B9A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        .dropzone .dz-message,
+        .dropzone-remove-all {
+            display: none;
+        }
+        .dropzone{
+            border: none;
+            padding: 0;
+        }
+
         .stars {
             width: fit-content;
             margin: 0 auto;
@@ -147,19 +159,19 @@
         }
 
         /*
-    button {
-      background-color: #04AA6D;
-      color: #ffffff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 17px;
-      font-family: Raleway;
-      cursor: pointer;
-    }
+        button {
+          background-color: #04AA6D;
+          color: #ffffff;
+          border: none;
+          padding: 10px 20px;
+          font-size: 17px;
+          font-family: Raleway;
+          cursor: pointer;
+        }
 
-    button:hover {
-      opacity: 0.8;
-    } */
+        button:hover {
+          opacity: 0.8;
+        } */
 
 
 
@@ -254,10 +266,10 @@
                                             <div class="form-group">
 
                                                 <label for="type ofpurchase">How do you purchase Product ?</label>
+                                                <input class="" type="radio" name="type_of_purchase" value="online"
+                                                    checked> Online
                                                 <input class="" type="radio" name="type_of_purchase"
-                                                    id="type_of_purchase" value="online" checked> Online
-                                                <input class="" type="radio" name="type_of_purchase"
-                                                    id="type_of_purchase" value="Offline"> Offline
+                                                    value="Offline"> Offline
                                             </div>
                                             <div id="online">
                                                 <div class="form-group">
@@ -311,8 +323,71 @@
                                             <div class="form-group">
                                                 <label>Your Opnion</label>
                                                 <textarea class="form-control" name="review_text"></textarea>
-                                                <span id="review_text_error" class="invalid-feedback" style="display: block !important;"></span>
+                                                <span id="review_text_error" class="invalid-feedback"
+                                                    style="display: block !important;"></span>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="form-text text-muted">Minimum Character Required <span id="minchar">70</span></span>
+                                                    <span id="characterCount"></span>
+                                                </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label>Add Media</label>
+                                                <!--begin::Dropzone-->
+                                                <div class="dropzone dropzone-queue mb-2 border-none" id="dropzonejs">
+                                                    <!--begin::Controls-->
+                                                    <div class="dropzone-panel mb-lg-0 mb-2">
+                                                        <a class="dropzone-select btn btn-sm btn-primary me-2">Attach
+                                                            files</a>
+                                                        <a class="dropzone-remove-all btn btn-sm btn-light-primary">Remove
+                                                            All</a>
+                                                    </div>
+                                                    <!--end::Controls-->
+
+                                                    <!--begin::Items-->
+                                                    <div class="dropzone-items wm-200px">
+                                                        <div class="dropzone-item" style="display:none">
+                                                            <!--begin::File-->
+                                                            <div class="dropzone-file">
+                                                                <div class="dropzone-filename"
+                                                                    title="some_image_file_name.jpg">
+                                                                    <span data-dz-name>some_image_file_name.jpg</span>
+                                                                    <strong>(<span data-dz-size>340kb</span>)</strong>
+                                                                </div>
+
+                                                                <div class="dropzone-error" data-dz-errormessage></div>
+                                                            </div>
+                                                            <!--end::File-->
+
+                                                            <!--begin::Progress-->
+                                                            <div class="dropzone-progress">
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-primary"
+                                                                        role="progressbar" aria-valuemin="0"
+                                                                        aria-valuemax="100" aria-valuenow="0"
+                                                                        data-dz-uploadprogress>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--end::Progress-->
+
+                                                            <!--begin::Toolbar-->
+                                                            <div class="dropzone-toolbar">
+                                                                <span class="dropzone-delete" data-dz-remove><i
+                                                                        class="bi bi-x fs-1"></i></span>
+                                                            </div>
+                                                            <!--end::Toolbar-->
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Items-->
+                                                </div>
+                                                <!--end::Dropzone-->
+
+                                                <!--begin::Hint-->
+                                                <span class="form-text text-muted">Max file size is 1MB and max number of
+                                                    files is 5.</span>
+                                                <!--end::Hint-->
+                                            </div>
+                                            <input type="hidden"  name="filesNameList" id="uploadimage" value="">
                                             <div class="row d-none">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -381,8 +456,12 @@
 @endsection
 
 @push('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"
+        integrity="sha512-U2WE1ktpMTuRBPoCFDzomoIorbOyUv0sP8B+INA3EzNAhehbzED1rOJg6bCqPf/Tuposxb5ja/MAUnC8THSbLQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('assets/plugins/ckeditor/ckeditor.js') }}"></script>
     <script>
+        const siteSetting= JSON.parse('{!! $sitesetting !!}')
         function check() {
             return new Promise(resolve => {
                 fetch('/checkAlreadyReview', {
@@ -398,8 +477,8 @@
                     resolve(resposne.status);
                 });
             });
-            }
-        async function checkalreadyreview(){
+        }
+        async function checkalreadyreview() {
             return await check();
         }
 
@@ -447,6 +526,16 @@
                     $('#offline').hide();
                 }
             });
+            $('#minchar').val(siteSetting.minium_review_character);
+            CKEDITOR.instances.review_text.on('change', function() {
+                CKEDITOR.instances.review_text.updateElement();
+
+                let text = stripHtml($('[name="review_text"]').val());
+                text = text.replace(/[\s]/,'');
+                 console.log(text.length);
+                $('#characterCount').html(text.length);
+
+        });
 
         });
         $.validator.addMethod(
@@ -470,16 +559,20 @@
             },
             "already review ."
         );
-        function validatereviewtext(){
-                         CKEDITOR.instances.review_text.updateElement();
-                         debugger;
-                         let text=stripHtml($('[name="review_text"]').val());
-                         if(text==""){
-                            $('#review_text_error').html('Please enter the review');
-                            return false;
-                         }else{
-                            return true;
-                         }
+
+        function validatereviewtext() {
+            CKEDITOR.instances.review_text.updateElement();
+
+            let text = stripHtml($('[name="review_text"]').val());
+            if (text == "") {
+                $('#review_text_error').html('Please enter the review');
+                return false;
+            }else if (text.length < siteSetting.minium_review_character) {
+                $('#review_text_error').html('Minimum '+siteSetting.minium_review_character+' Character Required ');
+                return false;
+            } else {
+                return true;
+            }
 
         }
         $('#reviewForm').validate({
@@ -497,45 +590,52 @@
                 'website': {
                     required: function(element) {
 
-                        return $("#type_of_purchase:checked").length > 0 && $("#type_of_purchase:checked")
-                        .val() == "online" && element.value == "";
+                        return $('[name="type_of_purchase"]:checked').length > 0 && $(
+                                '[name="type_of_purchase"]:checked')
+                            .val() == "online" && element.value == "";
                     },
                     url: true
                 },
                 'shop_name': {
                     required: function(element) {
-                        return $("#type_of_purchase:checked").length > 0 && $("#type_of_purchase:checked")
-                        .val() == "Offline" && element.value == '';
+                        return $('[name="type_of_purchase"]:checked').length > 0 && $(
+                                '[name="type_of_purchase"]:checked')
+                            .val() == "Offline" && element.value == '';
                     }
                 },
                 'address_line1': {
                     required: function(element) {
-                        return $("#type_of_purchase:checked").length > 0 && $("#type_of_purchase:checked")
-                        .val() == "Offline" && element.value == '';
+                        return $('[name="type_of_purchase"]:checked').length > 0 && $(
+                                '[name="type_of_purchase"]:checked')
+                            .val() == "Offline" && element.value == '';
                     }
                 },
                 'city': {
                     required: function(element) {
-                        return $("#type_of_purchase:checked").length > 0 && $("#type_of_purchase:checked")
-                        .val() == "Offline" && element.value == '';
+                        return $('[name="type_of_purchase"]:checked').length > 0 && $(
+                                '[name="type_of_purchase"]:checked')
+                            .val() == "Offline" && element.value == '';
                     }
                 },
                 'state': {
                     required: function(element) {
-                        return $("#type_of_purchase:checked").length > 0 && $("#type_of_purchase:checked")
-                        .val() == "Offline" && element.value == '';
+                        return $('[name="type_of_purchase"]:checked').length > 0 && $(
+                                '[name="type_of_purchase"]:checked')
+                            .val() == "Offline" && element.value == '';
                     }
                 },
                 'pincode': {
                     required: function(element) {
-                        return $("#type_of_purchase:checked").length > 0 && $("#type_of_purchase:checked")
-                        .val() == "Offline" && element.value == '';
+                        return $('[name="type_of_purchase"]:checked').length > 0 && $(
+                                '[name="type_of_purchase"]:checked')
+                            .val() == "Offline" && element.value == '';
                     }
                 },
                 'country': {
                     required: function(element) {
-                        return $("#type_of_purchase:checked").length > 0 && $("#type_of_purchase:checked")
-                        .val() == "Offline" && element.value == '';
+                        return $('[name="type_of_purchase"]:checked').length > 0 && $(
+                                '[name="type_of_purchase"]:checked')
+                            .val() == "Offline" && element.value == '';
                     }
                 },
 
@@ -668,15 +768,17 @@
 
             }
         });
+
+
     </script>
 
     <script>
         var currentTab = 0; // Current tab is set to be the first tab (0)
         showTab(currentTab); // Display the current tab
-        const  serializeRemove = function(thisArray, thisName) {
+        const serializeRemove = function(thisArray, thisName) {
             "use strict";
-            return thisArray.filter( function( item ) {
-                    return item.name != thisName;
+            return thisArray.filter(function(item) {
+                return item.name != thisName;
             });
         }
 
@@ -705,45 +807,45 @@
             // Exit the function if any field in the current tab is invalid:
             if (!validateForm()) return false;
 
-            if (n>0  && currentTab == x.length-1) {
+            if (n > 0 && currentTab == x.length - 1) {
                 // ... the form gets submitted:
-                if($('#reviewForm').valid()){
-                   debugger;
+                if ($('#reviewForm').valid()) {
+                    debugger;
                     for (instance in CKEDITOR.instances) {
                         CKEDITOR.instances[instance].updateElement();
                     }
 
                     if (AuthUser == null || AuthUser == '') {
 
-                       // let data=$('#reviewForm').serializeArray();
-                       // data=serializeRemove(data,'_token');
-                                     $.ajax({
-                                        "url": "/submit/review/store",
-                                        'method': "POST",
-                                        data: $('#reviewForm').serializeArray(),
-                                        success: function(response) {
-                                            if (response.status) {
-                                                sessionStorage.setItem('reviewformID',response.guestID);
-                                                //location.assign('/myaccount');
-                                                $('#myaccount').trigger('click');
-                                            }else{
-                                                ToastError(response.message);
-                                            }
-                                        }
-                                    });
+                        // let data=$('#reviewForm').serializeArray();
+                        // data=serializeRemove(data,'_token');
+                        $.ajax({
+                            "url": "/submit/review/store",
+                            'method': "POST",
+                            data: $('#reviewForm').serializeArray(),
+                            success: function(response) {
+                                if (response.status) {
+                                    sessionStorage.setItem('reviewformID', response.guestID);
+                                    //location.assign('/myaccount');
+                                    $('#myaccount').trigger('click');
+                                } else {
+                                    ToastError(response.message);
+                                }
+                            }
+                        });
 
 
-                             return false;
-                    }else{
+                        return false;
+                    } else {
                         document.getElementById("reviewForm").submit();
                     }
                 }
                 return false;
             }
-            if(n==0 && !checkalreadyreview()){
-                            alert('you have already added review for the product');
-                        return false
-         }
+            if (n == 0 && !checkalreadyreview()) {
+                alert('you have already added review for the product');
+                return false
+            }
             // Hide the current tab:
             x[currentTab].style.display = "none";
             // Increase or decrease the current tab by 1:
@@ -760,25 +862,25 @@
             var x, y, i, valid = false;
             var x = document.getElementsByClassName("tab");
             /* x = document.getElementsByClassName("tab");
-         // y = x[currentTab].getElementsByTagName("input");
-          y = x[currentTab].getElementsByTagName("select");
-          // A loop that checks every input field in the current tab:
-          for (i = 0; i < y.length; i++) {
-            // If a field is empty...
-            if (y[i].value == "") {
-              // add an "invalid" class to the field:
-              y[i].className += " invalid";
-              // and set the current valid status to false
-              valid = false;
-            }
-          } */
+             // y = x[currentTab].getElementsByTagName("input");
+              y = x[currentTab].getElementsByTagName("select");
+              // A loop that checks every input field in the current tab:
+              for (i = 0; i < y.length; i++) {
+                // If a field is empty...
+                if (y[i].value == "") {
+                  // add an "invalid" class to the field:
+                  y[i].className += " invalid";
+                  // and set the current valid status to false
+                  valid = false;
+                }
+              } */
             $('#reviewForm').validate().settings.ignore = ":disabled,:hidden";
 
-                     if(currentTab == x.length-1){
-                         valid= $('#reviewForm').valid() && validatereviewtext();
-                    }else{
-                        valid = $('#reviewForm').valid();
-                    }
+            if (currentTab == x.length - 1) {
+                valid = $('#reviewForm').valid() && validatereviewtext();
+            } else {
+                valid = $('#reviewForm').valid();
+            }
             // valid=true;
             // If the valid status is true, mark the step as finished and valid:
             if (valid) {
@@ -796,5 +898,103 @@
             //... and adds the "active" class on the current step:
             x[n].className += " active";
         }
+
+
+
+        // set the dropzone container id
+        let uploadArray=[];
+        const id = "#dropzonejs";
+        const dropzone = document.querySelector(id);
+
+        // set the preview element template
+        var previewNode = dropzone.querySelector(".dropzone-item");
+        previewNode.id = "";
+        var previewTemplate = previewNode.parentNode.innerHTML;
+        previewNode.parentNode.removeChild(previewNode);
+
+        var myDropzone = new Dropzone(id, { // Make the whole body a dropzone
+            url: "/upload/media", // Set the url for your upload script location
+            headers: {
+							  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							  },
+            parallelUploads: 2,
+            maxFiles: 5,
+            maxFilesize: 1, // Max filesize in MB
+            previewTemplate: previewTemplate,
+            addRemoveLinks:true,
+            acceptedFiles: ".jpeg,.jpg,.png,.mp4",
+            previewsContainer: id + " .dropzone-items", // Define the container to display the previews
+            clickable: id +
+                " .dropzone-select" // Define the element that should be used as click trigger to select files.
+        });
+
+        myDropzone.on("addedfile", function(file) {
+            // Hookup the start button
+            const dropzoneItems = dropzone.querySelectorAll('.dropzone-item');
+            dropzoneItems.forEach(dropzoneItem => {
+                dropzoneItem.style.display = '';
+            });
+        });
+
+        // Update the total progress bar
+        myDropzone.on("totaluploadprogress", function(progress) {
+            const progressBars = dropzone.querySelectorAll('.progress-bar');
+            progressBars.forEach(progressBar => {
+                progressBar.style.width = progress + "%";
+            });
+        });
+
+        myDropzone.on("sending", function(file) {
+            // Show the total progress bar when upload starts
+            const progressBars = dropzone.querySelectorAll('.progress-bar');
+            progressBars.forEach(progressBar => {
+                progressBar.style.opacity = "1";
+            });
+        });
+
+        // Hide the total progress bar when nothing"s uploading anymore
+        myDropzone.on("complete", function(progress) {
+            const progressBars = dropzone.querySelectorAll('.dz-complete');
+
+            setTimeout(function() {
+                progressBars.forEach(progressBar => {
+                    progressBar.querySelector('.progress-bar').style.opacity = "0";
+                    progressBar.querySelector('.progress').style.opacity = "0";
+                });
+            }, 300);
+        });
+        myDropzone.on("success", function (file, response)  {
+
+
+            if(response.status){
+                uploadArray.push(response.fileName);
+                    $('#uploadimage').val(JSON.stringify(uploadArray));
+                    $('.dz-remove').last() .attr('id',response.fileName);
+            }
+
+        });
+        myDropzone.on("removedfile", function (file)  {
+
+           // let response = JSON.parse(responseText);
+
+                let idfile = file._removeLink.id
+                let index = uploadArray.find((val) => val == idfile);
+                if(index > -1){
+                    uploadArray.splice(index, 1);
+                    $('#uploadimage').val(JSON.stringify(uploadArray));
+                }
+           $.ajax({
+                type: 'POST',
+                url: "/upload/media/remove", // Set the url for your upload script location
+                headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                data: {name: idfile},
+                sucess: function(data){
+
+                }
+            });
+
+        });
     </script>
 @endpush

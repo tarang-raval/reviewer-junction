@@ -274,9 +274,9 @@
                                             <figure class="figure product-box row">
                                                 <div class="col-12 col-md-12 col-lg-12 col-xl-12 p0">
                                                     <div class="product-box-img">
-                                                        <a href="product-details.html">
+                                                        <a href="{{route('singleProduct',[$product->slug])}}">
                                                             <img src="{{asset('images/no-image.png')}}"
-                                                                class="figure-img img-fluid" alt="Product Img">
+                                                                class="figure-img img-fluid" alt="{{$product->product_name}}">
                                                         </a>
                                                     </div>
                                                     <div class="quick-view-btn">

@@ -199,7 +199,7 @@
 														</div>
 														<div class="col-md-12 col-lg-6 p0">
 															<div class="login-section text-center">
-																<div class="social-media">
+																<div class="social-media d-none">
 																	<a href="#" class="facebook-bg"><i class="fa fa-facebook" aria-hidden="true"></i> Login</a>
 																	<a href="#" class="twitter-bg"><i class="fa fa-twitter" aria-hidden="true"></i> Login</a>
 																	<a href="#" class="google-bg"><i class="fa fa-google-plus" aria-hidden="true"></i> Login</a>
@@ -218,19 +218,14 @@
 																		</div>
 																		<button type="submit" class="btn btn-primary wd-login-btn">LOGIN</button>
 
-																		<div class="form-check">
+																		{{-- <div class="form-check">
 																			<label class="form-check-label">
 																				<input type="checkbox" class="form-check-input">
 																				Save this password
 																			</label>
-																		</div>
+																		</div> --}}
 
-																		<div class="wd-policy">
-																			<p>
-																				By Continuing. I conferm that i have read and userstand the <a href="#">terms of uses</a> and <a href="#">Privacy Policy</a>.
-																				Don’t have an account? <a href="#" class="black-color"><strong><u>Sign up</u></strong></a>
-																			</p>
-																		</div>
+
 																	</form>
 																</div>
 															</div>
@@ -258,6 +253,7 @@
 														<div class="col-md-6 p0">
 															<div class="sign-up-section text-center">
 																<div class="login-form text-left">
+                                                                    <div class="alert" id="signupalert"></div>
 																	<form id="registerform" >
                                                                         @csrf
 																		<div class="form-group">
@@ -280,15 +276,18 @@
 																			<label for="password">Password</label>
 																			<input type="password" class="form-control" id="password-sign-up" placeholder="*********" name="password" autocomplete="off">
 																		</div>
+                                                                        <div class="form-group">
+                                                                            <div class="wd-policy">
+                                                                                <p>
+                                                                                    <input type="checkbox"  name="acceptTermContions" value="1" > &nbsp; I confirm that i have read and userstand the <a href="#">terms of uses</a> and <a href="#">Privacy Policy</a>.
+
+
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
 																		<button type="submit" class="btn btn-primary wd-login-btn">Sign Up</button>
 
-																		<div class="wd-policy">
-																			<p>
-																				By Continuing. I conferm that i have read and userstand the <a href="#">terms of uses</a> and <a href="#">Privacy Policy</a>.
-																				Don’t have an account?
-                                                                                <button type="button" name="signup" value="signup" class="black-color"><strong><u>Sign up</u></strong></button>
-																			</p>
-																		</div>
+
 																	</form>
 																</div>
 															</div>
@@ -322,94 +321,33 @@
                         <!--Mobile Menu start-->
 
                         <ul id="mobilemenu" class="accordion">
-                           <!-- <li class="mob-logo"><a href="index.html"><img src="{{asset('assets/img/logo.png')}}" alt=""></a></li>-->
+
                             <li><a class="closeme" href="#"><i class="fa fa-times" ></i></a></li>
-                            <li class="mob-logo"><a href="index.html"><img src="{{asset('assets/img/logo.png')}}" alt=""></a></li>
-
-
+                            <li class="mob-logo"><a href="/"> <img src="{{asset('images/logo.png')}}" class="w-25" ></a></li>
                             <li>
-                                <div class="link">Home</div>
-
+                                <div class="link"> <a href="/">Home</a></div>
                             </li>
                             <li>
-                                <div class="link">Comparison Product <i class="fa fa-chevron-down"></i></div>
-                                <ul class="submenu font-sky">
-                                    <li><a href="compare-products.html">Comparison Product</a></li>
-                                    <li><a href="compare-products-single.html">Compare Products Single</a></li>
-                                    <li><a href="compare-products-choose-market.html">Compare Products Choose Market</a></li>
-
-                                </ul>
+                                <div class="link"><a href="{{route('productlist')}}" >Product</a></div>
                             </li>
+
+
                             <li>
-                                <div class="link ">shop<i class="fa fa-chevron-down"></i></div>
+                                <div class="link ">All Categories <i class="fa fa-chevron-down"></i></div>
                                 <ul class="submenu">
+                                    @forelse ($categories as  $category)
+                                    <li><a href="{{route('category.list',[$category->slug])}}">{{$category->name}}</a></li>
+                                    @empty
 
-                                    <li><a href="#">Shop Page</a></li>
-                                    <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                    <li><a href="shop-left-sidebar-full-grid.html">Shop Left Sidebar Full Grid</a></li>
-                                    <li><a href="shop-right-sidebar-full-grid.html">Shop Right Sidebar Full Grid</a></li>
-                                    <li><a href="product-details.html">Product Details</a></li>
-                                    <li><a href="product-details-scroll.html">Product Details v2</a></li>
-                                    <li><a href="wishlist.html">Wishlist View</a></li>
+                                    @endforelse
                                 </ul>
                             </li>
 
-                            <li>
-                                <div class="link">megamenu<i class="fa fa-chevron-down"></i></div>
-                                <ul class="submenu ">
-                                  <li><a href="#">Visual Phones</a></li>
-					              <li><a href="#">Chinese phones</a></li>
-					              <li><a href="#">Google Phones</a></li>
-					              <li><a href="#">Video cameras</a></li>
-					              <li><a href="#">Top Cameras</a></li>
-					              <li><a href="#">Cheap Cameras</a></li>
-					              <li><a href="#">Best Cameras</a></li>
-					              <li><a href="#">Luxury Cameras</a></li>
-					              <li><a href="#">Simple Cameras</a></li>
-                                  <li><a href="#">Phone Electronice</a></li>
-					              <li><a href="#">Phone Appereances</a></li>
-					              <li><a href="#">Visual Phones</a></li>
-					              <li><a href="#">Chinese phones</a></li>
-					              <li><a href="#">Google Phones</a></li>
-					              <li><a href="#">Cheap Phones</a></li>
-					              <li><a href="#">Luxury phones</a></li>
-					              <li><a href="#">Simple phones</a></li>
-                                  <li><a href="#">Camera Electronice</a></li>
-					              <li><a href="#">Camera Appereances</a></li>
-					              <li><a href="#">DSLR</a></li>
-					              <li><a href="#">Video cameras</a></li>
-					              <li><a href="#">Top Cameras</a></li>
-					              <li><a href="#">Cheap Cameras</a></li>
-					              <li><a href="#">Best Cameras</a></li>
-					              <li><a href="#">Luxury Cameras</a></li>
-					              <li><a href="#">Simple Cameras</a></li>
-                                </ul>
 
-                            </li>
-                            <li>
-                                <div class="link">Reviews<i class="fa fa-chevron-down"></i></div>
-                                <ul class="submenu">
-                                    <li><a href="product-details-review-history.html">Product History</a></li>
-                                    <li><a href="product-details-single-review.html">Single Review</a></li>
-                                    <li><a href="review-left-sidebar.html">Review Left Sidebar</a></li>
-                                    <li><a href="review-right-sidebar.html">Review Right Sidebar</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <div class="link">Blog<i class="fa fa-chevron-down"></i></div>
-                                <ul class="submenu">
-                                    <li><a href="blog-full-grid.html">Blog Full Grid</a></li>
-                                    <li><a href="blog-two-grid.html">Blog Two Grid</a></li>
-                                    <li><a href="blog-three-grid.html">Blog Three Grid</a></li>
-                                    <li><a href="blog-four-grid.html">Blog Four Grid</a></li>
-                                    <li><a href="blog-four-grid-left-sidebar.html">Blog Four Grid Left Sidebar</a></li>
-                                    <li><a href="blog-four-grid-right-sidebar.html">Blog Four Grid Right Sidebar</a></li>
-                                    <li><a href="single-blog-with.html">Single Blog</a></li>
-                                    <li><a href="single-blog-with-add.html">Single Blog With Add</a></li>
-                                </ul>
-                            </li>
-                            <li class="out-link"><a class="" href="contact-us.html">Contact</a></li>
-                            <li class="out-link"><a class="" href="coupon.html">Coupon</a></li>
+
+                            <li class="out-link"><a class="" href="contact-us.html">Submit Review</a></li>
+                            {{-- <li class="out-link"><a class="" href="contact-us.html">Contact</a></li> --}}
+
 
                         </ul>
                         <!--Mobile Menu end-->
@@ -443,7 +381,7 @@
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="col-md-4">
-                                                                <h6 class="black-color wd-sub-list-title">Cameras and photos</h6>
+                                                                <h6 class="black-color wd-sub-list-title"></h6>
                                                                 <ul class="wd-sub-menu">
                                                                     @forelse ($category->subcategory as  $subcategory)
                                                                       <li><a href="{{route('subcategory.list',[$category->slug,$subcategory->slug])}}">{{$subcategory->name}}</a></li>
@@ -454,12 +392,10 @@
                                                                 </ul>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            {{-- <div class="col-md-6">
                                                                 <a href="product-details-scroll.html"><img src="{{asset('assets/img/department-img/department-sub-list-img-1.jpg') }}" class="department-sub-list-img" alt="department-sub-list-img"></a>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <a href="product-details-scroll.html"><img src="{{asset('assets/img/department-img/department-sub-list-img-2.jpg') }}" class="department-sub-list-img" alt="department-sub-list-img"></a>
-                                                            </div>
+                                                            </div> --}}
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -538,6 +474,8 @@
 			</div>
 		</div>
 	</section>
+
+            <x-session-alert />
 
     @yield('content');
 
@@ -681,7 +619,8 @@
     <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('assets/js/circle-progress.min.js')}}"></script>
     <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
-    <script src="{{asset('asset/plugin/summernote/summernote-bs4.min.js')}}"></script>
+    <script src="{{asset('asset/plugins/ekko-lightbox/ekko-lightbox.min.js')}}"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js" integrity="sha512-yDlE7vpGDP7o2eftkCiPZ+yuUyEcaBwoJoIhdXv71KZWugFqEphIS3PU60lEkFaz8RxaVsMpSvQxMBaKVwA5xg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="{{asset('assets/js/simplePlayer.js')}}"></script>
@@ -696,7 +635,7 @@
     <script>
         $(document).ready(function(){
 
-            //$('.summernote').summernote();
+
             @if(!Request::is('/'))
                 $('#cat-department').trigger('click');
             @endif

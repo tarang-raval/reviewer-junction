@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
+    Protected $primaryKey = "id";
 
     function statusText(){
         $text='';
@@ -24,5 +25,8 @@ class Review extends Model
 
              }
             return  $text;
+    }
+    function getUser(){
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

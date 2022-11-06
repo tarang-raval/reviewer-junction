@@ -1470,6 +1470,7 @@ a.yt{background: #ff0000}
   padding: 20px 6px;
   transition: 0.5s;
   display: none;
+  box-shadow: 0px 0px 33px 0px rgba(0, 0, 0, 0.22);
 }
 #wd-header .department-list .wd-sub-list-title,
 #wd-header-2 .department-list .wd-sub-list-title {
@@ -1548,7 +1549,7 @@ a.yt{background: #ff0000}
 }
 .slider-cat .slider-text .highlights-text {
   font-weight: 800;
-  color: #333333 !important;
+  color: #ff9800 !important;
 }
 .slider-cat .slider-text .slider-content {
   font-size: 18px;
@@ -2382,6 +2383,7 @@ a.yt{background: #ff0000}
   font-weight: 300;
   margin-bottom: 20px;
   font-size: 50px;
+  color: #ff9800;
 }
 #main-slider-section .slider-content {
   margin-bottom: 40px;
@@ -5278,10 +5280,14 @@ padding-top: 10px;
 	==========================
 */
 .bg-image#review {
-  background: url("../img/review/th-review-bg.png");
+  background: url("../img/back-review.jpg");
   background-size: cover;
   background-position: 100% 100%;
   padding: 100px 0;
+  background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #1a1a1a;
 }
 #review .review-title {
   margin-bottom: 17px;
@@ -5560,9 +5566,9 @@ padding-top: 10px;
     transform: translateX(0);
   }
 
-.bg-image#review {
-    background: url(../img/review/th-review-bg-2.jpg);
-  }
+/* .bg-image#review {
+    background: url('../img/back-review.jpg');
+  } */
 }
 /*
 	=============================
@@ -9721,7 +9727,7 @@ box-shadow: 8px 3px 21px 0px rgba(0,0,0,0.22);
 	background-position: center;
 }
 .slider-bg1 {
-    background-image: url(../img/slider-img/slider-bg-img.jpg);
+    background-image: url(../img/main-back-min.jpg);
 	position: relative;
 	width: 100%;
 	height: 60vh;
@@ -9729,7 +9735,7 @@ box-shadow: 8px 3px 21px 0px rgba(0,0,0,0.22);
 	background-position: center;
 }
 .slider-bg2 {
-    background-image: url(../img/slider-img/slider-bg2.jpg);
+    background-image: url(../img/main-back-min.jpg);
 	position: relative;
 	width: 100%;
 	height: 60vh;
@@ -11913,7 +11919,9 @@ a.go-back {
 
 
 }
-
+.review-user {
+    max-width: 50px;
+}
 
 
 

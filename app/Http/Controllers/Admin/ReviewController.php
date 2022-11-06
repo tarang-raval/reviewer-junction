@@ -125,6 +125,7 @@ class ReviewController extends Controller
                 'subcategory_name'=>$row->subcategory_name,
                 'product_name'=>$row->product_name,
                 'created_at'=>Carbon::parse($row->created_at)->format('Y/m/d'),
+                'declined_reason'=> $row->declined_reason,
                 'action'=>$action,
             ];
 
@@ -149,15 +150,17 @@ class ReviewController extends Controller
                                 $earnPoint->earn_points=$point;
                                 $earnPoint->save();
                         }
-                    }else if($request->status==1){
+                    }else if($request->status==2){
 
                         $earnpoint=EarnPoint::where(['review_id'=>$review->id,'user_id'=>$review->user_id])->first();
-                        if(empty($earnpoint)){
+                        if(!empty($earnpoint)){
                             $earnpoint->delete();
                         }
+                        $review->declined_reason = $request->declined_reason;
+
                     }
                     if($review->save()){
-                        return response()->json(['status'=>true,'message'=>'Review is approved']);
+                        return response()->json(['status'=>true,'message'=>(($request->status == 1)?'Review is approved':'Review is declined')]);
                     }else{
                        return response()->json(['status'=>false,'message'=>'something is wrong, please Try again later']);
                     }
