@@ -23,8 +23,18 @@ class ReviewController extends Controller
             $sitesetting = SiteSetting::first()->toJson();
             return view('submit_review', compact('categories', 'subcategories' , 'sitesetting'));
     }
+    function create(Request $request, $product){
+        $product=Product::findorFail($product);
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        $sitesetting = SiteSetting::first()->toJson();
+        $sitesettingData = SiteSetting::first()->toArray();
+        $todayNoOfReview = Review::getTodaySubmitReviewUser(Auth::id());
+        return view('add_review', compact('product','categories', 'subcategories' , 'sitesetting','sitesettingData','todayNoOfReview'));
+    }
 
     function store(Request $request){
+
 
           try{
              $request->validate([
@@ -66,7 +76,7 @@ class ReviewController extends Controller
                     if($request->ajax()){
                         return response()->json(['status'=>true,'message'=>"review Submitted Successfully",'guestID'=>$review->id]);
                     }else{
-                        return redirect()->route('submit.review')->with('success','Thank you for submit review.');
+                        return redirect()->back()->with('success','Thank you for submit review. Our team reviewed Your Review  update you shortly.');
                     }
                 }else{
 

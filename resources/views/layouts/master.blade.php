@@ -122,7 +122,7 @@
 				<div class="col-md-12 col-lg-3 col-xl-3 text-center second-home-main-logo">
 					<a href="{{route('home')}}"><img src="{{asset('assets/img/logo.jpeg')}}" alt="Logo" style="max-width:160px"></a>
 				</div>
-				<div class="col-md-6 col-lg-6 slider-search-section d-none d-lg-flex align-items-center">
+				<div class="col-md-6 col-lg-6 slider-search-section d-none d-lg-flex align-items-center" style="display: none !important;">
 						<div class="input-group">
 							<div class="input-group-btn">
 								<button type="button" class="btn btn-secondary wd-slider-search-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

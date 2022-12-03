@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Review extends Model
 {
@@ -28,5 +29,8 @@ class Review extends Model
     }
     function getUser(){
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+    public static function getTodaySubmitReviewUser($user_id){
+        return Self::where('user_id',$user_id)->where('created_at','now()')->count();
     }
 }
