@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/lightslider.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/rateyo.css')}}">
        <link rel="stylesheet" href="{{asset('assets/css/megamenu.css')}}">
     <link href="{{asset('assets/plugin/select2/css/select2.min.css')}}" />

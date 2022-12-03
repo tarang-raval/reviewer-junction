@@ -44,7 +44,7 @@ class SubCategoryController extends Controller
     {
         //
         $request->validate([
-            'name'=>'required|unique:subcategories,name',
+            'name'=>'required',
             'subcategory_icon'=>'mimes:png,jpg',
         ]);
 
@@ -107,7 +107,7 @@ class SubCategoryController extends Controller
     {
         //
         $request->validate([
-            'name'=>['required',Rule::unique('subcategories', 'name')->ignore($id)]
+            'name'=>['required']
         ]);
 
         $filename=null;

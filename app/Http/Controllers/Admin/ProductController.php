@@ -191,7 +191,8 @@ class ProductController extends Controller
         }
         }
         catch(\Exception $exception){
-           dd($exception->getMessage());
+           
+           return back()->with('error',$exception->getMessage());
         }
     }
 

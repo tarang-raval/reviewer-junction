@@ -17,7 +17,7 @@ class HomeController extends Controller
 
      function category($slug){
 
-        $products=Product::join('categories','categories.id','products.category')->where('categories.slug',$slug)->get();
+        $products=Product::select('products.*')->join('categories','categories.id','products.category')->where('categories.slug',$slug)->get();
 
        return view('category-product',compact('products'));
      }
