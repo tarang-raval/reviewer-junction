@@ -94,6 +94,7 @@ class ReviewController extends Controller
                     ->join('categories','categories.id','reviews.category_id')
                     ->join('subcategories','subcategories.id','reviews.subcategory_id')
                     ->leftJoin('products','products.id','reviews.product_id')
+                    ->whereNotNull('reviews.user_id')
                     ->orderBy('reviews.id','DESC')->get();
         $user= $user->map(function($row){
 
