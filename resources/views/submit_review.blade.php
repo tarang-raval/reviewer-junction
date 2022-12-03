@@ -526,7 +526,7 @@
                     $('#offline').hide();
                 }
             });
-            $('#minchar').val(siteSetting.minium_review_character);
+            $('#minchar').html(siteSetting.minium_review_character);
             CKEDITOR.instances.review_text.on('change', function() {
                 CKEDITOR.instances.review_text.updateElement();
 
