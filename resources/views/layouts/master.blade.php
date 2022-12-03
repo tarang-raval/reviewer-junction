@@ -164,9 +164,16 @@
 					</div>
 				<div class="col-md-6 col-lg-4  col-xl-3  d-flex align-items-center">
 
-					<div class="modal fade bd-example-modal-lg2" tabindex="-1" aria-hidden="true">
+					<div class="modal fade bd-example-modal-lg2" tabindex="-1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 						<div class="modal-dialog modal-lg">
 							<div class="modal-content">
+							
+          <button type="button" class="close" data-dismiss="modal" style="    position: absolute;
+    top: -25px;
+    right: 0;
+    color: #FFFFFF;">&times;</button>
+         
+        
 								<div class="container">
 									<div class="row text-left">
 										<div class="col-md-12 p0">
