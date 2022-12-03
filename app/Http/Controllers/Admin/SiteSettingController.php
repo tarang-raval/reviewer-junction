@@ -41,6 +41,7 @@ class SiteSettingController extends Controller
         $setting->no_of_days_account_redeem_points=$request->no_of_days_account_redeem_points;
         $setting->minimum_points_required_to_redeem=$request->minimum_points_required_to_redeem;
         $setting->no_of_review_show_as_guest=$request->no_of_review_show_as_guest;
+        $setting->minium_review_character=$request->minium_review_character;
 
         $setting->save();
         return redirect()->route('admin.setting.index');

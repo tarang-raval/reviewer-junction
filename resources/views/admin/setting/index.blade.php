@@ -59,6 +59,13 @@
                                             <input type="number" class="form-control" name="minimum_points_required_to_redeem" id="minimum_points_required_to_redeem"  placeholder="Ex. 100" value="{{ (isset($setting) && !empty($setting) && isset($setting->minimum_points_required_to_redeem))?$setting->minimum_points_required_to_redeem:old('minimum_points_required_to_redeem')}}" min="0">
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+
+                                        <label for="" class="col-sm-4 col-form-label">Min. chracter Required to Review</label>
+                                        <div class="col-md-6">
+                                            <input type="number" class="form-control" name="minium_review_character" id="minimum_points_required_to_redeem"  placeholder="Ex. 100" value="{{ (isset($setting) && !empty($setting) && isset($setting->minium_review_character))?$setting->minium_review_character:old('minium_review_character')}}" min="0">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -83,6 +90,7 @@
                     one_points_equal_money: {required: true,number: true},
                     no_of_days_account_redeem_points: {required: true,number: true},
                     minimum_points_required_to_redeem: {required: true,number: true},
+                    minium_review_character: {required: true,number: true},
                 },
 
                 errorElement: 'span',
