@@ -151,9 +151,9 @@ function assignReviewtoUser(){
 
                                         assignReviewtoUser().then(function(review_id){
                                             if(review_id!=null){
-                                            window.location.assign('/confirm');
+                                            window.location.assign('/user/confirm');
                                             }else{
-                                            window.location.assign('/confirm');
+                                            window.location.assign('/user/confirm');
                                             }
                                 }).catch(response=>{
                                     alert(response.message);
