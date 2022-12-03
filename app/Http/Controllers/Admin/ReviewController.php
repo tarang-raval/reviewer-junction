@@ -138,28 +138,29 @@ class ReviewController extends Controller
              if(!empty($request->id)){
                     $review=Review::findOrFail($request->id);
                     $review->status=$request->status;
-                    if($request->status==1){
-                        $earnpoint=EarnPoint::where(['review_id'=>$review->id,'user_id'=>$review->user_id])->first();
-                        $point=Point::getSubcategoryPoint($review->subcategory_id);
-                        if(empty($earnpoint)){
-                                $earnPoint=new EarnPoint();
-                                $earnPoint->user_id=$review->user_id;
-                                $earnPoint->review_id=$review->id;
-                                $earnPoint->subcategory_id=$review->subcategory_id;
-                                $earnPoint->subcategory_points=$point;
-                                $earnPoint->earn_points=$point;
-                                $earnPoint->save();
-                        }
-                    }else if($request->status==2){
-
-                        $earnpoint=EarnPoint::where(['review_id'=>$review->id,'user_id'=>$review->user_id])->first();
-                        if(!empty($earnpoint)){
-                            $earnpoint->delete();
-                        }
-                        $review->declined_reason = $request->declined_reason;
-
-                    }
+                 
                     if($review->save()){
+                        if($request->status==1){
+                            $earnpoint=EarnPoint::where(['review_id'=>$review->id,'user_id'=>$review->user_id])->first();
+                            $point=Point::getSubcategoryPoint($review->subcategory_id);
+                            if(empty($earnpoint)){
+                                    $earnPoint=new EarnPoint();
+                                    $earnPoint->user_id=$review->user_id;
+                                    $earnPoint->review_id=$review->id;
+                                    $earnPoint->subcategory_id=$review->subcategory_id;
+                                    $earnPoint->subcategory_points=$point;
+                                    $earnPoint->earn_points=$point;
+                                    $earnPoint->save();
+                            }
+                        }else if($request->status==2){
+    
+                            $earnpoint=EarnPoint::where(['review_id'=>$review->id,'user_id'=>$review->user_id])->first();
+                            if(!empty($earnpoint)){
+                                $earnpoint->delete();
+                            }
+                            $review->declined_reason = $request->declined_reason;
+    
+                        }
                         return response()->json(['status'=>true,'message'=>(($request->status == 1)?'Review is approved':'Review is declined')]);
                     }else{
                        return response()->json(['status'=>false,'message'=>'something is wrong, please Try again later']);
@@ -168,7 +169,7 @@ class ReviewController extends Controller
              }
         }
         catch(\Exception $exception){
-            return response()->json(['status'=>false,'message'=>'something is wrong, please Try again later']);
+            return response()->json(['status'=>false,'message'=>'something is wrong, please Try again later','exception'=>$exception->getMessage()]);
         }
     }
 }

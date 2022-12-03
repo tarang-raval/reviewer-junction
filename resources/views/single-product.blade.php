@@ -2,554 +2,340 @@
 
 
 @section('content')
-    <section class="product-details">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 p0">
-                    <div class="page-location">
-                        <ul>
-                            <li><a href="#">
-                                    Home / <span class="divider">/</span>
-                                </a></li>
-                            <li><a class="page-location-active" href="#">
-                                    {{ $product->product_name }}
-                                    <span class="divider">/</span>
-                                </a></li>
-                        </ul>
-                    </div>
+<section class="product-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p0">
+                <div class="page-location">
+                    <ul>
+                        <li><a href="#">
+                                Home / <span class="divider">/</span>
+                            </a></li>
+                        <li><a class="page-location-active" href="#">
+                                {{ $product->product_name }}
+                                <span class="divider">/</span>
+                            </a></li>
+                    </ul>
                 </div>
-                <div class="col-12 product-details-section">
-                    <!-- ====================================
+            </div>
+            <div class="col-12 product-details-section">
+                <!-- ====================================
                             Product Details Gallery Section
                         ========================================= -->
-                    <div class="row">
-                        <div class="product-gallery col-12 col-md-12 col-lg-6">
-                            <!-- ====================================
-                                    Single Product Gallery Section
-                                ========================================= -->
-                            <div class="row">
-                                <div class="col-md-12 product-slier-details">
-                                    <div class="lSSlideOuter  d-none">
-                                        <div class="lSSlideWrapper usingCss">
-                                            <div class="lSSlideOuter noPager">
-                                                <div class="lSSlideWrapper usingCss">
-                                                    <ul id="lightSlider" class="lightSlider lsGrab lSSlide"
-                                                        style="width: 0px; transform: translate3d(0px, 0px, 0px); height: 0px; padding-bottom: 0%;">
-                                                        <li data-thumb="{{ asset('images/no-image.png') }}"
-                                                            class="lslide active" style="width: 0px; margin-right: 0px;">
-                                                            <img class="figure-img img-fluid"
-                                                                src="{{ asset('images/no-image.png') }}" alt="product-img">
-                                                        </li>
-                                                        <li data-thumb="{{ asset('images/no-image.png') }}" class="lslide"
-                                                            style="width: 0px; margin-right: 0px;">
-                                                            <img class="figure-img img-fluid"
-                                                                src="{{ asset('images/no-image.png') }}" alt="product-img">
-                                                        </li>
-                                                        <li data-thumb="{{ asset('images/no-image.png') }}" class="lslide"
-                                                            style="width: 0px; margin-right: 0px;">
-                                                            <img class="figure-img img-fluid"
-                                                                src="{{ asset('images/no-image.png') }}" alt="product-img">
-                                                        </li>
-                                                        <li data-thumb="{{ asset('images/no-image.png') }}" class="lslide"
-                                                            style="width: 0px; margin-right: 0px;">
-                                                            <img class="figure-img img-fluid"
-                                                                src="{{ asset('images/no-image.png') }}" alt="product-img">
-                                                        </li>
-                                                        <li data-thumb="{{ asset('images/no-image.png') }}" class="lslide"
-                                                            style="width: 0px; margin-right: 0px;">
-                                                            <img class="figure-img img-fluid"
-                                                                src="{{ asset('images/no-image.png') }}" alt="product-img">
-                                                        </li>
-                                                        <li data-thumb="{{ asset('images/no-image.png') }}" class="lslide"
-                                                            style="width: 0px; margin-right: 0px;">
-                                                            <img class="figure-img img-fluid"
-                                                                src="{{ asset('images/no-image.png') }}" alt="product-img">
-                                                        </li>
-                                                    </ul>
-                                                    <div class="lSAction"><a class="lSPrev"></a><a class="lSNext"></a></div>
-                                                </div>
-                                                <ul class="lSPager lSGallery"
-                                                    style="margin-top: 5px; transition-duration: 400ms; width: 1.5px; transform: translate3d(0px, 0px, 0px);">
-                                                </ul>
-                                            </div>
-                                            <div class="lSAction"><a class="lSPrev"></a><a class="lSNext"></a></div>
-                                        </div>
-                                        <ul class="lSPager lSGallery"
-                                            style="margin-top: 5px; transition-duration: 400ms; width: 654.5px; transform: translate3d(0px, 0px, 0px);">
-                                            <li style="width:100%;width:104px;margin-right:5px" class="active"><a
-                                                    href="#"><img src="{{ asset('images/no-image.png') }}"></a>
-                                            </li>
-                                            <li style="width:100%;width:104px;margin-right:5px"><a href="#"><img
-                                                        src="{{ asset('images/no-image.png') }}"></a></li>
-                                            <li style="width:100%;width:104px;margin-right:5px"><a href="#"><img
-                                                        src="{{ asset('images/no-image.png') }}"></a></li>
-                                            <li style="width:100%;width:104px;margin-right:5px"><a href="#"><img
-                                                        src="{{ asset('images/no-image.png') }}"></a></li>
-                                            <li style="width:100%;width:104px;margin-right:5px"><a href="#"><img
-                                                        src="{{ asset('images/no-image.png') }}"></a></li>
-                                            <li style="width:100%;width:104px;margin-right:5px"><a href="#"><img
-                                                        src="{{ asset('images/no-image.png') }}"></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                <div class="row">
+                    <div class="product-gallery col-12 col-md-12 col-lg-6">
+                        <!-- ====================================
+						        Single Product Gallery Section
+						    ========================================= -->
+                        <div class="row">
+                            <div class="col-md-12 product-slier-details">
+                                <ul id="lightSlider">
+                                    @php
+                                    $productimg_list = (!empty($product->gallery_image))?json_decode($product->gallery_image,true):[];
+
+                                    @endphp
+                                    @forelse($productimg_list as $img)
+                                    <li data-thumb="{{asset('storage/product/'.$img)}}">
+                                        <img class="figure-img img-fluid" src="{{asset('storage/product/'.$img)}}" alt="{{$product->product_name}}" />
+                                    </li>
+                                    @empty
+                                    <li data-thumb="{{asset('asset/img/product-img/product-description-1.jpg')}}">
+                                        <img class="figure-img img-fluid" src="{{asset('asset/img/product-img/product-description-1.jpg')}}" alt="product-img" />
+                                    </li>
+                                    @endforelse
+
+                                </ul>
                             </div>
                         </div>
-                        <div class="col-6 col-12 col-md-12 col-lg-6">
-                            <div class="product-details-gallery">
-                                <div class="list-group">
-                                    <h4 class="list-group-item-heading product-title">
-                                        {{ $product->product_name }}
-                                    </h4>
-                                    <div class="media">
-                                        <div class="media-left media-middle">
-                                            <div class="rating">
-                                                <a href="#"><i class="fa fa-star active-color"
-                                                        aria-hidden="true"></i></a>
-                                                <a href="#"><i class="fa fa-star active-color"
-                                                        aria-hidden="true"></i></a>
-                                                <a href="#"><i class="fa fa-star active-color"
-                                                        aria-hidden="true"></i></a>
-                                                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                                                <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <p class="d-none">3.7/5 <span class="product-ratings-text"> -1747
-                                                    Ratings</span></p>
+                    </div>
+                    <div class="col-6 col-12 col-md-12 col-lg-6">
+                        <div class="product-details-gallery">
+                            <div class="list-group">
+                                <h4 class="list-group-item-heading product-title">
+                                    {{ $product->product_name }}
+                                </h4>
+                                <div class="media d-none">
+                                    <div class="media-left media-middle">
+                                        <div class="rating">
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star active-color" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
+                                            <a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="list-group content-list">
-
-                                    {!! $product->short_description !!}
-                                    {{-- <p><i class="fa fa-dot-circle-o" aria-hidden="true"></i> 100% Original product</p>
-                                    <p><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Manufacturer Warranty</p> --}}
+                                    <div class="media-body">
+                                        <p class="d-none">3.7/5 <span class="product-ratings-text"> -1747
+                                                Ratings</span></p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="product-store row">
+                            <div class="list-group content-list">
+
+                                {!! $product->short_description !!}
 
                             </div>
+                        </div>
+                        <div class="product-store row">
+                            <div class="col-12 product-store-box">
+                                <div class="row">
+                                    <div class="col-3 p0 store-border-img">
+
+                                    </div>
+                                    <div class="col-5 store-border-price text-center">
+                                        <div class="price">
+                                            <p>{!! (!empty($product->discount_price)?(number_format($product->discount_price,2).'<br /><del>'.number_format($product->price,2)).'</del>':number_format($product->price,2)) !!}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 store-border-button">
+                                        <a href="https://www.amazon.com/" target="_blank" class="btn btn-primary wd-shop-btn pull-right">
+                                            Buy it now
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="wd-tab-section">
-                        <ul class="nav nav-pills mb-3 wd-tab-menu" id="nav">
-                            <li class="nav-item col-6 col-md">
-                                <a href="#description-section" class="nav-link" id="description-tab">Description</a>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="wd-tab-section">
+                    <ul class="nav nav-pills mb-3 wd-tab-menu" id="nav">
+                        <li class="nav-item col-6 col-md">
+                            <a href="#description-section" class="nav-link" id="description-tab">Description</a>
+                        </li>
+                        <li class="nav-item col-6 col-md">
+                            <a href="#full-specifiction" class="nav-link" id="full-specifiction-tab">Ful
+                                Specifiction</a>
+                        </li>
+                        <li class="nav-item col-6 col-md">
+                            <a href="#reviews" class="nav-link" id="reviews-tab">Reviews</a>
+                        </li>
+
+                    </ul>
+
+                    <div class="tab-pane" id="description-section">
+                        {!! $product->full_description !!}
+                    </div>
+                    <div class="tab-pane" id="full-specifiction">
+                        <h6>Full Specifiction</h6>
+                        <br>
+                        <ul class="list-group wd-info-section">
+                            @if ($product->productAttributes)
+                            @forelse ($product->productAttributes as $productAttributes)
+                            <li class="list-group-item d-flex justify-content-between align-items-center p0">
+                                <div class="col-12 col-md-6 info-section">
+                                    <p>{{ $productAttributes->attribute_name }}
+                                        :{{ $productAttributes->attribute_value }} </p>
+
+                                </div>
+
                             </li>
-                            <li class="nav-item col-6 col-md">
-                                <a href="#full-specifiction" class="nav-link" id="full-specifiction-tab">Ful
-                                    Specifiction</a>
-                            </li>
-                            <li class="nav-item col-6 col-md">
-                                <a href="#reviews" class="nav-link" id="reviews-tab">Reviews</a>
-                            </li>
-                            <li class="nav-item col-6 col-md current">
-                                <a href="#specifiction" class="nav-link" id="price-history-tab">Price History</a>
-                            </li>
+                            @empty
+                            @endforelse
+                            @endif
+
                         </ul>
+                    </div>
+                    <div class="tab-pane reviews-section" id="reviews">
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="wd-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Asperiores id assumenda, ex ab voluptatem doloremque soluta magnam eum nihil iusto
+                                    maiores! Libero nisi maior</p>
 
-                        <div class="tab-pane" id="description-section">
-                            {!! $product->full_description !!}
-                        </div>
-                        <div class="tab-pane" id="full-specifiction">
-                            <h6>Full Specifiction</h6>
-                            <br>
-                            <ul class="list-group wd-info-section">
-                                @if ($product->productAttributes)
-                                    @forelse ($product->productAttributes as $productAttributes)
-                                        <li class="list-group-item d-flex justify-content-between align-items-center p0">
-                                            <div class="col-12 col-md-6 info-section">
-                                                <p>{{ $productAttributes->attribute_name }}
-                                                    :{{ $productAttributes->attribute_value }} </p>
-
-                                            </div>
-
-                                        </li>
-                                    @empty
-                                    @endforelse
-                                @endif
-
-                            </ul>
-                        </div>
-                        <div class="tab-pane reviews-section" id="reviews">
-                            <div class="row">
-                                <div class="col-12">
-                                    <p class="wd-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Asperiores id assumenda, ex ab voluptatem doloremque soluta magnam eum nihil iusto
-                                        maiores! Libero nisi maior</p>
-
-                                    <h6 class="review-rating-title">Average Ratings and Reviews</h6>
-                                    <div class="row tab-rating-bar-section">
-                                        <div class="col-8 col-md-4 col-lg-4">
-                                            <img src="img/review-bg.png" alt="review-bg">
-                                            <div class="review-rating text-center">
-                                                <h1 class="rating">4.5</h1>
-                                                <p>4 Ratings &amp;
-                                                    0 Reviews</p>
+                                <h6 class="review-rating-title">Average Ratings and Reviews</h6>
+                                <div class="row tab-rating-bar-section">
+                                    <div class="col-8 col-md-4 col-lg-4">
+                                        <img src="img/review-bg.png" alt="review-bg">
+                                        <div class="review-rating text-center">
+                                            <h1 class="rating">4.5</h1>
+                                            <p>4 Ratings &amp;
+                                                0 Reviews</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-3 rating-bar-section">
+                                        <div class="media rating-star-area">
+                                            <p>5 <i class="fa fa-star" aria-hidden="true"></i></p>
+                                            <div class="media-body rating-bar">
+                                                <div class="progress wd-progress">
+                                                    <div class="progress-bar wd-bg-green" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-3 rating-bar-section">
-                                            <div class="media rating-star-area">
-                                                <p>5 <i class="fa fa-star" aria-hidden="true"></i></p>
-                                                <div class="media-body rating-bar">
-                                                    <div class="progress wd-progress">
-                                                        <div class="progress-bar wd-bg-green" role="progressbar"
-                                                            style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
+                                        <div class="media rating-star-area">
+                                            <p>4 <i class="fa fa-star" aria-hidden="true"></i></p>
+                                            <div class="media-body rating-bar">
+                                                <div class="progress wd-progress">
+                                                    <div class="progress-bar wd-bg-green" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
-                                            <div class="media rating-star-area">
-                                                <p>4 <i class="fa fa-star" aria-hidden="true"></i></p>
-                                                <div class="media-body rating-bar">
-                                                    <div class="progress wd-progress">
-                                                        <div class="progress-bar wd-bg-green" role="progressbar"
-                                                            style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
+                                        </div>
+                                        <div class="media rating-star-area">
+                                            <p>3 <i class="fa fa-star" aria-hidden="true"></i></p>
+                                            <div class="media-body rating-bar">
+                                                <div class="progress wd-progress">
+                                                    <div class="progress-bar wd-bg-green" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
-                                            <div class="media rating-star-area">
-                                                <p>3 <i class="fa fa-star" aria-hidden="true"></i></p>
-                                                <div class="media-body rating-bar">
-                                                    <div class="progress wd-progress">
-                                                        <div class="progress-bar wd-bg-green" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
+                                        </div>
+                                        <div class="media rating-star-area">
+                                            <p>2 <i class="fa fa-star" aria-hidden="true"></i></p>
+                                            <div class="media-body rating-bar">
+                                                <div class="progress wd-progress">
+                                                    <div class="progress-bar wd-bg-yellow" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
-                                            <div class="media rating-star-area">
-                                                <p>2 <i class="fa fa-star" aria-hidden="true"></i></p>
-                                                <div class="media-body rating-bar">
-                                                    <div class="progress wd-progress">
-                                                        <div class="progress-bar wd-bg-yellow" role="progressbar"
-                                                            style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="media rating-star-area">
-                                                <p>1 <i class="fa fa-star" aria-hidden="true"></i></p>
-                                                <div class="media-body rating-bar">
-                                                    <div class="progress wd-progress">
-                                                        <div class="progress-bar wd-bg-red" role="progressbar"
-                                                            style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
+                                        </div>
+                                        <div class="media rating-star-area">
+                                            <p>1 <i class="fa fa-star" aria-hidden="true"></i></p>
+                                            <div class="media-body rating-bar">
+                                                <div class="progress wd-progress">
+                                                    <div class="progress-bar wd-bg-red" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <hr>
+                                <hr>
 
-                                    <div class="reviews-market" style="">
+                                <div class="reviews-market" style="">
 
-                                        <!--
+                                    <!--
                                                 =================================
                                                 Review Our Market
                                                 =================================
                                             -->
 
 
-                                        <!--
+                                    <!--
                                                 =================================
                                                 Review Our Product
                                                 =================================
                                             -->
-                                        <div class="review-our-product text-left row">
-                                            <div class="col-12 col-lg-6 reviews-title">
-                                                <h3>Review</h3>
-                                            </div>
+                                    <div class="review-our-product text-left row">
+                                        <div class="col-12 col-lg-6 reviews-title">
+                                            <h3>Review</h3>
+                                        </div>
 
-                                            <div class="col-12 col-lg-6 text-right  ">
-                                                <div class="filter">
-                                                    <div class="btn-group d-none" role="group">
-                                                        <div class="d-flex">
-                                                            <p>View as:</p>
-                                                            <button id="btnGroupDropwdreview" type="button"
-                                                                class="btn btn-secondary dropdown-toggle filter-btn"
-                                                                data-toggle="dropdown" aria-haspopup="true"
-                                                                aria-expanded="false">
-                                                                Latest
-                                                            </button>
-                                                            <div class="dropdown-menu"
-                                                                aria-labelledby="btnGroupDropwdreview"
-                                                                style="position: absolute; transform: translate3d(50px, 29px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                                <a class="dropdown-item" href="#">Oldest First</a>
-                                                                <a class="dropdown-item" href="#">Higest Ratetd</a>
-                                                                <a class="dropdown-item" href="#">Lowest Ratetd</a>
+                                        <div class="col-12 col-lg-6 text-right  ">
+                                            <div class="filter">
+                                                <div class="btn-group d-none" role="group">
+                                                    <div class="d-flex">
+                                                        <p>View as:</p>
+                                                        <button id="btnGroupDropwdreview" type="button" class="btn btn-secondary dropdown-toggle filter-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Latest
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="btnGroupDropwdreview" style="position: absolute; transform: translate3d(50px, 29px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                            <a class="dropdown-item" href="#">Oldest First</a>
+                                                            <a class="dropdown-item" href="#">Higest Ratetd</a>
+                                                            <a class="dropdown-item" href="#">Lowest Ratetd</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a href="{{route('submit.review.product',[$product->id])}}"><button type="button" class="btn btn-warning ">Write A Review</button></a>
+                                            </div>
+                                        </div>
+
+                                        <!-- =================================
+                                                    Review Client Section
+                                                    ================================= -->
+                                        @if ($product->getReview->count() > 0)
+                                        @foreach ($product->getReview->all() as $review)
+                                        <div class="col-12 review-our-product-area">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="media">
+                                                                <div class="media-left media-middle review-user">
+                                                                    <a href="#">
+                                                                        <img class="media-object rounded-circle" src="{{ asset('assets/img/profile.png') }}" alt="client-img">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body ml-2">
+                                                                    <h4 class="media-heading client-title">
+                                                                        {{ $review->getUser->fullname() }}
+                                                                    </h4>
+                                                                  
+                                                                    <div class="">
+                                                                        <p class="review-date">
+                                                                            {{ date('F d, Y', strtotime($review->created_at)) }}
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-md-12 py-4">
+                                                                    {{ $review->review_text }}
+                                                                </div>
+                                                                @php
+                                                                $files = json_decode($review->files, true);
+                                                                @endphp
+                                                                @if (!empty($files) && is_array($files))
+                                                                <div class="row gallery">
+                                                                    @forelse ($files as $f)
+                                                                    @php
+                                                                    echo $fextension = pathinfo($f,PATHINFO_EXTENSION);
+
+                                                                    @endphp
+                                                                    @switch($fextension)
+                                                                    @case('jpeg')
+                                                                    @case('jpg')
+                                                                    @case('png')
+                                                                    @case('gif')
+                                                                    <a href="{{ asset('storage/review/' . $f) }}" class=" col-md-3 thumbnail" data-toggle="lightbox" data-gallery="gallery" class="col-md-2">
+                                                                        <img src="{{ asset('storage/review/' . $f) }}" class="img-fluid rounded">
+                                                                    </a>
+                                                                    @break
+
+                                                                    @case('mp4')
+                                                                    <a href="{{ storage_path('public/review/' . $f) }}" class=" col-md-3 thumbnail" data-toggle="lightbox" data-gallery="gallery" class="col-md-2">
+                                                                        <video>
+                                                                            <source src="{{ storage_path('public/review/' . $f) }}">
+                                                                        </video>
+                                                                    </a>
+                                                                    @break
+
+                                                                    @default
+                                                                    @endswitch
+
+                                                                    @empty
+                                                                    @endforelse
+
+
+                                                                </div>
+                                                            
+                                                            @endif
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <a href="{{route('submit.review.product',[$product->id])}}"><button type="button"  class="btn btn-warning ">Write A Review</button></a>
                                                 </div>
-                                            </div>
-
-                                            <!-- =================================
-                                                    Review Client Section
-                                                    ================================= -->
-                                            @if ($product->getReview->count() > 0)
-                                                @foreach ($product->getReview->all() as $review)
-                                                    <div class="col-12 review-our-product-area">
-                                                        <div class="row">
-                                                            <div class="col-12 col-md-6">
-                                                                <div class="row">
-                                                                    <div class="col-12">
-                                                                        <div class="media">
-                                                                            <div
-                                                                                class="media-left media-middle review-user">
-                                                                                <a href="#">
-                                                                                    <img class="media-object rounded-circle"
-                                                                                        src="{{ asset('assets/img/profile.png') }}"
-                                                                                        alt="client-img">
-                                                                                </a>
-                                                                            </div>
-                                                                            <div class="media-body ml-2">
-                                                                                <h4 class="media-heading client-title">
-                                                                                    {{ $review->getUser->fullname() }}
-                                                                                </h4>
-                                                                                {{--  <div class="client-subtitle">GJ <a
-                                                                                        href="#">India</a></div> --}}
-                                                                                <div class="">
-                                                                                    <p class="review-date">
-                                                                                        {{ date('F d, Y', strtotime($review->created_at)) }}
-                                                                                    </p>
-                                                                                </div>
-                                                                                {{-- <div class="rating-star d-flex">
-                                                                                    <span
-                                                                                        class="badge badge-secondary wd-star-market-badge text-uppercase"> {{ $review->rating}}
-                                                                                        <i class="fa fa-star-o"
-                                                                                            aria-hidden="true"></i></span>
-                                                                                    <div class="review-rating-yellow-5  jq-ry-container"
-                                                                                        style="width: 95px;">
-                                                                                        <div class="jq-ry-group-wrapper">
-                                                                                            <div
-                                                                                                class="jq-ry-normal-group jq-ry-group">
-                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                                    version="1.1"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    viewBox="0 12.705 512 486.59"
-                                                                                                    x="0px" y="0px"
-                                                                                                    xml:space="preserve"
-                                                                                                    width="19px" height="19px"
-                                                                                                    fill="#e3e3e3">
-                                                                                                    <polygon
-                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                                    </polygon>
-                                                                                                </svg>
-                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                                    version="1.1"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    viewBox="0 12.705 512 486.59"
-                                                                                                    x="0px" y="0px"
-                                                                                                    xml:space="preserve"
-                                                                                                    width="19px" height="19px"
-                                                                                                    fill="#e3e3e3"
-                                                                                                    style="margin-left: 0px;">
-                                                                                                    <polygon
-                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                                    </polygon>
-                                                                                                </svg>
-                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                                    version="1.1"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    viewBox="0 12.705 512 486.59"
-                                                                                                    x="0px" y="0px"
-                                                                                                    xml:space="preserve"
-                                                                                                    width="19px" height="19px"
-                                                                                                    fill="#e3e3e3"
-                                                                                                    style="margin-left: 0px;">
-                                                                                                    <polygon
-                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                                    </polygon>
-                                                                                                </svg>
-                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                                    version="1.1"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    viewBox="0 12.705 512 486.59"
-                                                                                                    x="0px" y="0px"
-                                                                                                    xml:space="preserve"
-                                                                                                    width="19px" height="19px"
-                                                                                                    fill="#e3e3e3"
-                                                                                                    style="margin-left: 0px;">
-                                                                                                    <polygon
-                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                                    </polygon>
-                                                                                                </svg>
-                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                                    version="1.1"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    viewBox="0 12.705 512 486.59"
-                                                                                                    x="0px" y="0px"
-                                                                                                    xml:space="preserve"
-                                                                                                    width="19px" height="19px"
-                                                                                                    fill="#e3e3e3"
-                                                                                                    style="margin-left: 0px;">
-                                                                                                    <polygon
-                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                                    </polygon>
-                                                                                                </svg>
-                                                                                            </div>
-                                                                                            <div class="jq-ry-rated-group jq-ry-group"
-                                                                                                style="width: 100%;">
-                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                                    version="1.1"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    viewBox="0 12.705 512 486.59"
-                                                                                                    x="0px" y="0px"
-                                                                                                    xml:space="preserve"
-                                                                                                    width="19px" height="19px"
-                                                                                                    fill="#ff9800">
-                                                                                                    <polygon
-                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                                    </polygon>
-                                                                                                </svg>
-                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                                    version="1.1"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    viewBox="0 12.705 512 486.59"
-                                                                                                    x="0px" y="0px"
-                                                                                                    xml:space="preserve"
-                                                                                                    width="19px" height="19px"
-                                                                                                    fill="#ff9800"
-                                                                                                    style="margin-left: 0px;">
-                                                                                                    <polygon
-                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                                    </polygon>
-                                                                                                </svg>
-                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                                    version="1.1"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    viewBox="0 12.705 512 486.59"
-                                                                                                    x="0px" y="0px"
-                                                                                                    xml:space="preserve"
-                                                                                                    width="19px" height="19px"
-                                                                                                    fill="#ff9800"
-                                                                                                    style="margin-left: 0px;">
-                                                                                                    <polygon
-                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                                    </polygon>
-                                                                                                </svg>
-                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                                    version="1.1"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    viewBox="0 12.705 512 486.59"
-                                                                                                    x="0px" y="0px"
-                                                                                                    xml:space="preserve"
-                                                                                                    width="19px" height="19px"
-                                                                                                    fill="#ff9800"
-                                                                                                    style="margin-left: 0px;">
-                                                                                                    <polygon
-                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                                    </polygon>
-                                                                                                </svg>
-                                                                                                <!--?xml version="1.0" encoding="utf-8"?--><svg
-                                                                                                    version="1.1"
-                                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                                    viewBox="0 12.705 512 486.59"
-                                                                                                    x="0px" y="0px"
-                                                                                                    xml:space="preserve"
-                                                                                                    width="19px" height="19px"
-                                                                                                    fill="#ff9800"
-                                                                                                    style="margin-left: 0px;">
-                                                                                                    <polygon
-                                                                                                        points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 ">
-                                                                                                    </polygon>
-                                                                                                </svg>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div> --}}
-                                                                                <div class="col-md-12 py-4">
-                                                                                    {{ $review->review_text }}
-                                                                                </div>
-                                                                                @php
-                                                                                    $files = json_decode($review->files, true);
-
-                                                                                @endphp
-                                                                                @if (!empty($files) && is_array($files))
-                                                                                <div class="row gallery">
-                                                                                    @forelse ($files as $f)
-                                                                                        @php
-                                                                                            $fextension = pathinfo($f);
-
-                                                                                        @endphp
-                                                                                        @switch($fextension)
-                                                                                            @case('jpeg')
-                                                                                            @case('jpg')
-
-                                                                                            @case('png')
-                                                                                            @case('gif')
-                                                                                                <a href="{{ storage_path('public/review/' . $f) }}"
-                                                                                                    class=" col-md-3 thumbnail"
-                                                                                                    data-toggle="lightbox"
-                                                                                                    data-gallery="gallery"
-                                                                                                    class="col-md-2">
-                                                                                                    <img src="{{ storage_path('public/review/' . $f) }}"
-                                                                                                        class="img-fluid rounded">
-                                                                                                </a>
-                                                                                            @break
-
-                                                                                            @case('mp4')
-                                                                                                <a href="{{ storage_path('public/review/' . $f) }}"
-                                                                                                    class=" col-md-3 thumbnail"
-                                                                                                    data-toggle="lightbox"
-                                                                                                    data-gallery="gallery"
-                                                                                                    class="col-md-2">
-                                                                                                    <video>
-                                                                                                        <source
-                                                                                                            src="{{ storage_path('public/review/' . $f) }}">
-                                                                                                    </video>
-                                                                                                </a>
-                                                                                            @break
-
-                                                                                            @default
-                                                                                        @endswitch
-
-                                                                                        @empty
-                                                                                        @endforelse
-
-
-                                                                                    </div>
-                                                                                </div>
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                            </div>
-                                                            <div class="row">
-
-
-
-
-                                                            </div>
-
-
-
-
-                                                        </div>
-                                                    @endforeach
-                                                @endif
-
-
-
                                             </div>
 
 
                                         </div>
+
+
+
+
+
                                     </div>
+
+                                    @endforeach
+                                    @endif
+
+
+
+
+
+
                                 </div>
                             </div>
-                            {{-- <div class="tab-pane specifiction-section" id="specifiction" style="display: none;">
+                        </div>
+                    </div>
+                    {{-- <div class="tab-pane specifiction-section" id="specifiction" style="display: none;">
                             <div class="row">
                                 <div class="col-12 col-md-5">
                                     <h2 class="specifiction-title">Specifiction</h2>
@@ -691,19 +477,19 @@
 
                             </div>
                         </div> --}}
-                        </div>
-                    </div>
                 </div>
-
             </div>
-        </section>
-    @endsection
+        </div>
 
-    @push('js')
-        <script>
-            $('.gallery>.thumbnail').on('click', function(e) {
-                e.preventDefault();
-                $(this).ekkoLightbox();
-            });
-        </script>
-    @endpush
+    </div>
+</section>
+@endsection
+
+@push('js')
+<script>
+    $('.gallery>.thumbnail').on('click', function(e) {
+        e.preventDefault();
+        $(this).ekkoLightbox();
+    });
+</script>
+@endpush

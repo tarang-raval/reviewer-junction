@@ -275,8 +275,7 @@
                                                 <div class="col-12 col-md-12 col-lg-12 col-xl-12 p0">
                                                     <div class="product-box-img">
                                                         <a href="{{route('singleProduct',[$product->slug])}}">
-                                                            <img src="{{asset('images/no-image.png')}}"
-                                                                class="figure-img img-fluid" alt="{{$product->product_name}}">
+                                                            <img src="{{(!empty($product->thumbnail_image)?asset('storage/'.$product->thumbnail_image):asset('images/no-image.png'))}}" class="figure-img img-fluid" alt="{{$product->product_name}}">
                                                         </a>
                                                     </div>
                                                     <div class="quick-view-btn">
@@ -338,8 +337,8 @@
                                             <figure class="figure product-box row">
                                                 <div class="col-12 col-md-12 col-lg-5 col-xl-4 p0">
                                                     <div class="product-box-img">
-                                                        <a href="product-details.html">
-                                                            <img src="img/shop-img/shop-img-1.jpg"
+                                                        <a href="">
+                                                            <img src="{{(!empty($product->thumbnail_image)?asset('storage/'.$product->thumbnail_image):'img/shop-img/shop-img-1.jpg')}}"
                                                                 class="figure-img img-fluid" alt="Product Img">
                                                         </a>
                                                     </div>

@@ -240,10 +240,7 @@ class ReviewController extends Controller
                $review->rating = $request->rating;
 
                $review->files =$request->filesNameList;
-               dump( $request);
-               dump($review->isDirty());
-                dd($review->save());
-                exit;
+               
                if($review->save()){
 
                    if($request->ajax()){
@@ -256,7 +253,7 @@ class ReviewController extends Controller
                    if($request->ajax()){
                        return response()->json(['status'=>false,'message'=>"some thing is wrong."]);
                    }else{
-                    dd('');
+                    
                         return redirect()->route('review.edit',[$request->id])->with('error','some thing is wrong.') ;
                    }
                }
